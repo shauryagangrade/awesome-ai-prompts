@@ -55,7 +55,7 @@ accountable at every step.
 
 - [Core coding](#core-coding) (11)
 - [System design](#system-design) (5)
-- [Git & GitHub](#git--github) (9)
+- [Git & GitHub](#git--github) (10)
 - [Code review & quality](#code-review--quality) (3)
 - [Testing & quality](#testing--quality) (7)
 - [Docs & delivery](#docs--delivery) (5)
@@ -98,6 +98,7 @@ accountable at every step.
 - [release-automation-prompt.md](git-github/release-automation-prompt.md) - automate versioning, tagging, changelogs, and publishing with CI.
 - [commit-checklist-prompt.md](git-github/commit-checklist-prompt.md) - build deterministic PR gates that keep indexes, changelogs, and counts in sync.
 - [pr-review-prompt.md](git-github/pr-review-prompt.md) - thorough PR review: verify claims, run checks, clear verdict, merge-ready.
+- [issue-triage-for-maintainers-prompt.md](git-github/issue-triage-for-maintainers-prompt.md) - turn an untriaged backlog into labeled, prioritized, answerable queues.
 
 ## Code review & quality
 
