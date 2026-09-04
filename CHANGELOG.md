@@ -25,6 +25,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `code-migration-prompt.md` **[spec]** - migrate code between frameworks/languages with behavior parity
 - `performance-review-prompt.md` - review code for performance anti-patterns
 - `accessibility-review-prompt.md` - audit UI code for WCAG compliance
+- `ui-audit-prompt.md` - audit UI for visual consistency, design system adherence, spacing, typography, and responsive behavior
 - `e2e-test-scaffold-prompt.md` - scaffold end-to-end/integration tests
 - `mutation-testing-prompt.md` - validate test quality with mutation testing
 - `api-documentation-prompt.md` - generate OpenAPI docs from existing code

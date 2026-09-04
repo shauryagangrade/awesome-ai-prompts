@@ -62,7 +62,7 @@ accountable at every step.
 - [Security & performance](#security--performance) (7)
 - [DevOps & deploy](#devops--deploy) (9)
 - [Career & learning](#career--learning) (5)
-- [Frontend & UI](#frontend--ui) (7)
+- [Frontend & UI](#frontend--ui) (8)
 - [Data & AI](#data--ai) (6)
 
 ## Core coding
@@ -163,6 +163,7 @@ accountable at every step.
 - [i18n-localization-prompt.md](frontend-ui/i18n-localization-prompt.md) - internationalize properly: extracted strings, ICU plurals, RTL, pseudo-locale testing.
 - [website-seo-prompt.md](frontend-ui/website-seo-prompt.md) - technical SEO audit: crawlability, canonicalization, metadata, structured data, redirects, and speed - with verification at every step.
 - [instagram-carousel-prompt.md](frontend-ui/instagram-carousel-prompt.md) - turn this repo into a branded, swipeable Instagram carousel delivered as self-contained 1080x1080 HTML slides, mirroring the repo's brand identity.
+- [ui-audit-prompt.md](frontend-ui/ui-audit-prompt.md) - audit UI for visual consistency, design system adherence, spacing, typography, and responsive behavior with concrete fixes.
 
 ## Data & AI
 
