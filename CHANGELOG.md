@@ -15,6 +15,8 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- `ui-audit-prompt.md` **[spec]** - audit UI for visual consistency, design system adherence, spacing, typography, and responsive behavior with concrete fixes and file:line evidence
+- `codebase-onboarding-prompt.md` **[spec]** - understand an unfamiliar repo at verification depth: stack, architecture, data flow, conventions, gotchas, with file:line evidence
 - `issue-triage-for-maintainers-prompt.md` - triage a backlog into labeled, prioritized, answerable queues
 - `responsible-web-scraping-prompt.md` - scrape within robots.txt/ToS, resilient selectors, checkpointed crawls
 - `datetime-timezone-correctness-prompt.md` - UTC storage, DST handling, safe parsing, calendar/duration math

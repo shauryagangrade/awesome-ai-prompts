@@ -71,7 +71,7 @@ accountable at every step.
 - [pair-programming-session-prompt.md](core-coding/pair-programming-session-prompt.md) - interactive build loop: plan → code → explain → verify, in small confirmed steps.
 - [debugging-prompt.md](core-coding/debugging-prompt.md) - systematic debugging: reproduce, isolate, root-cause, minimal fix, regression test.
 - [refactoring-prompt.md](core-coding/refactoring-prompt.md) - behavior-preserving refactoring with tests as the safety net.
-- [codebase-onboarding-prompt.md](core-coding/codebase-onboarding-prompt.md) - quickly understand an unfamiliar repo: stack, architecture, data flow, gotchas.
+- [codebase-onboarding-prompt.md](core-coding/codebase-onboarding-prompt.md) **[spec]** - understand an unfamiliar repo at verification depth: stack, architecture, data flow, conventions, gotchas, with file:line evidence.
 - [api-integration-prompt.md](core-coding/api-integration-prompt.md) - integrate a REST API with types, error handling, retries, and tests.
 - [api-design-prompt.md](core-coding/api-design-prompt.md) - design a well-structured REST API with OpenAPI spec, conventions, and validation.
 - [database-design-prompt.md](core-coding/database-design-prompt.md) - model a relational schema from requirements with normalization, indexes, and migration path.
@@ -163,7 +163,7 @@ accountable at every step.
 - [i18n-localization-prompt.md](frontend-ui/i18n-localization-prompt.md) - internationalize properly: extracted strings, ICU plurals, RTL, pseudo-locale testing.
 - [website-seo-prompt.md](frontend-ui/website-seo-prompt.md) - technical SEO audit: crawlability, canonicalization, metadata, structured data, redirects, and speed - with verification at every step.
 - [instagram-carousel-prompt.md](frontend-ui/instagram-carousel-prompt.md) - turn this repo into a branded, swipeable Instagram carousel delivered as self-contained 1080x1080 HTML slides, mirroring the repo's brand identity.
-- [ui-audit-prompt.md](frontend-ui/ui-audit-prompt.md) - audit UI for visual consistency, design system adherence, spacing, typography, and responsive behavior with concrete fixes.
+- [ui-audit-prompt.md](frontend-ui/ui-audit-prompt.md) **[spec]** - audit UI for visual consistency, design system adherence, spacing, typography, and responsive behavior with concrete fixes and file:line evidence.
 
 ## Data & AI
 
