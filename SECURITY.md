@@ -14,7 +14,7 @@ the only maintained state. The table below is kept for completeness.
 
 **Do not open a public GitHub issue for security vulnerabilities.**
 
-Email: **<studentsuite3@gmail.com>**
+Email: **<shauryagangrade11@gmail.com>**
 
 Include in your report:
 
