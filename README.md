@@ -57,7 +57,7 @@ accountable at every step.
 - [System design](#system-design) (5)
 - [Git & GitHub](#git--github) (10)
 - [Code review & quality](#code-review--quality) (3)
-- [Testing & quality](#testing--quality) (7)
+- [Testing & quality](#testing--quality) (9)
 - [Docs & delivery](#docs--delivery) (5)
 - [Security & performance](#security--performance) (7)
 - [DevOps & deploy](#devops--deploy) (9)
@@ -108,6 +108,8 @@ accountable at every step.
 
 ## Testing & quality
 
+- [bug-finder-prompt.md](testing-quality/bug-finder-prompt.md) **[spec]** - sweep a codebase across correctness factors and get a clear, evidence-backed, priority-ordered list of bugs.
+- [bug-finder-with-docs-prompt.md](testing-quality/bug-finder-with-docs-prompt.md) **[spec]** - find bugs and leave a durable bug ledger behind: a priority-ordered report plus BUGS.md and README pointers, with the code untouched.
 - [test-writing-prompt.md](testing-quality/test-writing-prompt.md) - write tests that catch regressions, not ones that pad coverage.
 - [test-driven-development-prompt.md](testing-quality/test-driven-development-prompt.md) - strict red → green → refactor discipline.
 - [code-coverage-gap-prompt.md](testing-quality/code-coverage-gap-prompt.md) - find risky untested paths and cover them meaningfully.
