@@ -67,7 +67,7 @@ fi
 # 3. Category folders and README sections exist in both directions.
 for d in */; do
   d="${d%/}"
-  case "$d" in scripts) continue ;; esac
+  case "$d" in scripts | docs) continue ;; esac
   if git check-ignore -q -- "$d/"; then
     # Skip local-only, gitignored directories (e.g. design assets).
     continue

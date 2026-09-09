@@ -10,6 +10,7 @@ tmp/
 scratch/
 
 # Local design assets (screenshots in a browser, not committed)
+# Exception: docs/media/ is committed (README demo GIF).
 instagram-post.html
 
 # OS + editor

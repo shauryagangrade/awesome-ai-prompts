@@ -15,6 +15,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- `docs/media/prompt-in-action.gif` - above-the-fold demo GIF showing a bug-finder [spec] prompt driving an agent to verified bug findings; captured live from an openvidstudio-driven terminal with Aceternity components
 - `bug-finder-prompt.md` **[spec]** - sweep a codebase across correctness factors and surface a clear, evidence-backed, priority-ordered list of bugs
 - `bug-finder-with-docs-prompt.md` **[spec]** - find bugs and leave a durable bug ledger (BUGS.md + README pointer) without touching code
 - `ui-audit-prompt.md` **[spec]** - audit UI for visual consistency, design system adherence, spacing, typography, and responsive behavior with concrete fixes and file:line evidence
