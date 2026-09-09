@@ -17,9 +17,7 @@ verifiable result before it calls the work done.
 
 **[★ Star on GitHub](https://github.com/shauryagangrade/awesome-ai-prompts)**
 
-<p align="center">
-  <img src="docs/media/prompt-in-action.gif" alt="A bug-finder [spec] prompt pasted into an agent; it reads the repo, surveys six factor groups, and reports a clear priority-ordered list of confirmed bugs" width="720">
-</p>
+![A bug-finder [spec] prompt pasted into an agent; it reads the repo, surveys six factor groups, and reports a clear priority-ordered list of confirmed bugs](docs/media/prompt-in-action.gif)
 
 ## Why these are different {#quality-standards}
 
