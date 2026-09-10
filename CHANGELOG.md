@@ -9,6 +9,13 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- `a-a-p-contributing/new-prompt-contribution-prompt.md` - author a new prompt for this repo: read conventions, confirm the idea is new, draft, sync index, run gates, open a PR
+- `a-a-p-contributing/prompt-pr-review-prompt.md` - review a prompt-contribution PR against the repo's gates with an explicit verdict
+- `a-a-p-contributing/resolve-open-issue-prompt.md` - take an open issue end-to-end from ticket to a mergeable PR
+- `a-a-p-contributing/fix-reported-bug-prompt.md` - fix a reported bug with reproduction, root cause, and proof
+
 ## [0.3.0] - 2026-09-09
 
 ### Fixed

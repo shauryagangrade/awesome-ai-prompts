@@ -57,6 +57,7 @@ accountable at every step.
 
 ## Contents
 
+- [Contributing to this repo](#contributing-to-this-repo) (4)
 - [Core coding](#core-coding) (11)
 - [System design](#system-design) (5)
 - [Git & GitHub](#git--github) (10)
@@ -68,6 +69,13 @@ accountable at every step.
 - [Career & learning](#career--learning) (5)
 - [Frontend & UI](#frontend--ui) (8)
 - [Data & AI](#data--ai) (6)
+
+## Contributing to this repo
+
+- [new-prompt-contribution-prompt.md](a-a-p-contributing/new-prompt-contribution-prompt.md) - add a new prompt to this repo: conventions, draft, index, changelog, gates, PR.
+- [prompt-pr-review-prompt.md](a-a-p-contributing/prompt-pr-review-prompt.md) - review a prompt PR against the repo's real gates with an explicit verdict.
+- [resolve-open-issue-prompt.md](a-a-p-contributing/resolve-open-issue-prompt.md) - take an open issue from ticket to a mergeable PR.
+- [fix-reported-bug-prompt.md](a-a-p-contributing/fix-reported-bug-prompt.md) - fix a reported bug with reproduction, root cause, and proof.
 
 ## Core coding
 

@@ -14,11 +14,12 @@ cd "$repo" || exit 1
 BASE_REF="${BASE_REF:-origin/main}"
 fail=0
 
-CATEGORIES="career-learning code-review core-coding data-ai devops-deploy docs-delivery frontend-ui git-github security-performance system-design testing-quality"
+CATEGORIES="a-a-p-contributing career-learning code-review core-coding data-ai devops-deploy docs-delivery frontend-ui git-github security-performance system-design testing-quality"
 
 # Folder -> "README heading|Contents anchor".
 meta_for() {
   case "$1" in
+    a-a-p-contributing)   echo "Contributing to this repo|contributing-to-this-repo" ;;
     career-learning)      echo "Career & learning|career--learning" ;;
     code-review)          echo "Code review & quality|code-review--quality" ;;
     core-coding)          echo "Core coding|core-coding" ;;
