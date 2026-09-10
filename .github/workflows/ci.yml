@@ -22,7 +22,7 @@ jobs:
       - name: No em dashes
         run: |
           EM="$(python3 -c 'print("\u2014")')"
-          if git ls-files | xargs grep -l "$EM" ; then
+          if git grep -I -l "$EM" ; then
             echo "Em dashes are not allowed in this repo. Use an ASCII hyphen (-) instead."
             exit 1
           fi
