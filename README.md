@@ -17,7 +17,9 @@ verifiable result before it calls the work done.
 
 **[★ Star on GitHub](https://github.com/shauryagangrade/awesome-ai-prompts)**
 
-![A bug-finder [spec] prompt pasted into an agent; it reads the repo, surveys six factor groups, and reports a clear priority-ordered list of confirmed bugs](docs/media/prompt-in-action.gif)
+![Browsing the repo, copying a codebase-onboarding spec prompt, pasting it into opencode, and watching the agent read the codebase with file:line citations](docs/media/prompt-in-action.gif)
+
+Want it in video form? [Download the MP4](docs/media/prompt-in-action.mp4).
 
 ## Why these are different {#quality-standards}
 
