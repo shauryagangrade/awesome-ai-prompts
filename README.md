@@ -55,6 +55,142 @@ Rules: Never modify unrelated code. Verify before claiming. Small commits.
 The agent handles the rest: reading code, planning, testing, and holding itself
 accountable at every step.
 
+## Contributing
+
+Contributions welcome. This catalog stays small and disciplined on purpose, so
+the highest-value way to help is adding one good prompt to the right place, not
+a pile of near-duplicates. Most contributions are new prompts; fixing a broken
+link, a stale count, or a prompt whose instructions no longer hold is just as
+welcome. AI-assisted contributions are welcome too - provided you (not the
+agent) review the output, run the checks, and never let a claim stand without
+verification. Full rules live in [CONTRIBUTING.md](CONTRIBUTING.md); the
+section below is the same workflow, self-contained.
+
+### What you can contribute
+
+- A new prompt in a category folder that isn't already covered (the default)
+- A fix to an existing prompt: clearer instructions, a rule that no longer
+  holds, structure that drifted from the repo's conventions
+- Repo hygiene: broken relative links, a stale `## [Unreleased]` changelog,
+  a mismatched Contents count
+- A [bug report](.github/ISSUE_TEMPLATE/bug_report.yml) or
+  [feature request](.github/ISSUE_TEMPLATE/feature_request.yml) when something
+  here is wrong or missing
+
+Newcomers should start by scanning the
+[`good first issue`](https://github.com/shauryagangrade/awesome-ai-prompts/labels/good%20first%20issue)
+label. Beyond the raw files, every prompt here is also a workflow you can reuse,
+so issues often ask for new prompts, which is the fastest way to see your work
+used.
+
+### Quick start with an AI agent
+
+The four prompts in the [Contributing to this repo](#contributing-to-this-repo)
+category encode every rule below. Paste one into your agent and it takes the
+work from idea to a mergeable pull request without you memorizing the checklist:
+
+- [new-prompt-contribution-prompt.md](a-a-p-contributing/new-prompt-contribution-prompt.md) -
+  draft a new prompt: conventions, index, changelog, gates, PR
+- [prompt-pr-review-prompt.md](a-a-p-contributing/prompt-pr-review-prompt.md) -
+  review a prompt PR against the real gates before you merge or comment
+- [resolve-open-issue-prompt.md](a-a-p-contributing/resolve-open-issue-prompt.md) -
+  take an open issue from ticket to mergeable PR
+- [fix-reported-bug-prompt.md](a-a-p-contributing/fix-reported-bug-prompt.md) -
+  fix a reported bug with reproduction, root cause, and proof
+
+If you would rather do it by hand, the steps below are the same workflow.
+
+### Adding a new prompt, step by step
+
+1. **Read the room** - Read [CONTRIBUTING.md](CONTRIBUTING.md),
+   [.github/PROMPT_TEMPLATE.md](.github/PROMPT_TEMPLATE.md), and two or three
+   existing prompts in the category you intend to use. Note the exact shape: an
+   H1 title, a short copy-paste usage note, a `---` divider, then the prompt
+   body.
+2. **Confirm the idea is new** - Search the catalog and README for the closest
+   existing prompts and say how yours differs. A contribution that duplicates
+   an existing prompt will be bounced; bring a gap, not a copy.
+3. **Fork and branch** - Fork the repo, clone, and create a feature branch off
+   the default branch such as `git checkout -b docs/add-my-prompt`.
+4. **Write the file** - Name it `kebab-case-action-prompt.md` and place it in
+   the matching category folder (never the repo root). Structure:
+
+   ```text
+   # Reusable prompt: <short action title>
+
+   One or two lines explaining what to paste this into.
+
+   ---
+
+   The prompt body itself: numbered ## Steps with bold lead-ins, a ## Rules
+   list, and a ## Verification section that names actual commands. Every
+   claim must be checkable - "verify, don't guess".
+   ```
+
+   Style rules: tool-agnostic (Claude, ChatGPT, Copilot, Cursor, opencode, and
+   others); self-contained (everything the user pastes lives below the
+   divider); ASCII hyphens only - no em dashes anywhere in the file.
+5. **Sync the index** - Add a one-line entry in the matching README category
+   section, format `<name>.md` link followed by a hyphen and a short
+   description ending in a period. Bump that category's count in the
+   [Contents](#contents) list. If the prompt takes on a big, risky task, mark
+   its entry with `[spec]`.
+6. **Add a changelog entry** - Under `## [Unreleased]` in
+   [CHANGELOG.md](CHANGELOG.md), add a line naming the file in backticks, then
+   a hyphen, then a short description.
+7. **Run the gates locally** - All three must pass before you push:
+
+   ```bash
+   bash scripts/check-links.sh
+   bash scripts/check-consistency.sh
+   npx --yes markdownlint-cli2@0.17.2 <changed-files>
+   ```
+
+   The em-dash scan must also be clean:
+
+   ```bash
+   EM="$(python3 -c 'print("\u2014")')"
+   git grep -I -l "$EM"
+   ```
+
+   Empty output means no em dashes. Actually run these and look at the output;
+   saying "it passes" without running it is exactly the failure mode these
+   prompts exist to stop.
+8. **Commit and open a PR** - Commit with a conventional message, for example
+   `docs: add <name> prompt`, push the branch, and open a pull request against
+   `main` using [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md).
+   Fill in the checklist honestly; the commit-checklist workflow checks it
+   either way.
+
+### What CI enforces
+
+Two workflows run on every push to `main` and every pull request:
+
+- [docs-lint](.github/workflows/ci.yml) - markdown lint on every `*.md`,
+  README relative links must resolve, no em dashes in any tracked file, and
+  shellcheck on every `*.sh`.
+- [commit-checklist](.github/workflows/commit-checklist.yml) - every
+  `*-prompt.md` in a category folder must be linked from the README, new
+  prompts need a `## [Unreleased]` changelog entry, category folders and
+  README sections must stay in sync in both directions, the Contents counts
+  must match the files on disk, and the PR title must follow
+  [Conventional Commits](https://www.conventionalcommits.org/).
+
+Both run the same scripts you run locally, so a green local pass means a green
+CI pass.
+
+### Guidelines
+
+- One logical change per PR: one prompt, one fix, or one rename. Reviews stay
+  reviewable and reverts stay simple.
+- Never claim a check passed without running it and seeing the output. These
+  prompts are built on verified work, not asserted work.
+- Keep changes minimal: no unrelated wording edits, formatting churn, or
+  dependency bumps mixed into a contribution.
+- If a rule is ambiguous, ask in the issue or PR instead of guessing.
+- Questions and discussion happen in
+  [GitHub Discussions](https://github.com/shauryagangrade/awesome-ai-prompts/discussions).
+
 ## Contents
 
 - [Contributing to this repo](#contributing-to-this-repo) (4)
@@ -187,14 +323,3 @@ accountable at every step.
 - [llm-feature-eval-prompt.md](data-ai/llm-feature-eval-prompt.md) - evaluate LLM features with a held-out test set and pre-committed thresholds.
 - [csv-spreadsheet-wrangling-prompt.md](data-ai/csv-spreadsheet-wrangling-prompt.md) - clean messy CSV/spreadsheet exports with encoding detection, explicit type overrides, and a validation report.
 - [responsible-web-scraping-prompt.md](data-ai/responsible-web-scraping-prompt.md) - scrape within robots.txt/ToS with resilient selectors, checkpointed crawls, and politeness budgets.
-
-## Contributing
-
-Contributions welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add a
-prompt, code style, and PR guidelines.
-
-Prompts live in individual `*-prompt.md` files, grouped in a category folder.
-Each one is self-contained: an H1 title, a one-line usage note, and the prompt
-block separated by `---`. Keep prompts tool-agnostic, prescriptive, and
-grounded in verification. Add a one-line entry to the matching category above
-(or a new category + folder) when you add a file.
