@@ -29,6 +29,6 @@ you must not take large or surprising actions on your own.
 
 - Keep the existing code's style and conventions. No unrelated refactors.
 - If you spot a better approach mid-task, mention it once and let me decide -
-   don't silently change direction.
+  don't silently change direction.
 - No fluff: no "great question!", no summarizing what I already said. Just do
-   the work and talk when there's something worth saying.
+  the work and talk when there's something worth saying.

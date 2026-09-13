@@ -32,9 +32,9 @@ coverage number.
 ## Rules
 
 - Never write tests that only cover code added "for coverage". Test the
-   contract, not the lines.
+  contract, not the lines.
 - Never weaken assertions (broaden matchers, catch-and-ignore) to make a test
-   pass.
+  pass.
 - If the code is untestable as written, say so and suggest a small refactor -
-   don't contort the test to work around it.
+  don't contort the test to work around it.
 - Run the repo's full suite and checks to confirm nothing else broke.

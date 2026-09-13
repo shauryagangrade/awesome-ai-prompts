@@ -25,17 +25,17 @@ any test is failing.
 ## Ground rules
 
 - Design the tests from the **outside in**: write the test the way a caller
-   would use the code. Keep the tests focused on behavior and interface.
+  would use the code. Keep the tests focused on behavior and interface.
 - Each test should cover one behavior. If a test is getting big, split it.
 - Commit at logical points (a green commit per cycle is fine) with the repo's
-   commit convention.
+  commit convention.
 - At the end: run the full suite plus lint/format/type checks with the repo's
-   tooling and confirm everything is green.
+  tooling and confirm everything is green.
 
 ## Rules
 
 - Never write production code before the failing test exists for it.
 - Never delete, disable, or weaken a failing test to go green - the code
-   must change.
+  must change.
 - If a test is genuinely wrong (the requirement changed), update it and say
-   so explicitly - don't quietly change tests to match implementation.
+  so explicitly - don't quietly change tests to match implementation.

@@ -36,7 +36,7 @@ to read your work - make it easy to review and merge.
 ## Rules
 
 - Never force-push a PR branch after review without being asked; prefer
-   adding commits or amending only when the project expects it.
+  adding commits or amending only when the project expects it.
 - Never submit a PR with unrelated changes, dependency bumps, or formatting
-   churn mixed in.
+  churn mixed in.
 - Don't claim you ran tests you didn't run. Verification must be real.

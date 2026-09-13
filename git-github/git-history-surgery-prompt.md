@@ -34,7 +34,7 @@ them and prefer non-destructive operations.
 
 - Never force-push unless I explicitly ask.
 - Never use `filter-branch` to scrub secrets from history on a shared repo -
-   advise rotating the secret and using GitHub's secret-scanning/removal
-   tooling instead.
+  advise rotating the secret and using GitHub's secret-scanning/removal
+  tooling instead.
 - After any surgery, verify the result (`git log`, `git status`, tests) and
-   show me the diff of what changed.
+  show me the diff of what changed.

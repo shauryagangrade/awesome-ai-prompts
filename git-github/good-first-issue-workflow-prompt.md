@@ -64,7 +64,7 @@ instead.
    - Assignee is first-time → post a friendly welcome comment once (dedupe
      with a hidden HTML-comment marker in the comment body).
    - Assignee is experienced → remove them (`DELETE
-     .../issues/{n}/assignees`), post a polite comment explaining the policy,
+.../issues/{n}/assignees`), post a polite comment explaining the policy,
      and **close without merging** any PRs authored by that person that
      reference the issue (find them via the issue's timeline
      `cross-referenced` events filtered to PRs and matching author).

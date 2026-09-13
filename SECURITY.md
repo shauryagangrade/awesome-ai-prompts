@@ -7,8 +7,8 @@ shipping runtime, there is no "supported versions" contract - the current `main`
 the only maintained state. The table below is kept for completeness.
 
 | Version | Supported |
-|---------|-----------|
-| `main` | ✅ Active |
+| ------- | --------- |
+| `main`  | ✅ Active |
 
 ## Reporting a Vulnerability
 
@@ -25,10 +25,10 @@ Include in your report:
 
 ### Response Timeline
 
-| Stage | Target |
-|-------|--------|
-| Acknowledgement | Within 48 hours |
-| Status update | Within 7 days |
+| Stage               | Target                                            |
+| ------------------- | ------------------------------------------------- |
+| Acknowledgement     | Within 48 hours                                   |
+| Status update       | Within 7 days                                     |
 | Patch or mitigation | Within 30 days for critical; 90 days for moderate |
 
 ## Scope
@@ -49,5 +49,5 @@ Include in your report:
 ## Security Hall of Fame
 
 | Researcher | Issue | Date |
-|------------|-------|------|
-| - | - | - |
+| ---------- | ----- | ---- |
+| -          | -     | -    |

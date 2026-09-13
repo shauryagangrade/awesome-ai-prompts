@@ -11,7 +11,7 @@ code before editing, small confirmed steps, and tests as guardrails. Paste one
 into Claude, ChatGPT, Copilot, Cursor, opencode, or any agent and it takes
 over.
 
-Most list agents will happily *hallucinate* a solution. These prompts are built
+Most list agents will happily _hallucinate_ a solution. These prompts are built
 to stop that: every one demands evidence, the repo's own tooling, and a
 verifiable result before it calls the work done.
 
@@ -130,6 +130,7 @@ If you would rather do it by hand, the steps below are the same workflow.
    Style rules: tool-agnostic (Claude, ChatGPT, Copilot, Cursor, opencode, and
    others); self-contained (everything the user pastes lives below the
    divider); ASCII hyphens only - no em dashes anywhere in the file.
+
 5. **Sync the index** - Add a one-line entry in the matching README category
    section, format `<name>.md` link followed by a hyphen and a short
    description ending in a period. Bump that category's count in the
@@ -156,6 +157,7 @@ If you would rather do it by hand, the steps below are the same workflow.
    Empty output means no em dashes. Actually run these and look at the output;
    saying "it passes" without running it is exactly the failure mode these
    prompts exist to stop.
+
 8. **Commit and open a PR** - Commit with a conventional message, for example
    `docs: add <name> prompt`, push the branch, and open a pull request against
    `main` using [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md).

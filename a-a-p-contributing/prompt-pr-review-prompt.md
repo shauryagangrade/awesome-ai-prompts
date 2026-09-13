@@ -19,7 +19,7 @@ whole diff and the full text of every changed prompt.
    `bash scripts/check-consistency.sh`. They must pass clean; if they fail,
    name each failing check with its output.
 3. **Check structure** - Every prompt starts with an H1 title (`# Reusable
-   prompt: ...`), has a short usage note, a `---` divider, then the body. Files
+prompt: ...`), has a short usage note, a `---` divider, then the body. Files
    sit in a category folder, are kebab-case, and end in `-prompt.md`. No em
    dashes anywhere; use an ASCII hyphen.
 4. **Check the index is in sync** - The README section links the file, the

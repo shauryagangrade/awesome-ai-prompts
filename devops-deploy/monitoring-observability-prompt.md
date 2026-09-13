@@ -26,8 +26,8 @@ minutes, not hours of log-diving.
    - **Traffic** - requests per second
    - **Errors** - error rate and error types
    - **Saturation** - CPU, memory, connection pool usage
-   Use the repo's existing metrics library (Prometheus client, StatsD,
-   OpenTelemetry).
+     Use the repo's existing metrics library (Prometheus client, StatsD,
+     OpenTelemetry).
 4. **Set up dashboards** - Create dashboards that answer the questions you'd
    ask during an incident: Is the service healthy? What's the error rate?
    Which endpoints are slow? Are dependencies responding? Keep dashboards

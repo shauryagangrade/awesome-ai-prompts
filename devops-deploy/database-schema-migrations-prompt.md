@@ -40,9 +40,9 @@ backward-compatible unless the migration plan explicitly says otherwise.
 ## Rules
 
 - Never write a migration that drops or renames data without a stated,
-   approved plan.
+  approved plan.
 - Never run destructive migrations against a real database without explicit
-   confirmation.
+  confirmation.
 - Keep each migration focused on one logical change.
 - If the schema change can't be made backward-compatible, stop and flag the
-   coordination needed instead of hiding it.
+  coordination needed instead of hiding it.

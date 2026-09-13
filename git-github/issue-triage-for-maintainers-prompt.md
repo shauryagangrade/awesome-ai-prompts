@@ -21,7 +21,7 @@ maintainer can act on in priority order, not a pile of "looked at it" noise.
    rather than leaving both open in parallel.
 3. **Apply a severity/priority rubric consistently** - Use the repo's actual
    label set. If none exists, propose one (e.g. `severity: blocker/high/
-   medium/low`) rather than inventing ad hoc labels per issue. Justify the
+medium/low`) rather than inventing ad hoc labels per issue. Justify the
    assigned severity in one line so the next person doesn't have to re-derive
    it.
 4. **Flag good-first-issue candidates with mentoring notes** - When an issue

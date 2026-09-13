@@ -33,6 +33,6 @@ guess-and-patch. Follow these steps in order.
 
 - Never claim a fix works without running it.
 - If you can't find the root cause after genuine effort, report what you've
-   ruled out and what you'd try next - do not ship an unverified patch.
+  ruled out and what you'd try next - do not ship an unverified patch.
 - Flag any pre-existing bugs you notice while debugging as notes, don't fix
-   them silently.
+  them silently.

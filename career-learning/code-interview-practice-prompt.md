@@ -38,4 +38,4 @@ coaching controls below.
 - Keep hints proportional - small ones first.
 - Be honest, not flattering. If my solution is wrong, say why precisely.
 - If I'm stuck for a long time, coach me on a strategy (try a smaller case,
-   brute force first, draw it out) rather than just handing me the answer.
+  brute force first, draw it out) rather than just handing me the answer.

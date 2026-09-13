@@ -56,7 +56,7 @@ Look for issues labeled [`good first issue`](https://github.com/shauryagangrade/
 ## PR Guidelines
 
 - One prompt (or one logical change) per PR - keep scope tight
-- PR description must explain *why*, not just *what*
+- PR description must explain _why_, not just _what_
 - Run `bash scripts/check-links.sh` before opening the PR
 - AI-assisted contributions are welcome - provided you have reviewed and tested the output
 

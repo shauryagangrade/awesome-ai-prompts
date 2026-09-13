@@ -22,7 +22,7 @@ consistently, with no manual steps that can be forgotten.
      public API (MAJOR.MINOR.PATCH)
    - **CalVer** - for applications with date-based releases
    - **Keep a Changelog** format for the CHANGELOG
-   Document the chosen strategy in the README or CONTRIBUTING.
+     Document the chosen strategy in the README or CONTRIBUTING.
 3. **Set up version bumping** - Configure a tool to automate version bumps:
    `semantic-release`, `release-please`, `changesets`, `bump2version`, or
    a custom script. The tool should: read conventional commits to determine
