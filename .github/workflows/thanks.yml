@@ -4,20 +4,34 @@ on:
     types: [closed]
 permissions:
   issues: write
-  pull-requests: write
+  pull-requests: read
 
 jobs:
   thank:
     if: github.event.pull_request.merged
     runs-on: ubuntu-latest
     steps:
-      - name: Comment on merged PR
+      - name: Thank first-time contributors
         uses: actions/github-script@v9
         with:
           script: |
-            github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: "Merged. Thanks for your work here. 🌟"
-            })
+            const { owner, repo } = context.repo;
+            const login = context.payload.pull_request.user.login;
+            const query = `is:pr author:${login} repo:${owner}/${repo} is:merged`;
+            let count = 0;
+            let page = 1;
+            const perPage = 100;
+            while (true) {
+              const result = await github.rest.search.issuesAndPullRequests({ q: query, per_page: perPage, page });
+              count += result.data.items.length;
+              if (result.data.items.length < perPage) break;
+              page += 1;
+            }
+            if (count === 1) {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: context.issue.number,
+                body: "First merge landed. Welcome to awesome-ai-prompts! Your name is now in CONTRIBUTORS.md automatically, and your avatar shows up on the README. Star the repo and take a good first issue for a second one - or say the word and we will remove your listing.\n\nThanks for the work, it is appreciated. \u2B50"
+              });
+            }

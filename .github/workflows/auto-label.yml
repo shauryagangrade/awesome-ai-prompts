@@ -1,0 +1,50 @@
+name: Auto-label PRs
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches: [main]
+permissions:
+  pull-requests: write
+  issues: write
+
+jobs:
+  label_by_category:
+    if: github.event.action == 'opened' || github.event.action == 'synchronize' || github.event.action == 'reopened'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Apply the area label for each touched category folder
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          files="$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER/files?per_page=100" --jq '.[].filename')"
+          categories="a-a-p-contributing|career-learning|code-review|core-coding|data-ai|devops-deploy|docs-delivery|frontend-ui|git-github|mobile-dev|security-performance|system-design|testing-quality"
+          labels="$(grep -oE "^($categories)/" <<<"$files" | sed -E 's#^([a-z-]+)/#area: \1#' | sort -u)"
+          if [[ -n "$labels" ]]; then
+            array="$(printf '%s\n' "$labels" | jq -R -s 'split("\n") | map(select(length > 0))')"
+            printf '{"labels": %s}' "$array" > /tmp/area-labels.json
+            gh api -X POST "repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/labels" \
+              --input /tmp/area-labels.json >/dev/null
+          fi
+
+  close_good_first_issues:
+    if: github.event.action == 'closed' && github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close referenced good first issues on merge
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          pr="$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER" --jq '{body: (.body // ""), title: .title}')"
+          commits="$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER/commits?per_page=100" --jq '.[].commit.message')"
+          refs="$(printf '%s\n%s\n' "$pr" "$commits" | grep -oE '#[0-9]+' | tr -d '#' | sort -u -n)"
+          for n in $refs; do
+            labels="$(gh api "repos/$GITHUB_REPOSITORY/issues/$n" --jq '[.labels[].name] | join(",")')"
+            if [[ ",$labels," == *",good first issue,"* ]]; then
+              echo "Closing good first issue #$n referenced by #$PR_NUMBER"
+              gh api -X POST "repos/$GITHUB_REPOSITORY/issues/$n/comments" \
+                -f body="Merged in #$PR_NUMBER. Closing this out. Thanks for picking it up!" >/dev/null
+              gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/$n" -f state=closed >/dev/null
+            fi
+          done

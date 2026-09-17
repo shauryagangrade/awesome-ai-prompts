@@ -1,0 +1,65 @@
+name: Auto contributors
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+permissions:
+  contents: write
+  pull-requests: read
+concurrency:
+  group: auto-contributors
+  cancel-in-progress: false
+
+jobs:
+  append_author:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the merged PR touched a prompt file
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          files="$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER/files?per_page=100" --jq '.[].filename')"
+          touched=""
+          if grep -qE '\-prompt\.md$' <<<"$files"; then
+            touched="yes"
+          fi
+          echo "touched=$touched" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout main
+        if: steps.check.outputs.touched == 'yes'
+        uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - name: Append the author
+        if: steps.check.outputs.touched == 'yes'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          owner="${{ github.repository_owner }}"
+          if [[ "$AUTHOR" == "$owner" || "$AUTHOR" == *"[bot]"* ]]; then
+            echo "Skip: author is $AUTHOR"
+            exit 0
+          fi
+          if grep -qF "github.com/$AUTHOR" CONTRIBUTORS.md; then
+            echo "Already listed: $AUTHOR"
+            exit 0
+          fi
+          file="$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER/files?per_page=100" \
+            --jq '[.[].filename] | map(select(test("-prompt\\.md$"))) | first')"
+          name="$(basename "$file")"
+          name="${name%-prompt.md}"
+          pretty="$(printf '%s' "$name" | tr '-' ' ')"
+          printf '\n- [@%s](https://github.com/%s) - added %s in #%s\n' \
+            "$AUTHOR" "$AUTHOR" "$pretty" "$PR_NUMBER" >> CONTRIBUTORS.md
+          npx --yes prettier@3.5.3 --write CONTRIBUTORS.md >/dev/null
+          git config user.name "awesome-ai-prompts[bot]"
+          git config user.email "actions@users.noreply.github.com"
+          git add CONTRIBUTORS.md
+          git commit -m "docs: add @$AUTHOR to CONTRIBUTORS.md"
+          git push origin HEAD:main
