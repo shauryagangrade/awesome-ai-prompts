@@ -223,7 +223,7 @@ described above.
 - [Code review & quality](#code-review--quality) (3)
 - [Testing & quality](#testing--quality) (9) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 - [Docs & delivery](#docs--delivery) (5)
-- [Security & performance](#security--performance) (7) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
+- [Security & performance](#security--performance) (8) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 - [DevOps & deploy](#devops--deploy) (9)
 - [Career & learning](#career--learning) (6)
 - [Frontend & UI](#frontend--ui) (9) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
@@ -311,6 +311,7 @@ described above.
 - [dependency-audit-prompt.md](security-performance/dependency-audit-prompt.md) - audit dependencies for vulnerabilities, license issues, and staleness.
 - [threat-modeling-prompt.md](security-performance/threat-modeling-prompt.md) - STRIDE-style threat model ranked by real risk, with verified mitigations.
 - [auth-implementation-prompt.md](security-performance/auth-implementation-prompt.md) - implement sessions/OAuth/JWT safely with server-side authorization everywhere.
+- [memory-leak-hunting-prompt.md](security-performance/memory-leak-hunting-prompt.md) - find and remove a leak from measurements: baseline, reproduced growth, diffed snapshots, and a flat after-curve.
 
 ## DevOps & deploy
 
