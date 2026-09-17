@@ -217,7 +217,7 @@ Prompts tagged with the light-blue badge are the heavyweight [spec] prompts
 described above.
 
 - [Contributing to this repo](#contributing-to-this-repo) (4)
-- [Core coding](#core-coding) (13) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
+- [Core coding](#core-coding) (14) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 - [System design](#system-design) (5) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 - [Git & GitHub](#git--github) (11) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 - [Code review & quality](#code-review--quality) (3)
@@ -252,6 +252,7 @@ described above.
 - [code-migration-prompt.md](core-coding/code-migration-prompt.md) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px"> - migrate code between frameworks/languages with behavior parity and incremental verification.
 - [cli-tool-build-prompt.md](core-coding/cli-tool-build-prompt.md) - build a well-behaved CLI: documented flags, typed exit codes, safe pipe and TTY handling, testable core.
 - [datetime-timezone-correctness-prompt.md](core-coding/datetime-timezone-correctness-prompt.md) - store UTC render local, handle DST, and get calendar/duration math right.
+- [error-handling-strategy-prompt.md](core-coding/error-handling-strategy-prompt.md) - one coherent error policy: typed errors, context-rich logs, retry vs surface, proven by failure injection.
 
 ## System design
 

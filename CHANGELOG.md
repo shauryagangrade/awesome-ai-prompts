@@ -14,6 +14,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `.github/workflows/auto-contributors.yml` - append every merged prompt PR author to `CONTRIBUTORS.md` automatically
 - `.github/workflows/auto-label.yml` - label PRs by category folder and close referenced good-first-issue tickets on merge
 - `docs/usage-stories/TEMPLATE.md` - template for real before/after usage stories per category
+- `core-coding/error-handling-strategy-prompt.md` - one coherent error policy: typed errors, context-rich logs, retry vs surface, proven by failure injection
 
 ### Changed
 
