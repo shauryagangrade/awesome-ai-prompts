@@ -13,6 +13,10 @@ scratch/
 # Exception: docs/media/ is committed (README demo GIF).
 instagram-post.html
 
+# Local launch drafts (Show HN, Reddit, X, Discussions, Instagram copy)
+# Live drafts of posts you paste from your own account; not part of the repo.
+drafts/
+
 # OS + editor
 .DS_Store
 Thumbs.db
