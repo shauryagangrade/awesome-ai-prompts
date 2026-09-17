@@ -63,6 +63,24 @@ Look for issues labeled [`good first issue`](https://github.com/shauryagangrade/
 
 ---
 
+## Review Policy
+
+External pull requests get a first response from a maintainer within 48 hours,
+weekends excepted. The response is a real review note, never an auto-reply.
+
+For small, correct pull requests - one prompt, a broken link, a stale count -
+we merge first and fix nits ourselves. A nit is something that does not affect
+correctness: a missing period, minor wording, an awkward line wrap. Substantive
+feedback - wrong category, a broken gate, prompt instructions that are wrong -
+goes back to the author before merge. If a review says "looks good, I will fix
+the nits after merge", expect the PR merged without another round trip. If it
+requests changes, treat that as a real change, not a style preference.
+
+Why: a first-time contributor whose PR merges inside a week comes back. A
+first-time contributor whose PR sits for two weeks does not.
+
+---
+
 ## Commit Style
 
 [Conventional Commits](https://www.conventionalcommits.org/):

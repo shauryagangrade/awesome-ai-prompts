@@ -17,6 +17,12 @@ verifiable result before it calls the work done.
 
 **[★ Star on GitHub](https://github.com/shauryagangrade/awesome-ai-prompts)**
 
+[![Contributors](https://contrib.rocks/image?repo=shauryagangrade/awesome-ai-prompts)](https://github.com/shauryagangrade/awesome-ai-prompts/graphs/contributors)
+
+Starring is the hello; a merged PR is the handshake. Every merged prompt PR
+auto-appends its author to [CONTRIBUTORS.md](CONTRIBUTORS.md) - the avatars
+above are the people who shaped this list.
+
 ![Browsing the repo, copying a codebase-onboarding spec prompt, pasting it into opencode, and watching the agent read the codebase with file:line citations](docs/media/prompt-in-action.gif)
 
 Want it in video form? [Download the MP4](docs/media/prompt-in-action.mp4).
@@ -98,6 +104,15 @@ work from idea to a mergeable pull request without you memorizing the checklist:
   take an open issue from ticket to mergeable PR
 - [fix-reported-bug-prompt.md](a-a-p-contributing/fix-reported-bug-prompt.md) -
   fix a reported bug with reproduction, root cause, and proof
+
+**Want a PR in under 10 minutes?** Pick a
+[`good first issue`](https://github.com/shauryagangrade/awesome-ai-prompts/labels/good%20first%20issue),
+then paste
+[resolve-open-issue-prompt.md](a-a-p-contributing/resolve-open-issue-prompt.md)
+into any agent with the issue number. It runs the whole pipeline itself -
+reading the conventions, drafting under the `---` divider, syncing the index
+and changelog, and passing every gate - so the PR comes out mergeable on the
+first pass. External PRs get a maintainer response within 48 hours.
 
 If you would rather do it by hand, the steps below are the same workflow.
 
@@ -343,3 +358,13 @@ described above.
 - [ai-agent-build-prompt.md](data-ai/ai-agent-build-prompt.md) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px"> - design and build an LLM agent: tool contracts, context strategy, guardrails, eval set, cost and latency budget.
 - [csv-spreadsheet-wrangling-prompt.md](data-ai/csv-spreadsheet-wrangling-prompt.md) - clean messy CSV/spreadsheet exports with encoding detection, explicit type overrides, and a validation report.
 - [responsible-web-scraping-prompt.md](data-ai/responsible-web-scraping-prompt.md) - scrape within robots.txt/ToS with resilient selectors, checkpointed crawls, and politeness budgets.
+
+## Usage in the wild
+
+Real projects are the best proof these prompts work, so we collect short
+before/after stories from the people who actually used one: the task, the
+prompt used, what the agent did, and the verified result. Evidence only, no
+testimonials. See [docs/usage-stories/TEMPLATE.md](docs/usage-stories/TEMPLATE.md)
+for the template, and open a PR (or a
+[discussion](https://github.com/shauryagangrade/awesome-ai-prompts/discussions))
+with your story.

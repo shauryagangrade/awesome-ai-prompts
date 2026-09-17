@@ -11,7 +11,15 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- `.github/workflows/auto-contributors.yml` - append every merged prompt PR author to `CONTRIBUTORS.md` automatically
+- `.github/workflows/auto-label.yml` - label PRs by category folder and close referenced good-first-issue tickets on merge
+- `docs/usage-stories/TEMPLATE.md` - template for real before/after usage stories per category
+
 ### Changed
+
+- CONTRIBUTING.md - review policy: 48h response SLA for external PRs, merge-first with maintainer nit-fixing
+- README.md - recent contributors strip, star-to-contribute handshake, and a "PR in under 10 minutes" contribution CTA
+- `.github/workflows/thanks.yml` - limit the thank-you to a contributor's first merged PR
 
 ### Fixed
 
