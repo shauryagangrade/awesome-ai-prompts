@@ -38,6 +38,11 @@ bash scripts/check-consistency.sh
 bash scripts/check-prettier.sh
 ```
 
+The `URL rot check` workflow runs weekly (and on manual dispatch) and fails if an
+external link in the README or any prompt file is dead, so badges and referenced
+tools cannot rot silently. Run it locally with
+`python3 scripts/check-external-links.py`.
+
 ---
 
 ## Good First Issues
