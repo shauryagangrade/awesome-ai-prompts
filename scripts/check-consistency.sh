@@ -18,7 +18,7 @@ CATEGORIES="a-a-p-contributing career-learning code-review core-coding data-ai d
 
 # Authoritative list of [spec] prompts. Must stay in sync with the badge
 # images in README.md (see section 5 below).
-SPEC_PROMPTS="core-coding/agent-codebase-onboarding-prompt.md core-coding/human-codebase-onboarding-prompt.md core-coding/code-migration-prompt.md system-design/system-design-prompt.md git-github/ci-cd-workflow-prompt.md git-github/good-first-issue-workflow-prompt.md testing-quality/bug-finder-prompt.md testing-quality/bug-finder-with-docs-prompt.md security-performance/security-audit-prompt.md frontend-ui/ui-audit-prompt.md data-ai/ai-agent-build-prompt.md a-a-p-contributing/spec-prompt-schema-prompt.md mobile-dev/mobile-app-develop-prompt.md mobile-dev/mobile-ui-audit-prompt.md mobile-dev/mobile-ui-overhaul-prompt.md mobile-dev/website-to-mobile-app-prompt.md code-review/architecture-review-prompt.md"
+SPEC_PROMPTS="core-coding/agent-codebase-onboarding-prompt.md core-coding/human-codebase-onboarding-prompt.md core-coding/code-migration-prompt.md system-design/system-design-prompt.md git-github/ci-cd-workflow-prompt.md git-github/good-first-issue-workflow-prompt.md testing-quality/bug-finder-prompt.md testing-quality/bug-finder-with-docs-prompt.md security-performance/security-audit-prompt.md frontend-ui/ui-audit-prompt.md data-ai/ai-agent-build-prompt.md a-a-p-contributing/spec-prompt-schema-prompt.md mobile-dev/mobile-app-develop-prompt.md mobile-dev/mobile-ui-audit-prompt.md mobile-dev/mobile-ui-overhaul-prompt.md mobile-dev/website-to-mobile-app-prompt.md code-review/architecture-review-prompt.md code-review/codebase-audit-prompt.md"
 
 # Folder -> "README heading|Contents anchor".
 meta_for() {

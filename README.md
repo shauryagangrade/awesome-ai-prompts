@@ -286,7 +286,7 @@ described above.
 - [performance-review-prompt.md](code-review/performance-review-prompt.md) - review code for performance anti-patterns with evidence and specific fixes.
 - [accessibility-review-prompt.md](code-review/accessibility-review-prompt.md) - audit UI code for WCAG compliance: semantics, keyboard nav, contrast, screen readers.
 - [architecture-review-prompt.md](code-review/architecture-review-prompt.md) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px"> - audit architecture with evidence-backed 0-10 scores, file:line findings, and a prioritized refactoring roadmap.
-- [codebase-audit-prompt.md](code-review/codebase-audit-prompt.md) - audit a repo as a senior architect: 0-10 ratings, structural smells, severity/evidence/fix, and a prioritized refactoring roadmap.
+- [codebase-audit-prompt.md](code-review/codebase-audit-prompt.md) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px"> - audit a codebase as a senior architect: evidence-backed 0-10 scores, structural smell identification, and a prioritized refactoring roadmap.
 
 ## Testing & quality
 
