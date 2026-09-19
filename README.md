@@ -220,7 +220,7 @@ described above.
 - [Core coding](#core-coding) (15) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 - [System design](#system-design) (5) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 - [Git & GitHub](#git--github) (12) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
-- [Code review & quality](#code-review--quality) (4) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
+- [Code review & quality](#code-review--quality) (5) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 - [Testing & quality](#testing--quality) (9) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 - [Docs & delivery](#docs--delivery) (5)
 - [Security & performance](#security--performance) (8) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
@@ -286,6 +286,7 @@ described above.
 - [performance-review-prompt.md](code-review/performance-review-prompt.md) - review code for performance anti-patterns with evidence and specific fixes.
 - [accessibility-review-prompt.md](code-review/accessibility-review-prompt.md) - audit UI code for WCAG compliance: semantics, keyboard nav, contrast, screen readers.
 - [architecture-review-prompt.md](code-review/architecture-review-prompt.md) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px"> - audit architecture with evidence-backed 0-10 scores, file:line findings, and a prioritized refactoring roadmap.
+- [codebase-audit-prompt.md](code-review/codebase-audit-prompt.md) - audit a repo as a senior architect: 0-10 ratings, structural smells, severity/evidence/fix, and a prioritized refactoring roadmap.
 
 ## Testing & quality
 
