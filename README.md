@@ -91,6 +91,7 @@ so issues often ask for new prompts, which is the fastest way to see your work
 used.
 
 ### Quick start with an AI agent
+- [Continuum-AI-Corp/OrcaReplay](https://github.com/Continuum-AI-Corp/OrcaReplay) — drop-in recorder that sits between your agent and the model provider.
 
 The four prompts in the [Contributing to this repo](#contributing-to-this-repo)
 category encode every rule below. Paste one into your agent and it takes the
