@@ -7,13 +7,14 @@ HTML page with a linked mini-TOC, per-prompt copy buttons, and print styles.
 Output is deliberately deterministic: category and file order are sorted, and
 no timestamps or build metadata are embedded, so two runs are byte-identical.
 
-The generated page is a build artifact and is gitignored; CI verifies the
-builder stays deterministic with `--check` instead of committing the output.
+The generated page is committed to the repo root for static hosting (see
+README "Printable one-page catalog"); CI verifies the committed file is in
+sync with a deterministic build via `--check`.
 
 Usage:
-  python3 scripts/build-all.py             # write ALL_PROMPTS.html at repo root
+  python3 scripts/build-all.py             # regenerate ALL_PROMPTS.html
   python3 scripts/build-all.py --output X  # write to a custom path
-  python3 scripts/build-all.py --check     # build twice in a temp dir, diff them
+  python3 scripts/build-all.py --check     # verify determinism + committed file up to date
 """
 
 import argparse
@@ -226,24 +227,27 @@ document.querySelectorAll('button.copy').forEach(function (b) {{
 def check():
     import tempfile
 
-    counts = []
+    generated = None
     with tempfile.TemporaryDirectory() as tmp:
         first = Path(tmp) / "one.html"
         second = Path(tmp) / "two.html"
-        counts.append(render_page(first))
-        counts.append(render_page(second))
-        a = first.read_bytes()
-        b = second.read_bytes()
-    if counts[0] != counts[1]:
-        print(f"FAIL non-deterministic prompt count: {counts[0]} vs {counts[1]}")
-        return 1
-    if a != b:
-        print("FAIL build output is not byte-identical across runs")
-        return 1
-    if counts[0] == 0:
+        render_page(first)
+        render_page(second)
+        if first.read_bytes() != second.read_bytes():
+            print("FAIL build output is not byte-identical across runs")
+            return 1
+        generated = first.read_bytes()
+
+    if generated.count(b"<article") == 0:
         print("FAIL no prompts found")
         return 1
-    print(f"OK ({counts[0]} prompts, deterministic build)")
+    if DEFAULT_OUTPUT.exists() and DEFAULT_OUTPUT.read_bytes() != generated:
+        print(
+            "FAIL committed ALL_PROMPTS.html is stale; "
+            "run: python3 scripts/build-all.py"
+        )
+        return 1
+    print(f"OK ({generated.count(b'<article')} prompts, deterministic and in sync)")
     return 0
 
 

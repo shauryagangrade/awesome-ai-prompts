@@ -21,7 +21,7 @@ jobs:
         run: bash scripts/check-prettier.sh
       - name: Docs lint (README links + prompt conventions)
         run: bash scripts/check-links.sh
-      - name: Build all-prompts page (deterministic)
+      - name: Build all-prompts page (deterministic + in sync)
         run: python3 scripts/build-all.py --check
       - name: No em dashes
         run: |

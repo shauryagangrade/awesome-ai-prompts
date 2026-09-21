@@ -202,17 +202,17 @@ CI pass.
 
 ### Printable one-page catalog
 
-For workshops, printing, or browsing the whole corpus offline, build the
-combined HTML page with every prompt and a linked mini-TOC:
+For workshops, printing, or browsing the whole corpus on one page, open
+[ALL_PROMPTS.html](ALL_PROMPTS.html) - every prompt, a linked mini-TOC, and a
+one-click copy button on each card. To regenerate it after the catalog changes:
 
 ```bash
-python3 scripts/build-all.py        # writes ALL_PROMPTS.html in the repo root
+python3 scripts/build-all.py
 ```
 
-The page is self-contained (inline styles, no external assets) and each prompt
-block has a one-click copy button. It is a generated artifact, so it is
-gitignored rather than committed; CI runs `python3 scripts/build-all.py --check`
-to verify the build stays byte-for-byte deterministic as the catalog grows.
+The page is committed so static hosts (Vercel, GitHub Pages) can serve it
+directly. CI runs `python3 scripts/build-all.py --check`, which fails if the
+builder becomes non-deterministic or the committed page drifts out of sync.
 
 ### Guidelines
 

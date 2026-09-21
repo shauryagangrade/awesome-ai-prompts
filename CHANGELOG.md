@@ -26,7 +26,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `git-github/issue-resolving-prompt.md` - resolve a GitHub issue end-to-end: reproduce the failure, prove the root cause, land a minimal fix with a regression test, and verify against the project's checks
 - `code-review/architecture-review-prompt.md` **[spec]** - audit architecture as a senior architect: evidence-backed 0-10 scorecard, file:line findings with severity/impact/fix, and a prioritized refactoring roadmap, read-only
 - `code-review/codebase-audit-prompt.md` **[spec]** - audit a codebase as a senior architect: evidence-backed 0-10 scores, structural smell identification, and a prioritized refactoring roadmap
-- `scripts/build-all.py` - deterministic builder for `ALL_PROMPTS.html`, a single printable page with a linked mini-TOC and per-prompt copy buttons; gitignored artifact, verified byte-identical in CI with `--check`
+- `scripts/build-all.py` - deterministic builder for `ALL_PROMPTS.html`, a single printable page with a linked mini-TOC and per-prompt copy buttons; committed for static hosting and verified in sync by CI with `--check`
 
 ### Changed
 
