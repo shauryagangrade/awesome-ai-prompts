@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Build ALL_PROMPTS.html: every prompt on one printable, copyable page.
 
-Walks every category folder for `*-prompt.md`, splits each file at its `---`
-divider (the copy-paste prompt block), and renders a single self-contained
-HTML page with a linked mini-TOC, per-prompt copy buttons, and print styles.
-Output is deliberately deterministic: category and file order are sorted, and
-no timestamps or build metadata are embedded, so two runs are byte-identical.
+Category folders come from the tracked `*-prompt.md` files; each file is split
+at its `---` divider (the copy-paste prompt block) and rendered as a
+self-contained HTML page with a linked mini-TOC, per-prompt copy buttons, and
+print styles. Output is deliberately deterministic: category and file order are
+sorted and no timestamps or build metadata are embedded, so two runs are
+byte-identical.
 
 The generated page is committed to the repo root for static hosting (see
 README "Printable one-page catalog"); CI verifies the committed file is in
@@ -20,6 +21,7 @@ Usage:
 import argparse
 import html
 import re
+import subprocess
 import sys
 import tempfile
 from pathlib import Path
@@ -58,8 +60,6 @@ footer.site{margin-top:3rem;padding-top:1rem;border-top:1px solid #ddd;color:#88
 @media print{button.copy,nav.toc,header.site h1 + p.sub{display:none}.wrap{max-width:none;padding:0}article.prompt{border:none;padding:.5rem 0}section.cat{page-break-before:always}pre.prompt{color:#000;background:#fff;border:1px solid #ccc}}
 """
 
-# Category order comes from the README listing (the same source the
-# check-consistency gate validates against), not a duplicated list here.
 PROMPT_SUFFIX = "-prompt.md"
 GITHUB_BLOB = f"https://{SELF_REPO}/blob/main/"
 SPEC_BADGE = 'src="docs/media/spec-badge.svg"'
@@ -67,17 +67,19 @@ PROMPT_LINK = re.compile(r"\(([a-z0-9-]+/[a-z0-9-]+-prompt\.md)\)")
 
 
 def category_order():
-    """Category folders, sorted by name.
+    """Category folders, sorted by name, from the tracked prompt files.
 
-    Sorting matches the README Contents order, and deriving the list from the
-    folders on disk means adding or renaming a category only touches the folder
-    and the README instead of a third hardcoded copy.
+    Deriving from `git ls-files` means a local-only, gitignored folder can
+    never change the build, so every machine reproduces the committed output.
+    Sorting matches the README Contents order, and adding or renaming a
+    category only touches the folder and the README.
     """
-    return sorted(
-        d.name
-        for d in ROOT.iterdir()
-        if d.is_dir() and any(d.glob(f"*{PROMPT_SUFFIX}"))
-    )
+    out = subprocess.check_output(
+        ["git", "ls-files", "--", f"*{PROMPT_SUFFIX}"],
+        cwd=ROOT,
+        text=True,
+    ).split()
+    return sorted({rel.split("/", 1)[0] for rel in out})
 
 
 def spec_prompt_rels():
