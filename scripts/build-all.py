@@ -21,6 +21,7 @@ import argparse
 import html
 import re
 import sys
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -57,27 +58,26 @@ footer.site{margin-top:3rem;padding-top:1rem;border-top:1px solid #ddd;color:#88
 @media print{button.copy,nav.toc,header.site h1 + p.sub{display:none}.wrap{max-width:none;padding:0}article.prompt{border:none;padding:.5rem 0}section.cat{page-break-before:always}pre.prompt{color:#000;background:#fff;border:1px solid #ccc}}
 """
 
-# Category order mirrors README Contents and scripts/check-consistency.sh.
-CATEGORIES = [
-    "a-a-p-contributing",
-    "career-learning",
-    "code-review",
-    "core-coding",
-    "data-ai",
-    "devops-deploy",
-    "docs-delivery",
-    "frontend-ui",
-    "git-github",
-    "mobile-dev",
-    "security-performance",
-    "system-design",
-    "testing-quality",
-]
-
+# Category order comes from the README listing (the same source the
+# check-consistency gate validates against), not a duplicated list here.
 PROMPT_SUFFIX = "-prompt.md"
 GITHUB_BLOB = f"https://{SELF_REPO}/blob/main/"
 SPEC_BADGE = 'src="docs/media/spec-badge.svg"'
 PROMPT_LINK = re.compile(r"\(([a-z0-9-]+/[a-z0-9-]+-prompt\.md)\)")
+
+
+def category_order():
+    """Category folders, sorted by name.
+
+    Sorting matches the README Contents order, and deriving the list from the
+    folders on disk means adding or renaming a category only touches the folder
+    and the README instead of a third hardcoded copy.
+    """
+    return sorted(
+        d.name
+        for d in ROOT.iterdir()
+        if d.is_dir() and any(d.glob(f"*{PROMPT_SUFFIX}"))
+    )
 
 
 def spec_prompt_rels():
@@ -127,13 +127,19 @@ def slug_for(path):
     return path.name[: -len(PROMPT_SUFFIX)]
 
 
+def clean_title(title, is_spec):
+    """Strip a trailing [spec] marker when the prompt actually carries the badge."""
+    if is_spec and title.endswith("[spec]"):
+        return title[: -len("[spec]")].rstrip()
+    return title
+
+
 def render_prompt(path, title, intro, body, spec_rels):
     cat = path.parent.name
     rel = f"{cat}/{path.name}"
     anchor = f"{cat}-{slug_for(path)}"
     is_spec = rel in spec_rels
-    if is_spec and title.endswith("[spec]"):
-        title = title[: -len("[spec]")].rstrip()
+    title = clean_title(title, is_spec)
     src_link = f'{GITHUB_BLOB}{cat}/{path.name}'
     intro_html = ""
     if intro:
@@ -152,26 +158,30 @@ def render_prompt(path, title, intro, body, spec_rels):
 
 
 def render_page(output_path):
-    cats = [cat for cat in CATEGORIES if prompt_files(cat)]
+    cats = [cat for cat in category_order() if prompt_files(cat)]
     total = sum(len(prompt_files(cat)) for cat in cats)
     spec_rels = spec_prompt_rels()
 
     toc_lists = []
     sections = []
     for cat in cats:
-        files = prompt_files(cat)
+        loaded = []
+        for path in prompt_files(cat):
+            title, intro, body = split_prompt(path)
+            spec = f"{cat}/{path.name}" in spec_rels
+            loaded.append((path, title, intro, body, spec))
         toc_inner = "".join(
-            f'<li><a href="#{cat}-{slug_for(path)}">{html.escape(split_prompt(path)[0])}</a></li>'
-            for path in files
+            f'<li><a href="#{cat}-{slug_for(path)}">{html.escape(clean_title(title, spec))}</a></li>'
+            for path, title, _, _, spec in loaded
         )
         toc_lists.append(
-            f'<li><a href="#{cat}">{html.escape(cat)}</a> <span class="count">({len(files)})</span>'
+            f'<li><a href="#{cat}">{html.escape(cat)}</a> <span class="count">({len(loaded)})</span>'
             f"<ul>{toc_inner}</ul></li>"
         )
-        cat_html = []
-        for path in files:
-            title, intro, body = split_prompt(path)
-            cat_html.append(render_prompt(path, title, intro, body, spec_rels))
+        cat_html = [
+            render_prompt(path, title, intro, body, spec_rels)
+            for path, title, intro, body, _ in loaded
+        ]
         sections.append(
             f'<section class="cat">\n<h2 id="{cat}">{html.escape(cat)}</h2>\n'
             + "\n".join(cat_html)
@@ -209,9 +219,20 @@ def render_page(output_path):
 function copyPrompt(id) {{
   var el = document.getElementById('body-' + id);
   var text = el.innerText;
-  navigator.clipboard.writeText(text).then(function () {{
-    el.scrollIntoView({{ behavior: 'smooth', block: 'nearest' }});
-  }});
+  function done() {{ el.scrollIntoView({{ behavior: 'smooth', block: 'nearest' }}); }}
+  function fallback() {{
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    try {{ document.execCommand('copy'); }} finally {{ document.body.removeChild(ta); }}
+    done();
+  }}
+  if (navigator.clipboard && window.isSecureContext) {{
+    navigator.clipboard.writeText(text).then(done, fallback);
+  }} else {{
+    fallback();
+  }}
 }}
 document.querySelectorAll('button.copy').forEach(function (b) {{
   b.addEventListener('click', function () {{ copyPrompt(b.getAttribute('data-copy')); }});
@@ -225,8 +246,6 @@ document.querySelectorAll('button.copy').forEach(function (b) {{
 
 
 def check():
-    import tempfile
-
     generated = None
     with tempfile.TemporaryDirectory() as tmp:
         first = Path(tmp) / "one.html"
