@@ -187,8 +187,9 @@ If you would rather do it by hand, the steps below are the same workflow.
 Two workflows run on every push to `main` and every pull request:
 
 - [docs-lint](.github/workflows/ci.yml) - markdown lint on every `*.md`,
-  README relative links must resolve, no em dashes in any tracked file, and
-  shellcheck on every `*.sh`.
+  README relative links must resolve, no em dashes in any tracked file,
+  shellcheck on every `*.sh`, and `scripts/build-all.py --check` keeps the
+  all-prompts page builder deterministic.
 - [commit-checklist](.github/workflows/commit-checklist.yml) - every
   `*-prompt.md` in a category folder must be linked from the README, new
   prompts need a `## [Unreleased]` changelog entry, category folders and
@@ -198,6 +199,20 @@ Two workflows run on every push to `main` and every pull request:
 
 Both run the same scripts you run locally, so a green local pass means a green
 CI pass.
+
+### Printable one-page catalog
+
+For workshops, printing, or browsing the whole corpus offline, build the
+combined HTML page with every prompt and a linked mini-TOC:
+
+```bash
+python3 scripts/build-all.py        # writes ALL_PROMPTS.html in the repo root
+```
+
+The page is self-contained (inline styles, no external assets) and each prompt
+block has a one-click copy button. It is a generated artifact, so it is
+gitignored rather than committed; CI runs `python3 scripts/build-all.py --check`
+to verify the build stays byte-for-byte deterministic as the catalog grows.
 
 ### Guidelines
 

@@ -9,6 +9,9 @@
 tmp/
 scratch/
 
+# Generated build artifacts (regenerate with scripts/build-all.py)
+ALL_PROMPTS.html
+
 # Local design assets (screenshots in a browser, not committed)
 # Exception: docs/media/ is committed (README demo GIF).
 instagram-post.html
