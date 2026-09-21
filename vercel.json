@@ -1,0 +1,4 @@
+{
+  "outputDirectory": ".",
+  "rewrites": [{ "source": "/", "destination": "/ALL_PROMPTS.html" }]
+}

@@ -210,9 +210,10 @@ one-click copy button on each card. To regenerate it after the catalog changes:
 python3 scripts/build-all.py
 ```
 
-The page is committed so static hosts (Vercel, GitHub Pages) can serve it
-directly. CI runs `python3 scripts/build-all.py --check`, which fails if the
-builder becomes non-deterministic or the committed page drifts out of sync.
+The page is committed so static hosts can serve it directly - the repo's
+[vercel.json](vercel.json) deploys it at the root on Vercel. CI runs
+`python3 scripts/build-all.py --check`, which fails if the builder becomes
+non-deterministic or the committed page drifts out of sync.
 
 ### Guidelines
 
