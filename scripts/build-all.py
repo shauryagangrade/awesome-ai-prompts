@@ -44,11 +44,12 @@ section.cat{margin-bottom:3rem}
 section.cat h2{border-bottom:2px solid #333;padding-bottom:.35rem;font-size:1.35rem}
 article.prompt{background:#fff;border:1px solid #ddd;border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1.75rem}
 article.prompt h3{margin:0 0 .5rem;font-size:1.15rem}
+article.prompt .head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+button.copy{border:none;background:none;padding:.2rem .55rem;border-radius:6px;color:#888;cursor:pointer;font-size:.8rem;flex:none}
+button.copy:hover{background:rgba(0,0,0,.06);color:#333}
 article.prompt .meta{font-size:.82rem;color:#777;margin-bottom:.75rem}
 article.prompt .meta a{color:#777}
 article.prompt .intro p{margin:.4rem 0 .9rem;color:#333}
-button.copy{float:right;font-size:.8rem;border:1px solid #999;border-radius:6px;background:#efefee;padding:.25rem .75rem;cursor:pointer}
-button.copy:hover{background:#e2e2e0}
 pre.prompt{white-space:pre-wrap;background:#1e1e1e;color:#e6e6e6;border-radius:6px;padding:1rem;margin:0;overflow-x:auto}
 span.spec{display:inline-block;font-size:.7rem;vertical-align:middle;background:#7fb3df;color:#fff;border-radius:4px;padding:.05rem .45rem;margin-left:.5rem}
 footer.site{margin-top:3rem;padding-top:1rem;border-top:1px solid #ddd;color:#888;font-size:.85rem}
@@ -139,8 +140,10 @@ def render_prompt(path, title, intro, body, spec_rels):
         intro_html = f'<div class="intro">{"".join(f"<p>{p}</p>" for p in paras)}</div>'
     spec_html = '<span class="spec">spec</span>' if is_spec else ""
     return f"""<article class="prompt">
-<button class="copy" data-copy="{anchor}">Copy prompt</button>
+<div class="head">
 <h3 id="{anchor}">{html.escape(title)}{spec_html}</h3>
+<button class="copy" data-copy="{anchor}">Copy prompt</button>
+</div>
 <p class="meta"><a href="{src_link}">{html.escape(cat + '/' + path.name)}</a></p>
 {intro_html}
 <pre class="prompt" id="body-{anchor}">{html.escape(body)}</pre>
