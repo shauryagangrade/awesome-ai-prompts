@@ -1,0 +1,34 @@
+# CODEOWNERS - required reviewers for each area.
+# Effective only with "Require review from Code Owners" enabled in branch
+# protection for main (Settings > Branches > Rule).
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default: everything.
+* @shauryagangrade
+
+# CI, automation, and the checks that gate contributions.
+.github/ @shauryagangrade
+scripts/ @shauryagangrade
+
+# Governance and release metadata.
+CONTRIBUTING.md @shauryagangrade
+CHANGELOG.md @shauryagangrade
+CITATION.cff @shauryagangrade
+LICENSE @shauryagangrade
+SECURITY.md @shauryagangrade
+CODE_OF_CONDUCT.md @shauryagangrade
+
+# Category folders.
+a-a-p-contributing/ @shauryagangrade
+career-learning/ @shauryagangrade
+code-review/ @shauryagangrade
+core-coding/ @shauryagangrade
+data-ai/ @shauryagangrade
+devops-deploy/ @shauryagangrade
+docs-delivery/ @shauryagangrade
+frontend-ui/ @shauryagangrade
+git-github/ @shauryagangrade
+mobile-dev/ @shauryagangrade
+security-performance/ @shauryagangrade
+system-design/ @shauryagangrade
+testing-quality/ @shauryagangrade

@@ -4,12 +4,14 @@ on:
     types: [opened, synchronize, reopened, closed]
     branches: [main]
 permissions:
-  pull-requests: write
-  issues: write
+  contents: read
 
 jobs:
   label_by_category:
     if: github.event.action == 'opened' || github.event.action == 'synchronize' || github.event.action == 'reopened'
+    permissions:
+      pull-requests: read
+      issues: write
     runs-on: ubuntu-latest
     steps:
       - name: Apply the area label for each touched category folder
@@ -29,6 +31,9 @@ jobs:
 
   close_good_first_issues:
     if: github.event.action == 'closed' && github.event.pull_request.merged == true
+    permissions:
+      pull-requests: read
+      issues: write
     runs-on: ubuntu-latest
     steps:
       - name: Close referenced good first issues on merge

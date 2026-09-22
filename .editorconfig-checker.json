@@ -1,0 +1,12 @@
+{
+  "Exclude": [
+    "^ALL_PROMPTS\\.html$",
+    "^docs/media/",
+    "^tmp/",
+    "^drafts/",
+    "^instagram post pictures/",
+    "\\b__pycache__/",
+    "\\.pyc$",
+    "\\.DS_Store$"
+  ]
+}

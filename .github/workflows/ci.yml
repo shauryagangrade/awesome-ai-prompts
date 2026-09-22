@@ -4,21 +4,37 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+permissions:
+  contents: read
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+
 jobs:
-  docs-lint:
+  markdown:
+    name: Markdown lint + formatting
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v7
-      - name: Markdown lint
-        uses: actions/setup-node@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 20
-      - run: npx --yes markdownlint-cli2@0.17.2 "**/*.md"
+      - name: Markdownlint
+        run: npx --yes markdownlint-cli2@0.17.2 "**/*.md" "#docs/media/demo-app" "#drafts" "#tmp"
       - name: Prettier format check
         run: bash scripts/check-prettier.sh
+
+  docs:
+    name: Docs structure + em dashes
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - name: Docs lint (README links + prompt conventions)
         run: bash scripts/check-links.sh
       - name: Build all-prompts page (deterministic + in sync)
@@ -31,10 +47,134 @@ jobs:
             exit 1
           fi
           echo "No em dashes found."
-      - name: Shellcheck scripts
+
+  consistency:
+    name: README / CHANGELOG consistency
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Consistency checks
+        env:
+          BASE_REF: origin/main
+        run: bash scripts/check-consistency.sh
+
+  style:
+    name: Spelling + EditorConfig
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install typos
         run: |
+          curl -sSL \
+            https://github.com/crate-ci/typos/releases/download/v1.29.10/typos-v1.29.10-x86_64-unknown-linux-musl.tar.gz \
+            | tar -xz
+          sudo install -m 0755 typos /usr/local/bin/typos
+      - name: Spell check (typos)
+        run: typos .
+      - name: Install editorconfig-checker
+        run: |
+          curl -sSL \
+            https://github.com/editorconfig-checker/editorconfig-checker/releases/download/v3.2.0/ec-linux-amd64.tar.gz \
+            | tar -xz
+          sudo install -m 0755 bin/ec-linux-amd64 /usr/local/bin/ec
+      - name: EditorConfig check
+        run: ec
+
+  scripts:
+    name: Scripts lint (shell + python)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Shellcheck
+        run: |
+          if ! command -v shellcheck >/dev/null 2>&1; then
+            sudo apt-get update && sudo apt-get install -y shellcheck
+          fi
           mapfile -t FILES < <(git ls-files '*.sh')
           if [ ${#FILES[@]} -gt 0 ]; then
-            sudo apt-get update && sudo apt-get install -y shellcheck
             shellcheck "${FILES[@]}"
           fi
+      - name: Install Ruff
+        run: python3 -m pip install --quiet --break-system-packages ruff==0.16.4
+      - name: Ruff check scripts
+        run: ruff check scripts/
+
+  workflows:
+    name: Workflows lint (actionlint + zizmor)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install actionlint
+        run: |
+          curl -sSL \
+            https://github.com/rhysd/actionlint/releases/download/v1.7.7/actionlint_1.7.7_linux_amd64.tar.gz \
+            | tar -xz actionlint
+          sudo install -m 0755 actionlint /usr/local/bin/actionlint
+      - name: Actionlint
+        run: actionlint
+      - name: Install zizmor
+        run: python3 -m pip install --quiet --break-system-packages zizmor==1.30.1
+      - name: zizmor security audit
+        run: zizmor .github/workflows/
+
+  security:
+    name: Gitleaks secret scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install gitleaks
+        run: |
+          curl -sSL \
+            https://github.com/gitleaks/gitleaks/releases/download/v8.24.3/gitleaks_8.24.3_linux_x64.tar.gz \
+            | tar -xz gitleaks
+          sudo install -m 0755 gitleaks /usr/local/bin/gitleaks
+      - name: Secret scan
+        run: gitleaks git --redact
+
+  citation:
+    name: Citation metadata
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install cffconvert
+        run: python3 -m pip install --quiet --break-system-packages cffconvert==2.0.0
+      - name: Validate CITATION.cff
+        run: cffconvert --validate --infile CITATION.cff
+
+  ext-links:
+    name: New external links (PR only)
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Check URLs added by this PR
+        env:
+          BASE_REF: origin/${{ github.base_ref }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        # Base/head passed via env vars, not interpolated into the shell line,
+        # so fork-controlled values cannot inject shell syntax.
+        run: python3 scripts/check-external-links.py --diff "$BASE_REF...$HEAD_SHA"

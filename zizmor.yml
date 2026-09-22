@@ -1,0 +1,11 @@
+# zizmor configuration - https://docs.zizmor.sh/configuration/
+# Runs in CI via the workflows job in .github/workflows/ci.yml.
+rules:
+  # pull_request_target is required by the fork-facing automation workflows
+  # (auto-label, auto-contributors, thanks): the default GITHUB_TOKEN on a
+  # plain pull_request has no write access for fork PRs, so labeling,
+  # merge comments, and CONTRIBUTORS.md updates would silently fail.
+  # None of those workflows check out or execute PR head code; PR data is
+  # only read through the API and passed via env vars.
+  dangerous-triggers:
+    disable: true

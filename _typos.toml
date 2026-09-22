@@ -1,0 +1,18 @@
+# typos CLI configuration - https://github.com/crate-ci/typos
+# Runs in CI via the style job in .github/workflows/ci.yml.
+
+[default.extend-words]
+# HTTP benchmarking tool (Apache Bench, wrk, artillery), not "work".
+wrk = "wrk"
+# Recovery Time Objective - standard backup/DR jargon.
+RTO = "RTO"
+# "mis-" prefix in compounds like mis-parsed is valid.
+mis = "mis"
+
+[files]
+extend-exclude = [
+  # Generated page - source of truth is the prompt .md files.
+  "ALL_PROMPTS.html",
+  # Vendored Next.js demo app (out of scope for repo linting).
+  "docs/media/demo-app/**",
+]

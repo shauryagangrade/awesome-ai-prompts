@@ -10,6 +10,10 @@ indent_size = 2
 
 [*.md]
 trim_trailing_whitespace = false
+# Markdown indentation is contextual (list continuations, fenced code
+# blocks); do not enforce the repo-wide 2-space indent on it.
+indent_style = unset
+indent_size = unset
 
 [Makefile]
 indent_style = tab

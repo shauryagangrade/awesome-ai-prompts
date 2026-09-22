@@ -16,16 +16,8 @@ concurrency:
 jobs:
   checklist:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
-
-      - name: Consistency checks
-        run: |
-          set -o pipefail
-          bash scripts/check-consistency.sh | tee "$GITHUB_STEP_SUMMARY"
-
       - name: Conventional commit title
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}

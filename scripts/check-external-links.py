@@ -13,12 +13,14 @@ Exit code is 1 if any URL is broken, so the scheduled workflow fails loudly.
 Usage:
   python3 scripts/check-external-links.py            # full check
   python3 scripts/check-external-links.py --max 20   # cap requests (debug)
+  python3 scripts/check-external-links.py --diff HEAD~1  # only URLS on added (+) lines of the diff
 """
 
 import argparse
 import os
 import re
 import ssl
+import subprocess
 import sys
 import time
 import urllib.error
@@ -64,6 +66,33 @@ def extract_urls(files):
     for path in files:
         text = path.read_text(encoding="utf-8")
         for raw in URL_RE.findall(text):
+            url = raw.rstrip(".,;:)]}'\"").strip()
+            if url.startswith(("http://", "https://")) and "{" not in url:
+                urls.add(url)
+    return urls
+
+
+def urls_in_diff(diff_range):
+    """Return URLs found only on added (+) lines of `git diff diff_range`.
+
+    Used for PR-time checking (see ci.yml ext-links job):  only URLs a PR
+    actually introduces are contacted, so a rot check runs on every PR
+    without re-hitting the whole repo's link set the way the weekly full
+    check does.
+    """
+    proc = subprocess.run(
+        ["git", "diff", "-U0", diff_range],
+        capture_output=True,
+        text=True,
+        cwd=ROOT,
+        check=True,
+    )
+    urls = set()
+    for raw_line in proc.stdout.splitlines():
+        if not raw_line.startswith("+") or raw_line.startswith("+++"):
+            continue
+        line = raw_line[1:]
+        for raw in URL_RE.findall(line):
             url = raw.rstrip(".,;:)]}'\"").strip()
             if url.startswith(("http://", "https://")) and "{" not in url:
                 urls.add(url)
@@ -126,12 +155,26 @@ def classify(code):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--max", type=int, default=0, help="stop after N requests")
+    parser.add_argument(
+        "--diff",
+        metavar="RANGE",
+        default=None,
+        help="check only URLs on added lines of `git diff RANGE` (e.g. main...HEAD)",
+    )
     args = parser.parse_args()
 
-    files = collect_files()
-    urls = sorted(u for u in extract_urls(files) if should_check(u))
-    if args.max:
-        urls = urls[: args.max]
+    if args.diff:
+        new_urls = sorted(u for u in urls_in_diff(args.diff) if should_check(u))
+        if not new_urls:
+            print(f"No external URLs added in `git diff {args.diff}`")
+            return 0
+        print(f"Checking {len(new_urls)} URL(s) added in `git diff {args.diff}`")
+        urls = new_urls
+    else:
+        files = collect_files()
+        urls = sorted(u for u in extract_urls(files) if should_check(u))
+        if args.max:
+            urls = urls[: args.max]
 
     all_count = len(urls)
     broken = []

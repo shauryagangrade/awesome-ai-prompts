@@ -30,8 +30,11 @@ jobs:
 
       - name: Checkout main
         if: steps.check.outputs.touched == 'yes'
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          # This workflow pushes the updated CONTRIBUTORS.md to main, so the
+          # default GITHUB_TOKEN credentials are intentionally kept.
+          persist-credentials: true
           ref: main
 
       - name: Append the author
@@ -40,8 +43,9 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           AUTHOR: ${{ github.event.pull_request.user.login }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
+          OWNER: ${{ github.repository_owner }}
         run: |
-          owner="${{ github.repository_owner }}"
+          owner="$OWNER"
           if [[ "$AUTHOR" == "$owner" || "$AUTHOR" == *"[bot]"* ]]; then
             echo "Skip: author is $AUTHOR"
             exit 0
