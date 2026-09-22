@@ -43,9 +43,8 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           AUTHOR: ${{ github.event.pull_request.user.login }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
-          OWNER: ${{ github.repository_owner }}
         run: |
-          owner="$OWNER"
+          owner="${GITHUB_REPOSITORY%/*}"
           if [[ "$AUTHOR" == "$owner" || "$AUTHOR" == *"[bot]"* ]]; then
             echo "Skip: author is $AUTHOR"
             exit 0

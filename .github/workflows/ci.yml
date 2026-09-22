@@ -74,7 +74,7 @@ jobs:
         run: |
           curl -sSL \
             https://github.com/crate-ci/typos/releases/download/v1.29.10/typos-v1.29.10-x86_64-unknown-linux-musl.tar.gz \
-            | tar -xz
+            | tar -xz typos
           sudo install -m 0755 typos /usr/local/bin/typos
       - name: Spell check (typos)
         run: typos .
@@ -82,7 +82,7 @@ jobs:
         run: |
           curl -sSL \
             https://github.com/editorconfig-checker/editorconfig-checker/releases/download/v3.2.0/ec-linux-amd64.tar.gz \
-            | tar -xz
+            | tar -xz bin/ec-linux-amd64
           sudo install -m 0755 bin/ec-linux-amd64 /usr/local/bin/ec
       - name: EditorConfig check
         run: ec
