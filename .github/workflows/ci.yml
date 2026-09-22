@@ -72,18 +72,20 @@ jobs:
           persist-credentials: false
       - name: Install typos
         run: |
+          mkdir -p "$RUNNER_TEMP/typos"
           curl -sSL \
             https://github.com/crate-ci/typos/releases/download/v1.29.10/typos-v1.29.10-x86_64-unknown-linux-musl.tar.gz \
-            | tar -xz typos
-          sudo install -m 0755 typos /usr/local/bin/typos
+            | tar -xz -C "$RUNNER_TEMP/typos"
+          sudo install -m 0755 "$RUNNER_TEMP"/typos/typos /usr/local/bin/typos
       - name: Spell check (typos)
         run: typos .
       - name: Install editorconfig-checker
         run: |
+          mkdir -p "$RUNNER_TEMP/ec"
           curl -sSL \
             https://github.com/editorconfig-checker/editorconfig-checker/releases/download/v3.2.0/ec-linux-amd64.tar.gz \
-            | tar -xz bin/ec-linux-amd64
-          sudo install -m 0755 bin/ec-linux-amd64 /usr/local/bin/ec
+            | tar -xz -C "$RUNNER_TEMP/ec"
+          sudo install -m 0755 "$RUNNER_TEMP"/ec/bin/ec-linux-amd64 /usr/local/bin/ec
       - name: EditorConfig check
         run: ec
 
