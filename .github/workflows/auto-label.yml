@@ -10,7 +10,7 @@ jobs:
   label_by_category:
     if: github.event.action == 'opened' || github.event.action == 'synchronize' || github.event.action == 'reopened'
     permissions:
-      pull-requests: read
+      pull-requests: write
       issues: write
     runs-on: ubuntu-latest
     steps:
@@ -32,7 +32,7 @@ jobs:
   close_good_first_issues:
     if: github.event.action == 'closed' && github.event.pull_request.merged == true
     permissions:
-      pull-requests: read
+      pull-requests: write
       issues: write
     runs-on: ubuntu-latest
     steps:

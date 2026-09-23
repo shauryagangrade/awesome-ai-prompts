@@ -38,6 +38,10 @@ runs:
           python3 -m pip install --quiet --break-system-packages "${{ inputs.pypi }}"
           exit 0
         fi
+        if [ -z "${{ inputs.url }}" ] || [ -z "${{ inputs.dest }}" ] || [ -z "${{ inputs.source }}" ]; then
+          echo "tarball mode requires url, dest, and source inputs (or pass pypi=\"pkg==ver\")" >&2
+          exit 1
+        fi
         site="$RUNNER_TEMP/${{ inputs.dest }}"
         target="${{ inputs.target }}"
         target="${target:-$(basename "${{ inputs.source }}")}"

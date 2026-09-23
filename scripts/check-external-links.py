@@ -61,37 +61,43 @@ def collect_files():
     return files
 
 
-def extract_urls(files):
+def urls_from_text(text):
+    """Return the normalized URLs found in a text blob.
+
+    Trailing punctuation is stripped and URLs containing template braces (e.g.
+    {owner}/{repo}) are skipped, so both prompt files and diff lines can feed
+    this without pre-cleaning.
+    """
     urls = set()
-    for path in files:
-        text = path.read_text(encoding="utf-8")
-        for raw in URL_RE.findall(text):
-            url = raw.rstrip(".,;:)]}'\"").strip()
-            if url.startswith(("http://", "https://")) and "{" not in url:
-                urls.add(url)
+    for raw in URL_RE.findall(text):
+        url = raw.rstrip(".,;:)]}'\"").strip()
+        if url.startswith(("http://", "https://")) and "{" not in url:
+            urls.add(url)
     return urls
 
 
-def urls_from_diff_text(diff_text):
+def extract_urls(files):
+    urls = set()
+    for path in files:
+        urls |= urls_from_text(path.read_text(encoding="utf-8"))
+    return urls
+
+
+def urls_in_diff_text(diff_text):
     """Return URLs found on added (+) lines of a unified diff.
 
     Only URLs a PR actually introduces are considered: context, removed, and
-    hunk-header lines are ignored, trailing punctuation is stripped, and URLs
-    containing template braces (e.g. {owner}/{repo}) are skipped.
+    hunk-header lines are ignored.
     """
     urls = set()
     for raw_line in diff_text.splitlines():
         if not raw_line.startswith("+") or raw_line.startswith("+++"):
             continue
-        line = raw_line[1:]
-        for raw in URL_RE.findall(line):
-            url = raw.rstrip(".,;:)]}'\"").strip()
-            if url.startswith(("http://", "https://")) and "{" not in url:
-                urls.add(url)
+        urls |= urls_from_text(raw_line[1:])
     return urls
 
 
-def urls_in_diff(diff_range):
+def urls_in_git_diff(diff_range):
     """Return URLs found only on added (+) lines of `git diff diff_range`.
 
     Used for PR-time checking (see ci.yml ext-links job):  only URLs a PR
@@ -106,7 +112,7 @@ def urls_in_diff(diff_range):
         cwd=ROOT,
         check=True,
     )
-    return urls_from_diff_text(proc.stdout)
+    return urls_in_diff_text(proc.stdout)
 
 
 def should_check(url):
@@ -174,7 +180,7 @@ def main():
     args = parser.parse_args()
 
     if args.diff:
-        new_urls = sorted(u for u in urls_in_diff(args.diff) if should_check(u))
+        new_urls = sorted(u for u in urls_in_git_diff(args.diff) if should_check(u))
         if not new_urls:
             print(f"No external URLs added in `git diff {args.diff}`")
             return 0

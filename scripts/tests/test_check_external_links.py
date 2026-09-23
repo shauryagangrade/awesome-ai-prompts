@@ -20,30 +20,30 @@ LINK_CHECKER = load_module(SCRIPTS / "check-external-links.py", "check_external_
 class UrlsFromDiffTextTest(unittest.TestCase):
     def test_added_lines_only(self):
         diff = "+https://example.com/added\n-https://example.com/removed\n context https://example.com/unchanged\n"
-        self.assertEqual(LINK_CHECKER.urls_from_diff_text(diff), {"https://example.com/added"})
+        self.assertEqual(LINK_CHECKER.urls_in_diff_text(diff), {"https://example.com/added"})
 
     def test_hunk_and_file_headers_ignored(self):
         diff = "+++ b/README.md\n--- a/README.md\n@@ -1 +1 @@\n+https://example.com/kept\n"
-        self.assertEqual(LINK_CHECKER.urls_from_diff_text(diff), {"https://example.com/kept"})
+        self.assertEqual(LINK_CHECKER.urls_in_diff_text(diff), {"https://example.com/kept"})
 
     def test_trailing_punctuation_stripped(self):
         diff = '+see https://example.com/a, then https://example.com/b). done\n'
         self.assertEqual(
-            LINK_CHECKER.urls_from_diff_text(diff),
+            LINK_CHECKER.urls_in_diff_text(diff),
             {"https://example.com/a", "https://example.com/b"},
         )
 
     def test_templated_urls_excluded(self):
         diff = "+https://api.github.com/repos/{owner}/{repo}\n"
-        self.assertEqual(LINK_CHECKER.urls_from_diff_text(diff), set())
+        self.assertEqual(LINK_CHECKER.urls_in_diff_text(diff), set())
 
     def test_non_http_urls_excluded(self):
         diff = "+ftp://example.com/file\n+mailto:someone@example.com\n"
-        self.assertEqual(LINK_CHECKER.urls_from_diff_text(diff), set())
+        self.assertEqual(LINK_CHECKER.urls_in_diff_text(diff), set())
 
     def test_duplicates_deduped(self):
         diff = "+https://example.com/dup\n+https://example.com/dup\n"
-        self.assertEqual(LINK_CHECKER.urls_from_diff_text(diff), {"https://example.com/dup"})
+        self.assertEqual(LINK_CHECKER.urls_in_diff_text(diff), {"https://example.com/dup"})
 
 
 class UrlsInDiffTest(unittest.TestCase):
@@ -60,7 +60,7 @@ class UrlsInDiffTest(unittest.TestCase):
             )
             commit_all(repo, "two")
             with mock.patch.object(LINK_CHECKER, "ROOT", repo):
-                urls = LINK_CHECKER.urls_in_diff("HEAD~1")
+                urls = LINK_CHECKER.urls_in_git_diff("HEAD~1")
         self.assertEqual(urls, {"https://example.com/added"})
 
     def test_empty_diff_returns_empty_set(self):
@@ -70,7 +70,7 @@ class UrlsInDiffTest(unittest.TestCase):
             subprocess.run(["git", "commit", "--allow-empty", "-qm", "one"], cwd=repo, check=True)
             subprocess.run(["git", "commit", "--allow-empty", "-qm", "two"], cwd=repo, check=True)
             with mock.patch.object(LINK_CHECKER, "ROOT", repo):
-                urls = LINK_CHECKER.urls_in_diff("HEAD~1")
+                urls = LINK_CHECKER.urls_in_git_diff("HEAD~1")
         self.assertEqual(urls, set())
 
 
@@ -110,10 +110,10 @@ class ClassifyTest(unittest.TestCase):
         self.assertEqual(LINK_CHECKER.classify(404), "BROKEN")
         self.assertEqual(LINK_CHECKER.classify(500), "BROKEN")
 
-    def test_redirects_classified_as_unverified_redirect(self):
+    def test_redirect_classified_broken_known_gap(self):
         # 3xx is not in the 2xx success range, so classify reports BROKEN.
-        # A permanent redirect is a working link; flagged in review, not fixed
-        # here because it predates this branch's diff.
+        # A permanent redirect is a working link; leaving classify untouched is
+        # a known gap that predates this branch's diff.
         self.assertEqual(LINK_CHECKER.classify(301), "BROKEN")
 
 
