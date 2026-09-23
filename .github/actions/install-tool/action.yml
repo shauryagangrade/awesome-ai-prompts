@@ -29,6 +29,7 @@ runs:
       run: |
         set -euo pipefail
         site="$RUNNER_TEMP/${{ inputs.dest }}"
+        target="${{ inputs.target }}"
         target="${target:-$(basename "${{ inputs.source }}")}"
         mkdir -p "$site"
         curl -sSL "${{ inputs.url }}" | tar -xz -C "$site"
