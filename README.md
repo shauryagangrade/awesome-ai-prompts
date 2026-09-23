@@ -184,20 +184,29 @@ If you would rather do it by hand, the steps below are the same workflow.
 
 ### What CI enforces
 
-Two workflows run on every push to `main` and every pull request:
+One workflow, [ci.yml](.github/workflows/ci.yml), runs on every push to `main`
+and every pull request, split into parallel jobs:
 
-- [docs-lint](.github/workflows/ci.yml) - markdown lint on every `*.md`,
-  README relative links must resolve, no em dashes in any tracked file,
-  shellcheck on every `*.sh`, and `scripts/build-all.py --check` keeps the
-  all-prompts page builder deterministic.
-- [commit-checklist](.github/workflows/commit-checklist.yml) - every
-  `*-prompt.md` in a category folder must be linked from the README, new
-  prompts need a `## [Unreleased]` changelog entry, category folders and
-  README sections must stay in sync in both directions, the Contents counts
-  must match the files on disk, and the PR title must follow
-  [Conventional Commits](https://www.conventionalcommits.org/).
+- **markdown** - markdownlint and prettier on every `*.md`
+- **docs** - README relative links must resolve, no em dashes in any tracked
+  file, and `scripts/build-all.py --check` keeps the all-prompts page builder
+  deterministic
+- **consistency** - every `*-prompt.md` in a category folder is linked from the
+  README, new prompts need a `## [Unreleased]` changelog entry, category folders
+  and README sections stay in sync in both directions, and the Contents counts
+  match the files on disk
+- **style** - typos spell check and editorconfig-checker
+- **scripts** - shellcheck on every `*.sh` and ruff on `scripts/`
+- **workflows** - actionlint and zizmor on the workflow files
+- **security** - gitleaks full-history secret scan
+- **citation** - `cffconvert --validate`
+- **ext-links** - the URL rot check limited to links on lines the PR adds
+- **tests** - unit tests in `scripts/tests/`
 
-Both run the same scripts you run locally, so a green local pass means a green
+The `Commit checklist` workflow separately enforces that the PR title follows
+[Conventional Commits](https://www.conventionalcommits.org/).
+
+CI runs the same scripts you run locally, so a green local pass means a green
 CI pass.
 
 ### Printable one-page catalog

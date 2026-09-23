@@ -24,24 +24,38 @@ Open an issue using the [feature request template](.github/ISSUE_TEMPLATE/featur
 
 ## Automated Gates
 
-The `Commit checklist` workflow runs on every PR and enforces:
+The `CI` workflow runs on every push to `main` and every pull request, split
+into parallel jobs that enforce:
 
-- **Listed** - every `*-prompt.md` in a category folder must be linked from the README
-- **Changelogged** - newly added prompts need an entry under `[Unreleased]` in CHANGELOG.md
-- **In sync** - category folders and README sections must match in both directions, and the Contents counts must match the files on disk
-- **Conventional title** - PR titles follow Conventional Commits (`feat | fix | docs | style | refactor | perf | test | ci | chore`)
+- **markdown** - markdownlint and prettier on every `*.md`
+- **docs** - README relative links resolve, no em dashes in any tracked file,
+  and `scripts/build-all.py --check` keeps the all-prompts page builder
+  deterministic
+- **consistency** - every `*-prompt.md` in a category folder is linked from the
+  README, newly added prompts need an entry under `[Unreleased]` in
+  CHANGELOG.md, category folders and README sections match in both directions,
+  and the Contents counts match the files on disk
+- **style** - typos spell check and editorconfig-checker
+- **scripts** - shellcheck on every `*.sh` and ruff on `scripts/`
+- **workflows** - actionlint and zizmor on the workflow files
+- **security** - gitleaks full-history secret scan
+- **citation** - `cffconvert --validate`
+- **ext-links** - URL rot check limited to links on lines the PR adds
+- **tests** - unit tests in `scripts/tests/`
 
-Run the consistency checks locally before pushing:
+The `Commit checklist` workflow additionally enforces that PR titles follow
+Conventional Commits (`feat | fix | docs | style | refactor | perf | test | ci | chore`).
+
+Run the checks locally before pushing:
 
 ```bash
 bash scripts/check-consistency.sh
 bash scripts/check-prettier.sh
 ```
 
-The `URL rot check` workflow runs weekly (and on manual dispatch) and fails if an
-external link in the README or any prompt file is dead, so badges and referenced
-tools cannot rot silently. Run it locally with
-`python3 scripts/check-external-links.py`.
+The `URL rot check` workflow runs weekly (and on manual dispatch) over every
+link in the README and prompt files, so badges and referenced tools cannot rot
+silently. Run it locally with `python3 scripts/check-external-links.py`.
 
 ---
 
