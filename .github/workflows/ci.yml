@@ -71,21 +71,20 @@ jobs:
         with:
           persist-credentials: false
       - name: Install typos
-        run: |
-          mkdir -p "$RUNNER_TEMP/typos"
-          curl -sSL \
-            https://github.com/crate-ci/typos/releases/download/v1.29.10/typos-v1.29.10-x86_64-unknown-linux-musl.tar.gz \
-            | tar -xz -C "$RUNNER_TEMP/typos"
-          sudo install -m 0755 "$RUNNER_TEMP"/typos/typos /usr/local/bin/typos
+        uses: ./.github/actions/install-tool
+        with:
+          url: https://github.com/crate-ci/typos/releases/download/v1.29.10/typos-v1.29.10-x86_64-unknown-linux-musl.tar.gz
+          dest: typos
+          source: typos/typos
       - name: Spell check (typos)
         run: typos .
       - name: Install editorconfig-checker
-        run: |
-          mkdir -p "$RUNNER_TEMP/ec"
-          curl -sSL \
-            https://github.com/editorconfig-checker/editorconfig-checker/releases/download/v3.2.0/ec-linux-amd64.tar.gz \
-            | tar -xz -C "$RUNNER_TEMP/ec"
-          sudo install -m 0755 "$RUNNER_TEMP"/ec/bin/ec-linux-amd64 /usr/local/bin/ec
+        uses: ./.github/actions/install-tool
+        with:
+          url: https://github.com/editorconfig-checker/editorconfig-checker/releases/download/v3.2.0/ec-linux-amd64.tar.gz
+          dest: ec
+          source: ec/bin/ec-linux-amd64
+          target: ec
       - name: EditorConfig check
         run: ec
 
@@ -131,11 +130,11 @@ jobs:
         with:
           persist-credentials: false
       - name: Install actionlint
-        run: |
-          curl -sSL \
-            https://github.com/rhysd/actionlint/releases/download/v1.7.7/actionlint_1.7.7_linux_amd64.tar.gz \
-            | tar -xz actionlint
-          sudo install -m 0755 actionlint /usr/local/bin/actionlint
+        uses: ./.github/actions/install-tool
+        with:
+          url: https://github.com/rhysd/actionlint/releases/download/v1.7.7/actionlint_1.7.7_linux_amd64.tar.gz
+          dest: actionlint
+          source: actionlint/actionlint
       - name: Actionlint
         run: actionlint
       - name: Install zizmor
@@ -153,11 +152,11 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: Install gitleaks
-        run: |
-          curl -sSL \
-            https://github.com/gitleaks/gitleaks/releases/download/v8.24.3/gitleaks_8.24.3_linux_x64.tar.gz \
-            | tar -xz gitleaks
-          sudo install -m 0755 gitleaks /usr/local/bin/gitleaks
+        uses: ./.github/actions/install-tool
+        with:
+          url: https://github.com/gitleaks/gitleaks/releases/download/v8.24.3/gitleaks_8.24.3_linux_x64.tar.gz
+          dest: gitleaks
+          source: gitleaks/gitleaks
       - name: Secret scan
         run: gitleaks git --redact
 

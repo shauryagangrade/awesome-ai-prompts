@@ -9,3 +9,11 @@ rules:
   # only read through the API and passed via env vars.
   dangerous-triggers:
     disable: true
+  # Local-action references use the workspace-relative `./` form, which zizmor
+  # flags as self-repository. GitHub's newer `$/` self-repository syntax would
+  # silence it, but no released actionlint understands `$/` yet (rhysd/actionlint#711),
+  # and the workflows job runs both linters, so `./` is kept. The four
+  # `install-tool` references are in-repo composite actions resolved at the
+  # checked-out commit, never attacker-controlled refs.
+  self-repository:
+    disable: true

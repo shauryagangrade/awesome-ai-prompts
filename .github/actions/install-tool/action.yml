@@ -1,0 +1,35 @@
+name: Install tool from release tarball
+
+description: >-
+  Download a pinned tool release tarball, extract it under RUNNER_TEMP, and
+  install the contained binary to /usr/local/bin. Keeps the download step for
+  each pinned CLI in ci.yml (typos, ec, actionlint, gitleaks) in one place so
+  the four jobs cannot silently diverge in how they install tools.
+
+inputs:
+  url:
+    description: Tarball URL to download.
+    required: true
+  dest:
+    description: Subdirectory of RUNNER_TEMP to extract the tarball into.
+    required: true
+  source:
+    description: Path of the executable to install, relative to dest.
+    required: true
+  target:
+    description: Name to install the binary as. Defaults to the source basename.
+    required: false
+    default: ""
+
+runs:
+  using: composite
+  steps:
+    - name: Install
+      shell: bash
+      run: |
+        set -euo pipefail
+        site="$RUNNER_TEMP/${{ inputs.dest }}"
+        target="${target:-$(basename "${{ inputs.source }}")}"
+        mkdir -p "$site"
+        curl -sSL "${{ inputs.url }}" | tar -xz -C "$site"
+        sudo install -m 0755 "$site/${{ inputs.source }}" "/usr/local/bin/$target"

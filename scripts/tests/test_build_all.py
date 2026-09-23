@@ -8,20 +8,18 @@ and assert the structural invariants the page relies on: one collapsed
 and header links that resolve to the repo.
 """
 
-import importlib.util
 import re
 import sys
 import tempfile
 import unittest
 from pathlib import Path
 
+from _helpers import load_module
+
 SCRIPTS = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(SCRIPTS))
 
-SPEC = importlib.util.spec_from_file_location("build_all", SCRIPTS / "build-all.py")
-BUILD_ALL = importlib.util.module_from_spec(SPEC)
-assert SPEC.loader is not None
-SPEC.loader.exec_module(BUILD_ALL)
+BUILD_ALL = load_module(SCRIPTS / "build-all.py", "build_all")
 
 
 def build_html():
