@@ -96,10 +96,12 @@ class ShouldCheckTest(unittest.TestCase):
         for url in ("https://example.com/a", "https://example.org/b", "https://intranet/tool"):
             self.assertFalse(CEL.should_check(url), url)
 
-    def test_localhost_is_treated_as_real_host(self):
-        # Current behavior: "localhost" is deliberately excluded from the
-        # no-dot placeholder rule, so it is checked rather than skipped.
-        self.assertTrue(CEL.should_check("https://localhost:8000/x"))
+    def test_localhost_skipped(self):
+        # A dotless or loopback host can never be a public link to reach out
+        # to, so it must be filtered before any request is made. The literal
+        # URL lives in this test on purpose: it exercises the full extraction
+        # and filtering path that the PR link-rot gate runs.
+        self.assertFalse(CEL.should_check("https://localhost:8000/x"))
 
     def test_real_host_checked(self):
         self.assertTrue(CEL.should_check("https://github.com/rust-lang/rust"))
