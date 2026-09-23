@@ -43,4 +43,8 @@ runs:
         target="${target:-$(basename "${{ inputs.source }}")}"
         mkdir -p "$site"
         curl -sSL "${{ inputs.url }}" | tar -xz -C "$site"
+        test -x "$site/${{ inputs.source }}" || {
+          echo "binary not found at $site/${{ inputs.source }} - tarball layout may have changed" >&2
+          exit 1
+        }
         sudo install -m 0755 "$site/${{ inputs.source }}" "/usr/local/bin/$target"
