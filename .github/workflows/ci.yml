@@ -106,7 +106,9 @@ jobs:
             shellcheck "${FILES[@]}"
           fi
       - name: Install Ruff
-        run: python3 -m pip install --quiet --break-system-packages ruff==0.16.4
+        uses: ./.github/actions/install-tool
+        with:
+          pypi: ruff==0.16.4
       - name: Ruff check scripts
         run: ruff check scripts/
 
@@ -138,7 +140,9 @@ jobs:
       - name: Actionlint
         run: actionlint
       - name: Install zizmor
-        run: python3 -m pip install --quiet --break-system-packages zizmor==1.30.1
+        uses: ./.github/actions/install-tool
+        with:
+          pypi: zizmor==1.30.1
       - name: zizmor security audit
         run: zizmor .github/workflows/
 
@@ -169,7 +173,9 @@ jobs:
         with:
           persist-credentials: false
       - name: Install cffconvert
-        run: python3 -m pip install --quiet --break-system-packages cffconvert==2.0.0
+        uses: ./.github/actions/install-tool
+        with:
+          pypi: cffconvert==2.0.0
       - name: Validate CITATION.cff
         run: cffconvert --validate --infile CITATION.cff
 

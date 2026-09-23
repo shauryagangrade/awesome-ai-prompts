@@ -3,11 +3,17 @@
 The script files under scripts/ are hyphenated and not importable as normal
 modules, so they are loaded by path via load_module(). The git-backed
 diff tests share a small repo setup so every test exercises the same
-bootstrap.
+bootstrap. SCRIPTS, and the sys.path insert at import time, let a
+load_module()'d script import its siblings from scripts/.
 """
 
 import importlib.util
 import subprocess
+import sys
+from pathlib import Path
+
+SCRIPTS = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(SCRIPTS))
 
 
 def load_module(path, name):

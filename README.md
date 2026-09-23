@@ -185,23 +185,12 @@ If you would rather do it by hand, the steps below are the same workflow.
 ### What CI enforces
 
 One workflow, [ci.yml](.github/workflows/ci.yml), runs on every push to `main`
-and every pull request, split into parallel jobs:
-
-- **markdown** - markdownlint and prettier on every `*.md`
-- **docs** - README relative links must resolve, no em dashes in any tracked
-  file, and `scripts/build-all.py --check` keeps the all-prompts page builder
-  deterministic
-- **consistency** - every `*-prompt.md` in a category folder is linked from the
-  README, new prompts need a `## [Unreleased]` changelog entry, category folders
-  and README sections stay in sync in both directions, and the Contents counts
-  match the files on disk
-- **style** - typos spell check and editorconfig-checker
-- **scripts** - shellcheck on every `*.sh` and ruff on `scripts/`
-- **workflows** - actionlint and zizmor on the workflow files
-- **security** - gitleaks full-history secret scan
-- **citation** - `cffconvert --validate`
-- **ext-links** - the URL rot check limited to links on lines the PR adds
-- **tests** - unit tests in `scripts/tests/`
+and every pull request, split into parallel jobs: markdownlint + prettier, docs
+structure and em-dash checks, README/CHANGELOG consistency, typos +
+editorconfig, shellcheck + ruff, actionlint + zizmor, gitleaks secret scan,
+cffconvert validation, unit tests, and a PR-only check of newly added external
+links. The full gate list with the exact commands is in
+[CONTRIBUTING.md](CONTRIBUTING.md#automated-gates).
 
 The `Commit checklist` workflow separately enforces that the PR title follows
 [Conventional Commits](https://www.conventionalcommits.org/).

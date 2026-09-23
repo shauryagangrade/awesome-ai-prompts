@@ -3,6 +3,11 @@
 # protection for main (Settings > Branches > Rule).
 # https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
-# A single owner owns the whole repo, so one catch-all rule is all this needs.
-# Add narrower per-area rules here if dedicated owners are ever assigned.
+# A single owner owns everything today, so the catch-all rule below is what is
+# enforced. Directory-level rules for the areas most likely to gain a dedicated
+# owner (CI/governance, tooling/scripts) are listed explicitly so assigning one
+# is a one-line change per directory. Prompt categories and docs stay on the
+# catch-all until a per-category owner exists.
 * @shauryagangrade
+/.github/ @shauryagangrade
+/scripts/ @shauryagangrade

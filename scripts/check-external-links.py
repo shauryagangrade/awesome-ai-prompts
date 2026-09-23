@@ -116,8 +116,8 @@ def should_check(url):
     if not match:
         return False
     host = match.group(1)
-    placeholder = "." not in host or host == "localhost"
-    return not placeholder and host not in PLACEHOLDER_HOSTS
+    has_domain = "." in host
+    return has_domain and host != "localhost" and host not in PLACEHOLDER_HOSTS
 
 
 def fetch(url):

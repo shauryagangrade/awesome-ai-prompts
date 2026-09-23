@@ -7,16 +7,12 @@ hits the internet.
 """
 
 import subprocess
-import sys
 import tempfile
 import unittest
 from pathlib import Path
 from unittest import mock
 
-from _helpers import commit_all, init_git_repo, load_module
-
-SCRIPTS = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(SCRIPTS))
+from _helpers import SCRIPTS, commit_all, init_git_repo, load_module
 
 LINK_CHECKER = load_module(SCRIPTS / "check-external-links.py", "check_external_links")
 

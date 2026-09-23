@@ -9,15 +9,11 @@ and header links that resolve to the repo.
 """
 
 import re
-import sys
 import tempfile
 import unittest
 from pathlib import Path
 
-from _helpers import load_module
-
-SCRIPTS = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(SCRIPTS))
+from _helpers import SCRIPTS, load_module
 
 BUILD_ALL = load_module(SCRIPTS / "build-all.py", "build_all")
 

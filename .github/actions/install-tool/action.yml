@@ -1,23 +1,29 @@
-name: Install tool from release tarball
+name: Install pinned tool
 
 description: >-
-  Download a pinned tool release tarball, extract it under RUNNER_TEMP, and
-  install the contained binary to /usr/local/bin. Keeps the download step for
-  each pinned CLI in ci.yml (typos, ec, actionlint, gitleaks) in one place so
-  the four jobs cannot silently diverge in how they install tools.
+  Install a tool version pinned in ci.yml, either from a release tarball
+  (download, extract under RUNNER_TEMP, install the binary to /usr/local/bin
+  via url/dest/source) or from PyPI (pypi="pkg==ver"). Keeps the install step
+  for every pinned CLI in ci.yml (typos, ec, actionlint, gitleaks, ruff,
+  zizmor, cffconvert) in one place so the jobs cannot silently diverge in how
+  they install tools.
 
 inputs:
   url:
     description: Tarball URL to download.
-    required: true
+    required: false
   dest:
     description: Subdirectory of RUNNER_TEMP to extract the tarball into.
-    required: true
+    required: false
   source:
     description: Path of the executable to install, relative to dest.
-    required: true
+    required: false
   target:
     description: Name to install the binary as. Defaults to the source basename.
+    required: false
+    default: ""
+  pypi:
+    description: Pip-install a pinned Python package instead, e.g. "ruff==0.16.4".
     required: false
     default: ""
 
@@ -28,6 +34,10 @@ runs:
       shell: bash
       run: |
         set -euo pipefail
+        if [ -n "${{ inputs.pypi }}" ]; then
+          python3 -m pip install --quiet --break-system-packages "${{ inputs.pypi }}"
+          exit 0
+        fi
         site="$RUNNER_TEMP/${{ inputs.dest }}"
         target="${{ inputs.target }}"
         target="${target:-$(basename "${{ inputs.source }}")}"
