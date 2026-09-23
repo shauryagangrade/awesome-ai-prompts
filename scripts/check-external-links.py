@@ -72,6 +72,25 @@ def extract_urls(files):
     return urls
 
 
+def urls_from_diff_text(diff_text):
+    """Return URLs found on added (+) lines of a unified diff.
+
+    Only URLs a PR actually introduces are considered: context, removed, and
+    hunk-header lines are ignored, trailing punctuation is stripped, and URLs
+    containing template braces (e.g. {owner}/{repo}) are skipped.
+    """
+    urls = set()
+    for raw_line in diff_text.splitlines():
+        if not raw_line.startswith("+") or raw_line.startswith("+++"):
+            continue
+        line = raw_line[1:]
+        for raw in URL_RE.findall(line):
+            url = raw.rstrip(".,;:)]}'\"").strip()
+            if url.startswith(("http://", "https://")) and "{" not in url:
+                urls.add(url)
+    return urls
+
+
 def urls_in_diff(diff_range):
     """Return URLs found only on added (+) lines of `git diff diff_range`.
 
@@ -87,16 +106,7 @@ def urls_in_diff(diff_range):
         cwd=ROOT,
         check=True,
     )
-    urls = set()
-    for raw_line in proc.stdout.splitlines():
-        if not raw_line.startswith("+") or raw_line.startswith("+++"):
-            continue
-        line = raw_line[1:]
-        for raw in URL_RE.findall(line):
-            url = raw.rstrip(".,;:)]}'\"").strip()
-            if url.startswith(("http://", "https://")) and "{" not in url:
-                urls.add(url)
-    return urls
+    return urls_from_diff_text(proc.stdout)
 
 
 def should_check(url):

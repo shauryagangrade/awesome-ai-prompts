@@ -150,7 +150,7 @@ def split_prompt(path):
 
     Title is the H1, intro the prose between the title and the first `---`
     divider, body everything after it. Files without a divider are treated as
-    all body (gates reject them, but the builder should not crash either way).
+    all intro (gates reject them, but the builder should not crash either way).
     """
     lines = path.read_text(encoding="utf-8").splitlines()
     title = lines[0][2:].strip() if lines and lines[0].startswith("# ") else path.stem
