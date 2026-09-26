@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import BrowserScene from "@/components/BrowserScene"
+import ChatScene from "@/components/ChatScene"
 import TerminalScene from "@/components/TerminalScene"
 import BackgroundBeams from "@/components/BackgroundBeams"
 
 export default function Home() {
-  const [scene, setScene] = useState<"browser" | "terminal">("browser")
+  const [scene, setScene] = useState<"chat" | "terminal">("chat")
   const [scene1Done, setScene1Done] = useState(false)
 
   useEffect(() => {
@@ -22,15 +22,15 @@ export default function Home() {
       <BackgroundBeams />
 
       <AnimatePresence mode="wait">
-        {scene === "browser" && (
+        {scene === "chat" && (
           <motion.div
-            key="browser"
+            key="chat"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.6 }}
             className="absolute inset-0 flex items-center justify-center p-8"
           >
-            <BrowserScene onComplete={() => setScene1Done(true)} />
+            <ChatScene onComplete={() => setScene1Done(true)} />
           </motion.div>
         )}
 

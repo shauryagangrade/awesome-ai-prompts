@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 
 interface TypewriterProps {
@@ -13,6 +13,14 @@ interface TypewriterProps {
 export default function Typewriter({ text, speed = 30, onComplete, className }: TypewriterProps) {
   const [displayed, setDisplayed] = useState("")
 
+  // Keep the callback in a ref. Putting it in the effect deps restarts the
+  // interval on every parent render (callers pass inline arrows), which
+  // restarts the animation from the first character each time.
+  const onCompleteRef = useRef(onComplete)
+  useEffect(() => {
+    onCompleteRef.current = onComplete
+  }, [onComplete])
+
   useEffect(() => {
     let i = 0
     const interval = setInterval(() => {
@@ -21,11 +29,11 @@ export default function Typewriter({ text, speed = 30, onComplete, className }: 
         i++
       } else {
         clearInterval(interval)
-        onComplete?.()
+        onCompleteRef.current?.()
       }
     }, speed)
     return () => clearInterval(interval)
-  }, [text, speed, onComplete])
+  }, [text, speed])
 
   return (
     <motion.span

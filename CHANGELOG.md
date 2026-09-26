@@ -11,6 +11,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- `docs/demo.gif` - README demo GIF: a one-line prompt gets a shrug, then a repo prompt drives a real opencode run that cites file:line
 - `.github/workflows/auto-contributors.yml` - append every merged prompt PR author to `CONTRIBUTORS.md` automatically
 - `.github/workflows/auto-label.yml` - label PRs by category folder and close referenced good-first-issue tickets on merge
 - `docs/usage-stories/TEMPLATE.md` - template for real before/after usage stories per category

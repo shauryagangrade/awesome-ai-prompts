@@ -17,6 +17,10 @@ verifiable result before it calls the work done.
 
 **[★ Star on GitHub](https://github.com/shauryagangrade/awesome-ai-prompts)**
 
+![Asking an AI coding agent to "explain this repo to me" and getting a shrug. Then a prompt from this repo is copied and pasted into opencode, which reads the code and reports every claim with file:line evidence](docs/demo.gif)
+
+_The opening chat is staged. The rest is the real opencode run from [prompt-in-action.mp4](docs/media/prompt-in-action.mp4), sped up in places. Made with [openvidstudio](https://github.com/AnayDhawan/openvidstudio)._
+
 [![Contributors](https://contrib.rocks/image?repo=shauryagangrade/awesome-ai-prompts&t=20260921)](https://github.com/shauryagangrade/awesome-ai-prompts/graphs/contributors)
 
 Starring is the hello; a merged PR is the handshake. Every merged prompt PR
