@@ -11,6 +11,18 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+### Changed
+
+### Removed
+
+### Fixed
+
+---
+
+## [0.5.0] - 2026-09-26
+
+### Added
+
 - `docs/demo.gif` - README demo GIF: a one-line prompt gets a shrug, then a repo prompt drives a real opencode run that cites file:line
 - `.github/workflows/auto-contributors.yml` - append every merged prompt PR author to `CONTRIBUTORS.md` automatically
 - `.github/workflows/auto-label.yml` - label PRs by category folder and close referenced good-first-issue tickets on merge
@@ -42,8 +54,6 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Removed
 
 - `docs/media/prompt-in-action.gif` - unembedded and deleted; `docs/demo.gif` already carries the same real opencode run behind a staged opening, so the README was showing the same footage twice (12.1MB dropped)
-
-### Fixed
 
 ---
 
@@ -166,7 +176,8 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
-[Unreleased]: https://github.com/shauryagangrade/awesome-ai-prompts/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/shauryagangrade/awesome-ai-prompts/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/shauryagangrade/awesome-ai-prompts/releases/tag/v0.5.0
 [0.4.0]: https://github.com/shauryagangrade/awesome-ai-prompts/releases/tag/v0.4.0
 [0.3.0]: https://github.com/shauryagangrade/awesome-ai-prompts/releases/tag/v0.3.0
 [0.2.0]: https://github.com/shauryagangrade/awesome-ai-prompts/releases/tag/v0.2.0
