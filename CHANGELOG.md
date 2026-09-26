@@ -39,6 +39,10 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `.github/workflows/thanks.yml` - limit the thank-you to a contributor's first merged PR
 - `.gitignore` - ignore local launch drafts (`drafts/`) that are pasted from your own accounts, not part of the repo
 
+### Removed
+
+- `docs/media/prompt-in-action.gif` - unembedded and deleted; `docs/demo.gif` already carries the same real opencode run behind a staged opening, so the README was showing the same footage twice (12.1MB dropped)
+
 ### Fixed
 
 ---

@@ -27,8 +27,6 @@ Starring is the hello; a merged PR is the handshake. Every merged prompt PR
 auto-appends its author to [CONTRIBUTORS.md](CONTRIBUTORS.md) - the avatars
 above are the people who shaped this list.
 
-![Browsing the repo, copying a codebase-onboarding spec prompt, pasting it into opencode, and watching the agent read the codebase with file:line citations](docs/media/prompt-in-action.gif)
-
 Want it in video form? [Download the MP4](docs/media/prompt-in-action.mp4).
 
 ## Why these are different {#quality-standards}
