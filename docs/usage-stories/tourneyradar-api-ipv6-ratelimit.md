@@ -16,6 +16,7 @@ commit: d00dc36
 **Before:** The rate limiter keyed on the full IPv6 address. Since IPv6 clients can pick any of 2^64 addresses per request from a /64 delegated prefix, every request hit a separate limit bucket. The limiter was unenforceable.
 
 **What the prompt made the agent do:**
+
 1. Identified the security failure: IPv6 clients can circumvent limits by rotating addresses.
 2. Verified the fix: /64 masking identifies the subscriber line, not individual requests.
 3. Tested edge cases: IPv4-mapped IPv6, compressed notation, malformed headers.
@@ -23,6 +24,7 @@ commit: d00dc36
 5. Caught a second DoS vector: malformed inputs now key on themselves, not a shared fallback.
 
 **After:**
+
 - IPv6 addresses masked to /64 prefix.
 - IPv4 untouched.
 - All edge cases covered by tests.
