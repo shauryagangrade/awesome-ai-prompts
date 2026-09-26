@@ -32,7 +32,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
-- CONTRIBUTING.md - community rules: no unsolicited paid pitches, paid third-party actions, or generated images in issues and PRs
+- CONTRIBUTING.md - community rules: no unsolicited paid pitches or paid third-party actions in issues and PRs
 - CONTRIBUTING.md - review policy: 48h response SLA for external PRs, merge-first with maintainer nit-fixing
 - README.md - recent contributors strip, star-to-contribute handshake, and a "PR in under 10 minutes" contribution CTA
 - `.github/workflows/thanks.yml` - limit the thank-you to a contributor's first merged PR
