@@ -1,11 +1,23 @@
 ---
-prompt: Reusable PR Review
+prompt: security-focused code review
 repo: UCIP (Urban Climate Intelligence Platform)
 link: https://github.com/AnayDhawan/ucip
 commit: cdc7387
 ---
 
 # UCIP: Removing an invalid data indicator
+
+**Prompt used:** [code-review/secure-code-review-prompt.md](../../code-review/secure-code-review-prompt.md),
+which reviews a diff for the ways bad input could abuse it and verifies every
+finding rather than flagging theoretical risks.
+
+That fit is about bad input rather than attackers, which is what this change was
+about: a plausible-looking indicator that was really a district dummy, and the
+cooling-centre siting rule keyed off it.
+
+The prompt asks for bad input rather than attackers, which is what this change
+was about: a plausible-looking indicator that was really a district dummy, and
+the cooling-centre siting rule keyed off it.
 
 **Task:** Review a large feature removal that cascaded across pipeline, API, and frontend after discovering the source data was invalid.
 

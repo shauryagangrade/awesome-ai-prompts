@@ -1,11 +1,15 @@
 ---
-prompt: Reusable PR Review
+prompt: none
 repo: TourneyRadar API
 link: https://github.com/AnayDhawan/tourneyradar-api
 commit: d00dc36
 ---
 
 # TourneyRadar API: IPv6 rate limiting bypass
+
+**Prompt used:** None. This is the author's own review of their own commit, not
+a run of a prompt from this repository. It is kept here as a before/after record
+because the reasoning is worth reading, not as evidence for a prompt in this repo.
 
 **Task:** Review a security fix for a rate limiter that could be bypassed via IPv6 address rotation.
 
@@ -15,7 +19,7 @@ commit: d00dc36
 
 **Before:** The rate limiter keyed on the full IPv6 address. Since IPv6 clients can pick any of 2^64 addresses per request from a /64 delegated prefix, every request hit a separate limit bucket. The limiter was unenforceable.
 
-**What the prompt made the agent do:**
+**What the review found:**
 
 1. Identified the security failure: IPv6 clients can circumvent limits by rotating addresses.
 2. Verified the fix: /64 masking identifies the subscriber line, not individual requests.
@@ -30,4 +34,6 @@ commit: d00dc36
 - All edge cases covered by tests.
 - Malformed headers cannot merge unrelated clients into the same limit.
 
-**Would you use it again?** Yes. The prompt's systematic adversarial thinking exposed not just the bypass, but a second vulnerability in error handling that testing alone would have missed.
+**Would you use it again?** Not applicable: no prompt was involved. Worth
+keeping because the systematic adversarial thinking exposed not just the bypass,
+but a second vulnerability in error handling that testing alone would have missed.
