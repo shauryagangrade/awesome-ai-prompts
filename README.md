@@ -389,7 +389,12 @@ described above.
 Real projects are the best proof these prompts work, so we collect short
 before/after stories from the people who actually used one: the task, the
 prompt used, what the agent did, and the verified result. Evidence only, no
-testimonials. See [docs/usage-stories/TEMPLATE.md](docs/usage-stories/TEMPLATE.md)
+testimonials.
+
+- [Removing an invalid data indicator](docs/usage-stories/ucip-elderly-indicator-removal.md) - a data indicator proved to be a district dummy, and removing it cascaded through 83 files. Used `code-review/secure-code-review-prompt.md`.
+- [IPv6 rate limiting bypass](docs/usage-stories/tourneyradar-api-ipv6-ratelimit.md) - a rate limiter keyed on the full IPv6 address, so rotating addresses bypassed it. No prompt from this repo was used here, so it is a case study rather than prompt evidence.
+
+See [docs/usage-stories/TEMPLATE.md](docs/usage-stories/TEMPLATE.md)
 for the template, and open a PR (or a
 [discussion](https://github.com/shauryagangrade/awesome-ai-prompts/discussions))
 with your story.

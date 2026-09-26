@@ -14,6 +14,8 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `.github/workflows/auto-contributors.yml` - append every merged prompt PR author to `CONTRIBUTORS.md` automatically
 - `.github/workflows/auto-label.yml` - label PRs by category folder and close referenced good-first-issue tickets on merge
 - `docs/usage-stories/TEMPLATE.md` - template for real before/after usage stories per category
+- `docs/usage-stories/ucip-elderly-indicator-removal.md` - reviewing the removal of an invalid data indicator that cascaded across 83 files, using `code-review/secure-code-review-prompt.md`
+- `docs/usage-stories/tourneyradar-api-ipv6-ratelimit.md` - a before/after record of an IPv6 rate-limit bypass fix; no prompt from this repo was used, so it is a case study rather than prompt evidence
 - `core-coding/error-handling-strategy-prompt.md` - one coherent error policy: typed errors, context-rich logs, retry vs surface, proven by failure injection
 - `security-performance/memory-leak-hunting-prompt.md` - find and remove a leak from measurements: baseline, reproduced growth, diffed snapshots, and a flat after-curve
 - `core-coding/regular-expressions-prompt.md` - write or repair a regex with a stated purpose, a test corpus, and a check that it cannot hang on adversarial input
