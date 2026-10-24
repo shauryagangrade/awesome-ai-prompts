@@ -11,6 +11,12 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- (none; v0.7.0 released)
+
+## [0.7.0] - 2026-10-24
+
+### Added
+
 - Add `git-github/local-pr-cleanup-prompt.md` - spec prompt for full local hygiene after complex PR work: branches, worktrees, stashes, and build artifacts.
 - Add `git-github/remote-pr-cleanup-prompt.md` - spec prompt for full remote hygiene after complex PR work: prune remotes, delete merged PR branches, sync with upstream.
 - Add `security-performance/dependency-vuln-triage-prompt.md` - triage dependency vulnerability reports with reachability proof and verified fix.
@@ -23,6 +29,12 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Add `system-and-exploration/impact-analysis-prompt.md` - evaluate change impact before applying.
 - Add `career-learning/interview-debugging-drill-prompt.md` - coaching a debugging session with evidence-based fix.
 - Add `docs-delivery/migration-guide-prompt.md` - write a verified migration guide with rollback plan.
+
+### Changed
+
+- Collated PR 117 merging 10 open PRs (104, 105, 106, 107, 108, 109, 110, 111, 115, 116) into a single singular PR.
+
+### Added (prior releases in [Unreleased])
 
 - Site SEO, with everything deployed now living in a single `website/` folder:
   `scripts/build-all.py` generates `website/index.html` (the former root `ALL_PROMPTS.html`),
@@ -265,7 +277,8 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
-[Unreleased]: https://github.com/shauryagangrade/awesome-ai-prompts/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/shauryagangrade/awesome-ai-prompts/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/shauryagangrade/awesome-ai-prompts/releases/tag/v0.7.0
 [0.6.0]: https://github.com/shauryagangrade/awesome-ai-prompts/releases/tag/v0.6.0
 [0.5.0]: https://github.com/shauryagangrade/awesome-ai-prompts/releases/tag/v0.5.0
 [0.4.0]: https://github.com/shauryagangrade/awesome-ai-prompts/releases/tag/v0.4.0
