@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CI gate diagnosis | awesome-ai-prompts</title>
+<meta name="description" content="Copy-paste the block below into any AI coding agent when a CI check fails and you need to know why. It reads the logs, separates a flaky failure from a...">
+<link rel="canonical" href="https://awesome-ai-prompts.vercel.app/prompt/devops-deploy/ci-gate-diagnosis">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="awesome-ai-prompts">
+<meta property="og:title" content="CI gate diagnosis | awesome-ai-prompts">
+<meta property="og:description" content="Copy-paste the block below into any AI coding agent when a CI check fails and you need to know why. It reads the logs, separates a flaky failure from a...">
+<meta property="og:url" content="https://awesome-ai-prompts.vercel.app/prompt/devops-deploy/ci-gate-diagnosis">
+<meta property="og:image" content="https://awesome-ai-prompts.vercel.app/assets/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CI gate diagnosis | awesome-ai-prompts">
+<meta name="twitter:description" content="Copy-paste the block below into any AI coding agent when a CI check fails and you need to know why. It reads the logs, separates a flaky failure from a...">
+<meta name="twitter:image" content="https://awesome-ai-prompts.vercel.app/assets/social-preview.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","description":"Copy-paste the block below into any AI coding agent when a CI check fails and you need to know why. It reads the logs, separates a flaky failure from a...","isPartOf":{"@type":"WebSite","url":"https://awesome-ai-prompts.vercel.app/"},"mainEntity":{"@type":"CreativeWork","license":"https://spdx.org/licenses/MIT.html","name":"CI gate diagnosis","url":"https://awesome-ai-prompts.vercel.app/prompt/devops-deploy/ci-gate-diagnosis"},"name":"CI gate diagnosis","url":"https://awesome-ai-prompts.vercel.app/prompt/devops-deploy/ci-gate-diagnosis"}]}</script>
+<style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#1a1a1a;margin:0;background:#f7f7f5}
+.wrap{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
+header.site{border-bottom:2px solid #1a1a1a;padding-bottom:1rem;margin-bottom:1.5rem}
+header.site h1{margin:0 0 .25rem;font-size:1.6rem}
+header.site p.sub{margin:.25rem 0;color:#555;font-size:.95rem}
+header.site nav.links{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;margin-top:.9rem;font-size:.9rem}
+header.site nav.links a{color:#1a1a1a;text-decoration:none;border-bottom:1px dotted #999}
+header.site nav.links a:hover{border-bottom-style:solid;color:#2f4f7f}
+nav.crumb{font-size:.85rem;color:#777;margin-bottom:1.25rem}
+nav.crumb a{color:#777;text-decoration:none;border-bottom:1px dotted #bbb}
+nav.crumb a:hover{color:#2f4f7f;border-bottom-style:solid}
+h2.page{border-bottom:2px solid #333;padding-bottom:.35rem;font-size:1.35rem;display:flex;align-items:center;gap:.5rem;margin:0 0 1rem}
+h2.page svg{width:1.2rem;height:1.2rem;flex:none;color:#2f4f7f}
+span.spec{display:inline-block;font-size:.7rem;vertical-align:middle;background:#7fb3df;color:#fff;border-radius:4px;padding:.05rem .45rem;margin-left:.15rem}
+article.prompt{background:#fff;border:1px solid #ddd;border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1.75rem}
+article.prompt .head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+article.prompt .meta{font-size:.82rem;color:#777;margin:0 0 .75rem}
+article.prompt .meta a{color:#777}
+.intro p{margin:.4rem 0 .9rem;color:#333}
+button.copy{border:1px solid #ddd;background:#fff;padding:.25rem .6rem;border-radius:6px;color:#666;cursor:pointer;font-size:.78rem;flex:none}
+button.copy:hover{background:rgba(0,0,0,.05);color:#111}
+pre.prompt{white-space:pre-wrap;background:#1e1e1e;color:#e6e6e6;border-radius:6px;padding:1rem;margin:0;overflow-x:auto}
+ul.cards{list-style:none;padding:0;margin:0 0 1.5rem}
+ul.cards li{margin:.4rem 0}
+ul.cards a{display:block;background:#fff;border:1px solid #ddd;border-radius:8px;padding:.7rem 1rem;text-decoration:none;color:#1a1a1a}
+ul.cards a:hover{border-color:#2f4f7f}
+ul.cards strong{display:block}
+ul.cards span{font-size:.85rem;color:#555}
+section.siblings{margin-top:2rem}
+section.siblings h3{font-size:1rem;text-transform:uppercase;letter-spacing:.04em;color:#555}
+section.siblings ul{margin:.25rem 0;padding-left:1.25rem}
+section.siblings a{color:#1a1a1a;text-decoration:none;border-bottom:1px dotted #999}
+section.siblings a:hover{border-bottom-style:solid}
+a.cta{display:inline-block;font-size:.9rem;color:#2f4f7f;text-decoration:none;border-bottom:1px dotted #999}
+a.cta:hover{border-bottom-style:solid}
+footer.site{margin-top:3rem;padding-top:1rem;border-top:1px solid #ddd;color:#888;font-size:.85rem}
+@media print{button.copy{display:none}.wrap{max-width:none;padding:0}pre.prompt{color:#000;background:#fff;border:1px solid #ccc}}
+</style>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+<h1>awesome-ai-prompts</h1>
+<p class="sub">One prompt from the awesome-ai-prompts catalog, ready to paste into your AI coding agent.</p>
+<nav class="links">
+<a href="https://github.com/shauryagangrade/awesome-ai-prompts/blob/main/README.md">README &amp; docs</a>
+<a href="https://github.com/shauryagangrade/awesome-ai-prompts">Star on GitHub</a>
+</nav>
+</header>
+<nav class="crumb"><a href="/">All prompts</a> &rsaquo; <a href="/category/devops-deploy">devops-deploy</a> &rsaquo; Reusable prompt: CI gate diagnosis</nav>
+<main>
+<h2 class="page"><i data-lucide="server" aria-hidden="true"></i><span>Reusable prompt: CI gate diagnosis</span></h2>
+<article class="prompt">
+<div class="head">
+<p class="meta"><a href="https://github.com/shauryagangrade/awesome-ai-prompts/blob/main/devops-deploy/ci-gate-diagnosis-prompt.md">devops-deploy/ci-gate-diagnosis-prompt.md</a></p>
+<button class="copy" type="button">Copy prompt</button>
+</div>
+<div class="intro"><p>Copy-paste the block below into any AI coding agent when a CI check fails and
+you need to know why. It reads the logs, separates a flaky failure from a real
+bug, decides whether your change caused it, and tells you whether to retry,
+fix the code, or fix the pipeline.</p><p>Keywords: ci failing, flaky test, github actions, build failed, red pipeline, pre-existing failure, rerun checks</p></div>
+<pre class="prompt" id="prompt-body">A CI check failed. Diagnose it from the evidence. The goal: find the root
+cause, decide whether this change caused it, and recommend the right action,
+with the log lines that prove it.
+
+## Steps
+
+1. **Get the failing run** - Identify the failing job and step and fetch its
+   full log (for example `gh run view &lt;id&gt; --log-failed`). Note the commit
+   under test, the runner, and the time. Work from the real log, never from a
+   summary or a guess.
+2. **Find the first real error** - Read the log from the top of the failing
+   step, not just the last lines. The first error is usually the cause and the
+   rest is fallout. Quote the exact lines and say which command produced them.
+3. **Classify the failure** - Decide which kind it is: a **genuine bug** (the
+   code or a test fails the same way every time), a **flaky failure** (passes
+   on retry, depends on timing, ordering, network, or shared state), an
+   **environment problem** (tool or dependency version, missing secret,
+   runner image, cache), or a **pipeline fault** (the workflow itself is
+   wrong).
+4. **Check whether this change caused it** - Compare with the same job on the
+   base branch and on recent runs (`gh run list --branch main`). If it also
+   fails there, it is pre-existing. If it passes there, find the commit in this
+   change that introduces it, and name the file and line.
+5. **Reproduce it** - Run the failing command locally or in a clean checkout
+   with the same versions as CI. If you cannot reproduce it, say so and name
+   what differs (OS, version, environment variable, timing).
+6. **Recommend one action** - Choose and justify: **retry** (only with
+   evidence it is flaky, such as a pass on another run), **fix the code** (name
+   the change), or **fix the pipeline** (name the workflow line). Say what to
+   do about a flaky test too, instead of just re-running it forever.
+7. **Verify the fix** - After the fix, re-run the check and show it green. For
+   a flaky test, run it repeatedly (for example 20 times) and report the
+   result.
+
+## Verification
+
+- [ ] The diagnosis quotes the first error from the real log, with the step
+      name.
+- [ ] The failure is classified as bug, flaky, environment, or pipeline, with
+      the evidence for that class.
+- [ ] The base branch or recent runs were checked to say whether the failure is
+      pre-existing.
+- [ ] The failing command was reproduced locally, or the reason it could not be
+      is stated.
+- [ ] The recommended action is one of retry, fix code, or fix pipeline, with
+      a reason.
+- [ ] The check was re-run after the fix and the result is shown.
+
+## Rules
+
+- Never recommend &quot;just re-run it&quot; without evidence the failure is flaky.
+- Never disable, skip, or delete a failing test or check to make CI green.
+- Never claim a failure is unrelated to the change without comparing against
+  the base branch.
+- Never edit workflow files to hide a real failure, for example by adding
+  `continue-on-error`.
+- If the log is truncated or unavailable, say so and ask for it instead of
+  diagnosing from the tail.</pre>
+</article>
+<section class="siblings">
+<h3>More devops-deploy prompts</h3>
+<ul><li><a href="/prompt/devops-deploy/background-jobs-scheduled-tasks">Reusable prompt: background jobs and scheduled tasks</a></li><li><a href="/prompt/devops-deploy/backup-disaster-recovery">Reusable prompt: backup &amp; disaster recovery</a></li><li><a href="/prompt/devops-deploy/capacity-planning">Reusable prompt: capacity planning</a></li><li><a href="/prompt/devops-deploy/cloud-cost-optimization">Reusable prompt: cloud cost optimization</a></li><li><a href="/prompt/devops-deploy/database-schema-migrations">Reusable prompt: database schema &amp; migrations</a></li><li><a href="/prompt/devops-deploy/deployment-runbook">Reusable prompt: deployment runbook</a></li><li><a href="/prompt/devops-deploy/docker-containerization">Reusable prompt: Docker containerization</a></li><li><a href="/prompt/devops-deploy/feature-flag-rollout">Reusable prompt: feature flags &amp; progressive rollout</a></li><li><a href="/prompt/devops-deploy/incident-postmortem">Reusable prompt: incident postmortem</a></li><li><a href="/prompt/devops-deploy/incident-response">Reusable prompt: incident response</a></li><li><a href="/prompt/devops-deploy/infra-drift-detection">Reusable prompt: infrastructure drift detection</a></li><li><a href="/prompt/devops-deploy/infrastructure-as-code">Reusable prompt: infrastructure as code</a></li><li><a href="/prompt/devops-deploy/kubernetes-deployment">Reusable prompt: Kubernetes deployment</a></li><li><a href="/prompt/devops-deploy/monitoring-observability">Reusable prompt: monitoring and observability</a></li></ul>
+</section>
+</main>
+<footer class="site">
+<p>Generated by scripts/build-all.py from the prompt files in this repo. Do not edit by hand. Regenerate with: python3 scripts/build-all.py</p>
+</footer>
+</div>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+document.querySelector('button.copy').addEventListener('click', function () { copyText(document.getElementById('prompt-body')); });
+function copyText(el) {
+  var text = el.textContent;
+  function done() { el.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+  function fallback() {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } finally { document.body.removeChild(ta); }
+    done();
+  }
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(done, fallback);
+  } else {
+    fallback();
+  }
+}
+if (window.lucide) { lucide.createIcons(); }
+</script>
+</body>
+</html>

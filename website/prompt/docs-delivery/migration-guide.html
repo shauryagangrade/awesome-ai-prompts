@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>migration guide | awesome-ai-prompts</title>
+<meta name="description" content="Copy-paste the block below into any AI coding agent to write a migration guide for a breaking change, upgrade, or API move - every step tested, with a way...">
+<link rel="canonical" href="https://awesome-ai-prompts.vercel.app/prompt/docs-delivery/migration-guide">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="awesome-ai-prompts">
+<meta property="og:title" content="migration guide | awesome-ai-prompts">
+<meta property="og:description" content="Copy-paste the block below into any AI coding agent to write a migration guide for a breaking change, upgrade, or API move - every step tested, with a way...">
+<meta property="og:url" content="https://awesome-ai-prompts.vercel.app/prompt/docs-delivery/migration-guide">
+<meta property="og:image" content="https://awesome-ai-prompts.vercel.app/assets/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="migration guide | awesome-ai-prompts">
+<meta name="twitter:description" content="Copy-paste the block below into any AI coding agent to write a migration guide for a breaking change, upgrade, or API move - every step tested, with a way...">
+<meta name="twitter:image" content="https://awesome-ai-prompts.vercel.app/assets/social-preview.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","description":"Copy-paste the block below into any AI coding agent to write a migration guide for a breaking change, upgrade, or API move - every step tested, with a way...","isPartOf":{"@type":"WebSite","url":"https://awesome-ai-prompts.vercel.app/"},"mainEntity":{"@type":"CreativeWork","license":"https://spdx.org/licenses/MIT.html","name":"migration guide","url":"https://awesome-ai-prompts.vercel.app/prompt/docs-delivery/migration-guide"},"name":"migration guide","url":"https://awesome-ai-prompts.vercel.app/prompt/docs-delivery/migration-guide"}]}</script>
+<style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#1a1a1a;margin:0;background:#f7f7f5}
+.wrap{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
+header.site{border-bottom:2px solid #1a1a1a;padding-bottom:1rem;margin-bottom:1.5rem}
+header.site h1{margin:0 0 .25rem;font-size:1.6rem}
+header.site p.sub{margin:.25rem 0;color:#555;font-size:.95rem}
+header.site nav.links{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;margin-top:.9rem;font-size:.9rem}
+header.site nav.links a{color:#1a1a1a;text-decoration:none;border-bottom:1px dotted #999}
+header.site nav.links a:hover{border-bottom-style:solid;color:#2f4f7f}
+nav.crumb{font-size:.85rem;color:#777;margin-bottom:1.25rem}
+nav.crumb a{color:#777;text-decoration:none;border-bottom:1px dotted #bbb}
+nav.crumb a:hover{color:#2f4f7f;border-bottom-style:solid}
+h2.page{border-bottom:2px solid #333;padding-bottom:.35rem;font-size:1.35rem;display:flex;align-items:center;gap:.5rem;margin:0 0 1rem}
+h2.page svg{width:1.2rem;height:1.2rem;flex:none;color:#2f4f7f}
+span.spec{display:inline-block;font-size:.7rem;vertical-align:middle;background:#7fb3df;color:#fff;border-radius:4px;padding:.05rem .45rem;margin-left:.15rem}
+article.prompt{background:#fff;border:1px solid #ddd;border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1.75rem}
+article.prompt .head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+article.prompt .meta{font-size:.82rem;color:#777;margin:0 0 .75rem}
+article.prompt .meta a{color:#777}
+.intro p{margin:.4rem 0 .9rem;color:#333}
+button.copy{border:1px solid #ddd;background:#fff;padding:.25rem .6rem;border-radius:6px;color:#666;cursor:pointer;font-size:.78rem;flex:none}
+button.copy:hover{background:rgba(0,0,0,.05);color:#111}
+pre.prompt{white-space:pre-wrap;background:#1e1e1e;color:#e6e6e6;border-radius:6px;padding:1rem;margin:0;overflow-x:auto}
+ul.cards{list-style:none;padding:0;margin:0 0 1.5rem}
+ul.cards li{margin:.4rem 0}
+ul.cards a{display:block;background:#fff;border:1px solid #ddd;border-radius:8px;padding:.7rem 1rem;text-decoration:none;color:#1a1a1a}
+ul.cards a:hover{border-color:#2f4f7f}
+ul.cards strong{display:block}
+ul.cards span{font-size:.85rem;color:#555}
+section.siblings{margin-top:2rem}
+section.siblings h3{font-size:1rem;text-transform:uppercase;letter-spacing:.04em;color:#555}
+section.siblings ul{margin:.25rem 0;padding-left:1.25rem}
+section.siblings a{color:#1a1a1a;text-decoration:none;border-bottom:1px dotted #999}
+section.siblings a:hover{border-bottom-style:solid}
+a.cta{display:inline-block;font-size:.9rem;color:#2f4f7f;text-decoration:none;border-bottom:1px dotted #999}
+a.cta:hover{border-bottom-style:solid}
+footer.site{margin-top:3rem;padding-top:1rem;border-top:1px solid #ddd;color:#888;font-size:.85rem}
+@media print{button.copy{display:none}.wrap{max-width:none;padding:0}pre.prompt{color:#000;background:#fff;border:1px solid #ccc}}
+</style>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+<h1>awesome-ai-prompts</h1>
+<p class="sub">One prompt from the awesome-ai-prompts catalog, ready to paste into your AI coding agent.</p>
+<nav class="links">
+<a href="https://github.com/shauryagangrade/awesome-ai-prompts/blob/main/README.md">README &amp; docs</a>
+<a href="https://github.com/shauryagangrade/awesome-ai-prompts">Star on GitHub</a>
+</nav>
+</header>
+<nav class="crumb"><a href="/">All prompts</a> &rsaquo; <a href="/category/docs-delivery">docs-delivery</a> &rsaquo; Reusable prompt: migration guide</nav>
+<main>
+<h2 class="page"><i data-lucide="file-text" aria-hidden="true"></i><span>Reusable prompt: migration guide</span></h2>
+<article class="prompt">
+<div class="head">
+<p class="meta"><a href="https://github.com/shauryagangrade/awesome-ai-prompts/blob/main/docs-delivery/migration-guide-prompt.md">docs-delivery/migration-guide-prompt.md</a></p>
+<button class="copy" type="button">Copy prompt</button>
+</div>
+<div class="intro"><p>Copy-paste the block below into any AI coding agent to write a migration guide
+for a breaking change, upgrade, or API move - every step tested, with a way to
+roll back and a way to check it worked.</p><p>Keywords: migration guide, breaking changes, upgrade, deprecation, rollback, verification</p></div>
+<pre class="prompt" id="prompt-body">Write a migration guide for `[the change: version X to Y, an API move, a config
+format, or a schema change]`, for the people who have to upgrade. The goal: a
+reader on the old version can reach the new one, can check that it worked, and
+can go back. Every command and code sample in the guide must be one you ran.
+
+## Steps
+
+1. **Establish the facts** - Read the diff, the changelog, and the linked issues
+   between the two versions (`git diff &lt;old&gt;..&lt;new&gt;`, `git log`). List every
+   breaking change as: what it was before, what it is now, and who is affected.
+   Look for removed or renamed options, changed defaults and output formats,
+   behavior changes, new minimum versions, and data or schema changes. Mark
+   anything you cannot confirm from the code as unverified.
+2. **Name the audience** - Say who is upgrading (app developers, operators,
+   plugin authors) and which starting versions the guide covers. If the path
+   differs by starting version, split it.
+3. **Order the steps** - Preparation first (back up, pin versions, read the list
+   of breaking changes), then the changes in the order they must happen, then
+   cleanup. For each step give what to do, the before and after code or config,
+   and what the reader should see when it worked.
+4. **Run every example** - Check out the old version, follow your own steps, and
+   run each command and sample against the new one. Show the output. When an
+   example fails, fix the guide, not the example. Anything you could not run is
+   marked untested.
+5. **Write the rollback** - How to return to the old version, which data or state
+   cannot be rolled back (migrated databases, written files), and the point
+   after which going back is no longer simple.
+6. **Add checks and deprecations** - A short list of commands the reader can run
+   to confirm success, with the expected output. If the old behavior still works
+   for now, give the deprecation timeline: what warns, from which version, and
+   when it stops. Add the failures you hit while testing, with their fixes.
+7. **Link it from where readers look** - The release notes, the README, and any
+   deprecation warning the code prints.
+
+## Verification
+
+- [ ] Every breaking change in the diff appears in the guide, or the guide says
+      why it needs no action.
+- [ ] Each command and sample was run starting from the old version, with the
+      output shown.
+- [ ] The rollback section names what cannot be undone.
+- [ ] The success check uses commands with expected output.
+- [ ] Unverified claims and untested examples are marked as such.
+- [ ] The guide is linked from the release notes and the README.
+
+## Rules
+
+- Never include an example you did not run.
+- Never leave out a breaking change because it looks minor to you.
+- Never promise a rollback you did not try. Say what is irreversible.
+- Give every deprecation a date or a version it ends in.
+- Keep the reasons for the change short. The reader needs the steps.</pre>
+</article>
+<section class="siblings">
+<h3>More docs-delivery prompts</h3>
+<ul><li><a href="/prompt/docs-delivery/api-documentation">Reusable prompt: API documentation</a></li><li><a href="/prompt/docs-delivery/architecture-documentation">Reusable prompt: architecture documentation</a></li><li><a href="/prompt/docs-delivery/documentation-writer">Reusable prompt: documentation writer</a></li><li><a href="/prompt/docs-delivery/inline-documentation">Reusable prompt: inline documentation</a></li><li><a href="/prompt/docs-delivery/readme-builder">Reusable prompt: README builder</a></li><li><a href="/prompt/docs-delivery/release-notes-changelog">Reusable prompt: changelog &amp; release notes</a></li></ul>
+</section>
+</main>
+<footer class="site">
+<p>Generated by scripts/build-all.py from the prompt files in this repo. Do not edit by hand. Regenerate with: python3 scripts/build-all.py</p>
+</footer>
+</div>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+document.querySelector('button.copy').addEventListener('click', function () { copyText(document.getElementById('prompt-body')); });
+function copyText(el) {
+  var text = el.textContent;
+  function done() { el.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+  function fallback() {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } finally { document.body.removeChild(ta); }
+    done();
+  }
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(done, fallback);
+  } else {
+    fallback();
+  }
+}
+if (window.lucide) { lucide.createIcons(); }
+</script>
+</body>
+</html>

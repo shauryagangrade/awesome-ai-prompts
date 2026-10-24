@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dependency vulnerability triage | awesome-ai-prompts</title>
+<meta name="description" content="Copy-paste the block below into any AI coding agent to turn a raw vulnerability report (npm audit, Dependabot, Snyk, osv-scanner) into a ranked fix list...">
+<link rel="canonical" href="https://awesome-ai-prompts.vercel.app/prompt/security-performance/dependency-vuln-triage">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="awesome-ai-prompts">
+<meta property="og:title" content="dependency vulnerability triage | awesome-ai-prompts">
+<meta property="og:description" content="Copy-paste the block below into any AI coding agent to turn a raw vulnerability report (npm audit, Dependabot, Snyk, osv-scanner) into a ranked fix list...">
+<meta property="og:url" content="https://awesome-ai-prompts.vercel.app/prompt/security-performance/dependency-vuln-triage">
+<meta property="og:image" content="https://awesome-ai-prompts.vercel.app/assets/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="dependency vulnerability triage | awesome-ai-prompts">
+<meta name="twitter:description" content="Copy-paste the block below into any AI coding agent to turn a raw vulnerability report (npm audit, Dependabot, Snyk, osv-scanner) into a ranked fix list...">
+<meta name="twitter:image" content="https://awesome-ai-prompts.vercel.app/assets/social-preview.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","description":"Copy-paste the block below into any AI coding agent to turn a raw vulnerability report (npm audit, Dependabot, Snyk, osv-scanner) into a ranked fix list...","isPartOf":{"@type":"WebSite","url":"https://awesome-ai-prompts.vercel.app/"},"mainEntity":{"@type":"CreativeWork","license":"https://spdx.org/licenses/MIT.html","name":"dependency vulnerability triage","url":"https://awesome-ai-prompts.vercel.app/prompt/security-performance/dependency-vuln-triage"},"name":"dependency vulnerability triage","url":"https://awesome-ai-prompts.vercel.app/prompt/security-performance/dependency-vuln-triage"}]}</script>
+<style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#1a1a1a;margin:0;background:#f7f7f5}
+.wrap{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
+header.site{border-bottom:2px solid #1a1a1a;padding-bottom:1rem;margin-bottom:1.5rem}
+header.site h1{margin:0 0 .25rem;font-size:1.6rem}
+header.site p.sub{margin:.25rem 0;color:#555;font-size:.95rem}
+header.site nav.links{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;margin-top:.9rem;font-size:.9rem}
+header.site nav.links a{color:#1a1a1a;text-decoration:none;border-bottom:1px dotted #999}
+header.site nav.links a:hover{border-bottom-style:solid;color:#2f4f7f}
+nav.crumb{font-size:.85rem;color:#777;margin-bottom:1.25rem}
+nav.crumb a{color:#777;text-decoration:none;border-bottom:1px dotted #bbb}
+nav.crumb a:hover{color:#2f4f7f;border-bottom-style:solid}
+h2.page{border-bottom:2px solid #333;padding-bottom:.35rem;font-size:1.35rem;display:flex;align-items:center;gap:.5rem;margin:0 0 1rem}
+h2.page svg{width:1.2rem;height:1.2rem;flex:none;color:#2f4f7f}
+span.spec{display:inline-block;font-size:.7rem;vertical-align:middle;background:#7fb3df;color:#fff;border-radius:4px;padding:.05rem .45rem;margin-left:.15rem}
+article.prompt{background:#fff;border:1px solid #ddd;border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1.75rem}
+article.prompt .head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+article.prompt .meta{font-size:.82rem;color:#777;margin:0 0 .75rem}
+article.prompt .meta a{color:#777}
+.intro p{margin:.4rem 0 .9rem;color:#333}
+button.copy{border:1px solid #ddd;background:#fff;padding:.25rem .6rem;border-radius:6px;color:#666;cursor:pointer;font-size:.78rem;flex:none}
+button.copy:hover{background:rgba(0,0,0,.05);color:#111}
+pre.prompt{white-space:pre-wrap;background:#1e1e1e;color:#e6e6e6;border-radius:6px;padding:1rem;margin:0;overflow-x:auto}
+ul.cards{list-style:none;padding:0;margin:0 0 1.5rem}
+ul.cards li{margin:.4rem 0}
+ul.cards a{display:block;background:#fff;border:1px solid #ddd;border-radius:8px;padding:.7rem 1rem;text-decoration:none;color:#1a1a1a}
+ul.cards a:hover{border-color:#2f4f7f}
+ul.cards strong{display:block}
+ul.cards span{font-size:.85rem;color:#555}
+section.siblings{margin-top:2rem}
+section.siblings h3{font-size:1rem;text-transform:uppercase;letter-spacing:.04em;color:#555}
+section.siblings ul{margin:.25rem 0;padding-left:1.25rem}
+section.siblings a{color:#1a1a1a;text-decoration:none;border-bottom:1px dotted #999}
+section.siblings a:hover{border-bottom-style:solid}
+a.cta{display:inline-block;font-size:.9rem;color:#2f4f7f;text-decoration:none;border-bottom:1px dotted #999}
+a.cta:hover{border-bottom-style:solid}
+footer.site{margin-top:3rem;padding-top:1rem;border-top:1px solid #ddd;color:#888;font-size:.85rem}
+@media print{button.copy{display:none}.wrap{max-width:none;padding:0}pre.prompt{color:#000;background:#fff;border:1px solid #ccc}}
+</style>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+<h1>awesome-ai-prompts</h1>
+<p class="sub">One prompt from the awesome-ai-prompts catalog, ready to paste into your AI coding agent.</p>
+<nav class="links">
+<a href="https://github.com/shauryagangrade/awesome-ai-prompts/blob/main/README.md">README &amp; docs</a>
+<a href="https://github.com/shauryagangrade/awesome-ai-prompts">Star on GitHub</a>
+</nav>
+</header>
+<nav class="crumb"><a href="/">All prompts</a> &rsaquo; <a href="/category/security-performance">security-performance</a> &rsaquo; Reusable prompt: dependency vulnerability triage</nav>
+<main>
+<h2 class="page"><i data-lucide="shield" aria-hidden="true"></i><span>Reusable prompt: dependency vulnerability triage</span></h2>
+<article class="prompt">
+<div class="head">
+<p class="meta"><a href="https://github.com/shauryagangrade/awesome-ai-prompts/blob/main/security-performance/dependency-vuln-triage-prompt.md">security-performance/dependency-vuln-triage-prompt.md</a></p>
+<button class="copy" type="button">Copy prompt</button>
+</div>
+<div class="intro"><p>Copy-paste the block below into any AI coding agent to turn a raw vulnerability
+report (npm audit, Dependabot, Snyk, osv-scanner) into a ranked fix list based
+on whether each issue is actually exploitable in this codebase.</p><p>Keywords: cve triage, npm audit, dependabot alerts, osv-scanner, exploitability, false positive, vulnerable dependency</p></div>
+<pre class="prompt" id="prompt-body">Triage the vulnerability findings for this repository&#x27;s dependencies. The goal:
+decide which findings are truly exploitable here, rank them, and give a
+verified remediation for each, with the reasoning written down.
+
+## Steps
+
+1. **Collect the report** - Use the scanner output the user provides, or run the
+   repo&#x27;s own tooling (`npm audit`, `pip-audit`, `cargo audit`, `osv-scanner`,
+   or read the Dependabot or Snyk alerts). List every finding with its
+   advisory ID, package, installed version, fixed version, and the scanner&#x27;s
+   severity. Paste the raw output rather than a paraphrase.
+2. **Trace how each package is used** - For each finding, find whether the
+   package is a direct or transitive dependency (`npm ls`, `pipdeptree`,
+   `cargo tree`), whether it ships to production or only runs in dev and test,
+   and which files import the vulnerable function. Name the call sites with
+   `file:line` references.
+3. **Judge exploitability** - Read the advisory and decide whether the
+   vulnerable code path is reachable with input an attacker controls. Rate it:
+   **exploitable** (reachable, attacker input), **conditional** (needs a
+   specific configuration or feature), **not reachable** (the vulnerable
+   function is never called), or **dev-only**. Record the evidence for the
+   rating, not just the verdict.
+4. **Evaluate the fix options** - For each finding, list the options in order
+   of effort: a patch or minor upgrade, a major upgrade (with the breaking
+   changes from the changelog), an override or resolution of the transitive
+   version, a replacement package, or a workaround such as disabling the
+   feature. Note which options the lockfile and the version constraints allow.
+5. **Prioritize** - Rank by exploitability first, then by business impact (what
+   the affected code protects), then by how easy the fix is. Group findings
+   that one upgrade resolves together.
+6. **Apply and verify** - Make the chosen fix for the highest-priority items,
+   then re-run the scanner and the test suite and show the output. For any
+   finding left open, write the reason and a date to re-check.
+7. **Record the decisions** - Write a short triage record: each finding, its
+   rating, the evidence, the decision (fix, defer, accept), and the owner.
+
+## Verification
+
+- [ ] The raw scanner output was captured, and every finding appears in the
+      triage record.
+- [ ] Every rating of &quot;not reachable&quot; or &quot;dev-only&quot; cites the code or config
+      that proves it.
+- [ ] Each fix was checked against the package changelog before being applied.
+- [ ] The scanner and the test suite were re-run after the fixes, with output
+      shown.
+- [ ] Any finding left open has a written reason and a re-check date.
+- [ ] No finding was dismissed on the scanner&#x27;s severity label alone.
+
+## Rules
+
+- Never mark a finding &quot;not exploitable&quot; without evidence from the code, the
+  config, or the advisory itself.
+- Never upgrade a major version without reading the changelog and running the
+  tests.
+- Never silence or ignore an alert without writing down why.
+- Never add a new dependency just to clear a finding before checking whether
+  the existing package has a fixed version.
+- If you cannot tell whether a path is reachable, say so and rate it
+  conditional rather than guessing.</pre>
+</article>
+<section class="siblings">
+<h3>More security-performance prompts</h3>
+<ul><li><a href="/prompt/security-performance/auth-implementation">Reusable prompt: authentication &amp; authorization implementation</a></li><li><a href="/prompt/security-performance/dependency-audit">Reusable prompt: dependency audit</a></li><li><a href="/prompt/security-performance/load-testing">Reusable prompt: load testing</a></li><li><a href="/prompt/security-performance/memory-leak-hunting">Reusable prompt: memory leak hunting</a></li><li><a href="/prompt/security-performance/performance-optimization">Reusable prompt: performance optimization</a></li><li><a href="/prompt/security-performance/privacy-gdpr-compliance-review">Reusable prompt: privacy and GDPR compliance review</a></li><li><a href="/prompt/security-performance/prompt-injection-defense">Reusable prompt: prompt injection defense</a></li><li><a href="/prompt/security-performance/rate-limiting-abuse-prevention">Reusable prompt: rate limiting and abuse prevention</a></li><li><a href="/prompt/security-performance/secrets-management">Reusable prompt: secrets management</a></li><li><a href="/prompt/security-performance/secrets-scanning-response">Reusable prompt: secrets scanning response</a></li><li><a href="/prompt/security-performance/security-audit">Reusable prompt: security audit</a></li><li><a href="/prompt/security-performance/threat-modeling">Reusable prompt: threat modeling</a></li></ul>
+</section>
+</main>
+<footer class="site">
+<p>Generated by scripts/build-all.py from the prompt files in this repo. Do not edit by hand. Regenerate with: python3 scripts/build-all.py</p>
+</footer>
+</div>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+document.querySelector('button.copy').addEventListener('click', function () { copyText(document.getElementById('prompt-body')); });
+function copyText(el) {
+  var text = el.textContent;
+  function done() { el.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+  function fallback() {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } finally { document.body.removeChild(ta); }
+    done();
+  }
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(done, fallback);
+  } else {
+    fallback();
+  }
+}
+if (window.lucide) { lucide.createIcons(); }
+</script>
+</body>
+</html>

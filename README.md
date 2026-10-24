@@ -303,14 +303,14 @@ described above.
 - [Git & GitHub](#git--github) (14) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 - [Code review & quality](#code-review--quality) (6) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 - [Testing & quality](#testing--quality) (10) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
-- [Docs & delivery](#docs--delivery) (6)
-- [Security & performance](#security--performance) (11) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
-- [DevOps & deploy](#devops--deploy) (12)
-- [Career & learning](#career--learning) (7)
+- [Docs & delivery](#docs--delivery) (7)
+- [Security & performance](#security--performance) (13) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
+- [DevOps & deploy](#devops--deploy) (15)
+- [Career & learning](#career--learning) (8)
 - [Frontend & UI](#frontend--ui) (13) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 - [Data & AI](#data--ai) (13) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 - [Mobile development](#mobile-development) (8) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
-- [System & Exploration](#system--exploration) (1) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
+- [System & Exploration](#system--exploration) (4) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 
 ## Contributing to this repo
 
@@ -401,6 +401,7 @@ described above.
 - [api-documentation-prompt.md](docs-delivery/api-documentation-prompt.md) - generate OpenAPI/Swagger docs from existing code with accurate schemas.
 - [readme-builder-prompt.md](docs-delivery/readme-builder-prompt.md) - build a comprehensive README from scratch: purpose, quickstart, examples.
 - [inline-documentation-prompt.md](docs-delivery/inline-documentation-prompt.md) - add JSDoc/docstrings to existing code: accurate, concise, non-redundant.
+- [migration-guide-prompt.md](docs-delivery/migration-guide-prompt.md) - write a migration guide: preconditions, steps, rollback, verification, common failures.
 
 ## Security & performance
 
@@ -412,6 +413,8 @@ described above.
 - [threat-modeling-prompt.md](security-performance/threat-modeling-prompt.md) - STRIDE-style threat model ranked by real risk, with verified mitigations.
 - [auth-implementation-prompt.md](security-performance/auth-implementation-prompt.md) - implement sessions/OAuth/JWT safely with server-side authorization everywhere.
 - [memory-leak-hunting-prompt.md](security-performance/memory-leak-hunting-prompt.md) - find and remove a leak from measurements: baseline, reproduced growth, diffed snapshots, and a flat after-curve.
+- [dependency-vuln-triage-prompt.md](security-performance/dependency-vuln-triage-prompt.md) - triage dependency vulnerability reports: reachability proof, exploitability rating, cheapest verified fix.
+- [secrets-scanning-response-prompt.md](security-performance/secrets-scanning-response-prompt.md) - respond to a leaked secret: rotate first, find copies, assess misuse, plan cleanup, prevent recurrence.
 - [prompt-injection-defense-prompt.md](security-performance/prompt-injection-defense-prompt.md) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px"> - threat-model one attack class: where untrusted text reaches the context, out-of-band tool gating, a red-team suite, honest residual risk.
 - [privacy-gdpr-compliance-review-prompt.md](security-performance/privacy-gdpr-compliance-review-prompt.md) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px"> - systematic privacy pass: data inventory with retention, lawful basis, consent withdrawal, user rights flows, processors, ranked minimization.
 - [rate-limiting-abuse-prevention-prompt.md](security-performance/rate-limiting-abuse-prevention-prompt.md) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px"> - protect public endpoints: limits tiered by cost, algorithm chosen for the traffic shape, shared counters, load-test proof.
@@ -430,6 +433,9 @@ described above.
 - [background-jobs-scheduled-tasks-prompt.md](devops-deploy/background-jobs-scheduled-tasks-prompt.md) - async work that survives duplicates and deploys: idempotent handlers, bounded retries, dead-letter path, queue metrics, graceful drain.
 - [cloud-cost-optimization-prompt.md](devops-deploy/cloud-cost-optimization-prompt.md) - cut the bill from measurement: ranked offenders, rightsizing off real utilization, lifecycle policies, before/after savings table.
 - [capacity-planning-prompt.md](devops-deploy/capacity-planning-prompt.md) - name the wall and the date: headroom per bottleneck, forecast off a product metric, dated scaling options, early alerts.
+- [ci-gate-diagnosis-prompt.md](devops-deploy/ci-gate-diagnosis-prompt.md) - diagnose a failing CI gate: read the real log, compare with base branch, recommend one action with evidence.
+- [incident-postmortem-prompt.md](devops-deploy/incident-postmortem-prompt.md) - evidence-based postmortem: timeline, contributing factors, action items with owners, lessons.
+- [infra-drift-detection-prompt.md](devops-deploy/infra-drift-detection-prompt.md) - find live infrastructure drift vs IaC: refresh-only, classify differences, approve before any apply.
 
 ## Career & learning
 
@@ -440,6 +446,7 @@ described above.
 - [learning-roadmap-prompt.md](career-learning/learning-roadmap-prompt.md) - turn a skill gap into a project-based roadmap with verifiable checkpoints.
 - [conference-talk-proposal-prep-prompt.md](career-learning/conference-talk-proposal-prep-prompt.md) - write a competitive CFP and rehearse the talk: hook, takeaway, timed outline, demo fallbacks.
 - [mentoring-feedback-prompt.md](career-learning/mentoring-feedback-prompt.md) - give structured, verifiable feedback to a junior engineer with evidence.
+- [interview-debugging-drill-prompt.md](career-learning/interview-debugging-drill-prompt.md) - coaching a real debugging session: reproduce, form/test hypotheses, prove root cause, minimal fix, regression test, explain thinking.
 
 ## Frontend & UI
 
@@ -487,3 +494,6 @@ described above.
 ## System & Exploration
 
 - [drive-space-investigator-prompt.md](system-and-exploration/drive-space-investigator-prompt.md) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px"> - Strictly read-only drive space investigator that scans near-capacity disks, finds largest files and waste/regenerable items, and produces a comprehensive, review-only report.
+- [dead-code-detection-prompt.md](system-and-exploration/dead-code-detection-prompt.md) - find dead code with proof: tool output as candidates only, reference search recorded, dynamic use ruled out before deletion.
+- [entrypoints-discovery-prompt.md](system-and-exploration/entrypoints-discovery-prompt.md) - discover runtime entrypoints: servers, CLIs, workers, scheduled jobs, environment/config requirements, connection mapping.
+- [impact-analysis-prompt.md](system-and-exploration/impact-analysis-prompt.md) - evaluate change impact before applying: scope, affected paths, risk, verification plan, rollback criteria.

@@ -16,6 +16,9 @@ Back to the [main index](../README.md#devops--deploy) or browse
 - [kubernetes-deployment-prompt.md](kubernetes-deployment-prompt.md) - deploy to Kubernetes securely: real probes, zero-downtime rollouts, non-root pods.
 - [feature-flag-rollout-prompt.md](feature-flag-rollout-prompt.md) - ship behind flags with progressive rollout, kill switch, and cleanup plan.
 - [backup-disaster-recovery-prompt.md](backup-disaster-recovery-prompt.md) - backups proven by restore drills plus a scenario-based DR runbook with RTO/RPO.
+- [ci-gate-diagnosis-prompt.md](ci-gate-diagnosis-prompt.md) - diagnose a failing CI gate: read the real log, compare with base branch, recommend one action with evidence.
+- [incident-postmortem-prompt.md](incident-postmortem-prompt.md) - evidence-based postmortem: timeline, contributing factors, action items with owners, lessons.
+- [infra-drift-detection-prompt.md](infra-drift-detection-prompt.md) - find live infrastructure drift vs IaC: refresh-only, classify differences, approve before any apply.
 
 - [background-jobs-scheduled-tasks-prompt.md](background-jobs-scheduled-tasks-prompt.md) - async work that survives duplicates and deploys: idempotent handlers, bounded retries, dead-letter path, queue metrics, graceful drain.
 
