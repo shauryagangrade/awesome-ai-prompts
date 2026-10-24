@@ -13,6 +13,16 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - Add `git-github/local-pr-cleanup-prompt.md` - spec prompt for full local hygiene after complex PR work: branches, worktrees, stashes, and build artifacts.
 - Add `git-github/remote-pr-cleanup-prompt.md` - spec prompt for full remote hygiene after complex PR work: prune remotes, delete merged PR branches, sync with upstream.
+- Add `security-performance/dependency-vuln-triage-prompt.md` - triage dependency vulnerability reports with reachability proof and verified fix.
+- Add `security-performance/secrets-scanning-response-prompt.md` - respond to a leaked secret with rotation-first protocol.
+- Add `devops-deploy/ci-gate-diagnosis-prompt.md` - diagnose failing CI gates by comparing against base branch.
+- Add `devops-deploy/incident-postmortem-prompt.md` - evidence-based postmortem with timeline and action-item verification.
+- Add `devops-deploy/infra-drift-detection-prompt.md` - detect live infrastructure drift vs IaC without applying changes.
+- Add `system-and-exploration/dead-code-detection-prompt.md` - find dead code with proof, ruling out dynamic use first.
+- Add `system-and-exploration/entrypoints-discovery-prompt.md` - discover runtime entrypoints with environment requirements.
+- Add `system-and-exploration/impact-analysis-prompt.md` - evaluate change impact before applying.
+- Add `career-learning/interview-debugging-drill-prompt.md` - coaching a debugging session with evidence-based fix.
+- Add `docs-delivery/migration-guide-prompt.md` - write a verified migration guide with rollback plan.
 
 - Site SEO, with everything deployed now living in a single `website/` folder:
   `scripts/build-all.py` generates `website/index.html` (the former root `ALL_PROMPTS.html`),

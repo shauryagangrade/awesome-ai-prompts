@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>entrypoints discovery | awesome-ai-prompts</title>
+<meta name="description" content="Copy-paste the block below into any AI coding agent to list every way a codebase actually starts: servers, CLIs, workers, scheduled jobs, migrations, and...">
+<link rel="canonical" href="https://awesome-ai-prompts.vercel.app/prompt/system-and-exploration/entrypoints-discovery">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="awesome-ai-prompts">
+<meta property="og:title" content="entrypoints discovery | awesome-ai-prompts">
+<meta property="og:description" content="Copy-paste the block below into any AI coding agent to list every way a codebase actually starts: servers, CLIs, workers, scheduled jobs, migrations, and...">
+<meta property="og:url" content="https://awesome-ai-prompts.vercel.app/prompt/system-and-exploration/entrypoints-discovery">
+<meta property="og:image" content="https://awesome-ai-prompts.vercel.app/assets/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="entrypoints discovery | awesome-ai-prompts">
+<meta name="twitter:description" content="Copy-paste the block below into any AI coding agent to list every way a codebase actually starts: servers, CLIs, workers, scheduled jobs, migrations, and...">
+<meta name="twitter:image" content="https://awesome-ai-prompts.vercel.app/assets/social-preview.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","description":"Copy-paste the block below into any AI coding agent to list every way a codebase actually starts: servers, CLIs, workers, scheduled jobs, migrations, and...","isPartOf":{"@type":"WebSite","url":"https://awesome-ai-prompts.vercel.app/"},"mainEntity":{"@type":"CreativeWork","license":"https://spdx.org/licenses/MIT.html","name":"entrypoints discovery","url":"https://awesome-ai-prompts.vercel.app/prompt/system-and-exploration/entrypoints-discovery"},"name":"entrypoints discovery","url":"https://awesome-ai-prompts.vercel.app/prompt/system-and-exploration/entrypoints-discovery"}]}</script>
+<style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#1a1a1a;margin:0;background:#f7f7f5}
+.wrap{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
+header.site{border-bottom:2px solid #1a1a1a;padding-bottom:1rem;margin-bottom:1.5rem}
+header.site h1{margin:0 0 .25rem;font-size:1.6rem}
+header.site p.sub{margin:.25rem 0;color:#555;font-size:.95rem}
+header.site nav.links{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;margin-top:.9rem;font-size:.9rem}
+header.site nav.links a{color:#1a1a1a;text-decoration:none;border-bottom:1px dotted #999}
+header.site nav.links a:hover{border-bottom-style:solid;color:#2f4f7f}
+nav.crumb{font-size:.85rem;color:#777;margin-bottom:1.25rem}
+nav.crumb a{color:#777;text-decoration:none;border-bottom:1px dotted #bbb}
+nav.crumb a:hover{color:#2f4f7f;border-bottom-style:solid}
+h2.page{border-bottom:2px solid #333;padding-bottom:.35rem;font-size:1.35rem;display:flex;align-items:center;gap:.5rem;margin:0 0 1rem}
+h2.page svg{width:1.2rem;height:1.2rem;flex:none;color:#2f4f7f}
+span.spec{display:inline-block;font-size:.7rem;vertical-align:middle;background:#7fb3df;color:#fff;border-radius:4px;padding:.05rem .45rem;margin-left:.15rem}
+article.prompt{background:#fff;border:1px solid #ddd;border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1.75rem}
+article.prompt .head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+article.prompt .meta{font-size:.82rem;color:#777;margin:0 0 .75rem}
+article.prompt .meta a{color:#777}
+.intro p{margin:.4rem 0 .9rem;color:#333}
+button.copy{border:1px solid #ddd;background:#fff;padding:.25rem .6rem;border-radius:6px;color:#666;cursor:pointer;font-size:.78rem;flex:none}
+button.copy:hover{background:rgba(0,0,0,.05);color:#111}
+pre.prompt{white-space:pre-wrap;background:#1e1e1e;color:#e6e6e6;border-radius:6px;padding:1rem;margin:0;overflow-x:auto}
+ul.cards{list-style:none;padding:0;margin:0 0 1.5rem}
+ul.cards li{margin:.4rem 0}
+ul.cards a{display:block;background:#fff;border:1px solid #ddd;border-radius:8px;padding:.7rem 1rem;text-decoration:none;color:#1a1a1a}
+ul.cards a:hover{border-color:#2f4f7f}
+ul.cards strong{display:block}
+ul.cards span{font-size:.85rem;color:#555}
+section.siblings{margin-top:2rem}
+section.siblings h3{font-size:1rem;text-transform:uppercase;letter-spacing:.04em;color:#555}
+section.siblings ul{margin:.25rem 0;padding-left:1.25rem}
+section.siblings a{color:#1a1a1a;text-decoration:none;border-bottom:1px dotted #999}
+section.siblings a:hover{border-bottom-style:solid}
+a.cta{display:inline-block;font-size:.9rem;color:#2f4f7f;text-decoration:none;border-bottom:1px dotted #999}
+a.cta:hover{border-bottom-style:solid}
+footer.site{margin-top:3rem;padding-top:1rem;border-top:1px solid #ddd;color:#888;font-size:.85rem}
+@media print{button.copy{display:none}.wrap{max-width:none;padding:0}pre.prompt{color:#000;background:#fff;border:1px solid #ccc}}
+</style>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+<h1>awesome-ai-prompts</h1>
+<p class="sub">One prompt from the awesome-ai-prompts catalog, ready to paste into your AI coding agent.</p>
+<nav class="links">
+<a href="https://github.com/shauryagangrade/awesome-ai-prompts/blob/main/README.md">README &amp; docs</a>
+<a href="https://github.com/shauryagangrade/awesome-ai-prompts">Star on GitHub</a>
+</nav>
+</header>
+<nav class="crumb"><a href="/">All prompts</a> &rsaquo; <a href="/category/system-and-exploration">system-and-exploration</a> &rsaquo; Reusable prompt: entrypoints discovery</nav>
+<main>
+<h2 class="page"><i data-lucide="laptop" aria-hidden="true"></i><span>Reusable prompt: entrypoints discovery</span></h2>
+<article class="prompt">
+<div class="head">
+<p class="meta"><a href="https://github.com/shauryagangrade/awesome-ai-prompts/blob/main/system-and-exploration/entrypoints-discovery-prompt.md">system-and-exploration/entrypoints-discovery-prompt.md</a></p>
+<button class="copy" type="button">Copy prompt</button>
+</div>
+<div class="intro"><p>Copy-paste the block below into any AI coding agent to list every way a
+codebase actually starts: servers, CLIs, workers, scheduled jobs, migrations,
+and scripts. For each one it records the config it needs, the ports it opens,
+and where in the code it begins. It is read-only.</p><p>Keywords: entrypoints, how to run, startup, onboarding, services map, cron jobs, workers, ports, environment variables</p></div>
+<pre class="prompt" id="prompt-body">Discover every runtime entrypoint in this repository, read-only. The goal: a
+verified map of how the system starts and what each part needs, good enough for
+onboarding a new engineer or planning a deployment. Do not run, start, or
+modify anything unless the user asks afterwards.
+
+## Steps
+
+1. **Define the scope** - State what you are mapping (the whole repository, one
+   service in a monorepo) and the languages and frameworks you found. Read the
+   README, the manifests (`package.json`, `pyproject.toml`, `go.mod`,
+   `Cargo.toml`), the container and orchestration files (`Dockerfile`,
+   `docker-compose.yml`, Kubernetes manifests), the process files (`Procfile`,
+   `supervisord.conf`), and the CI and deploy workflows.
+2. **Enumerate the entrypoints** - Find and list each of these, with a
+   `file:line` reference for where it starts: web and API servers, CLI
+   commands, background workers and queue consumers, scheduled jobs (cron,
+   CI schedules, cloud schedulers), database migrations and seed scripts,
+   one-off scripts, and test or build commands that people run by hand. Take
+   the commands from the manifests&#x27; `scripts` and `bin` fields, the container
+   `CMD` and `ENTRYPOINT`, and the compose and deploy definitions, then confirm
+   each one in the code.
+3. **Record what each one needs** - For each entrypoint, list the environment
+   variables and config files it reads (follow the code that reads them), the
+   ports and protocols it opens or connects to, and the services it depends on
+   (database, cache, queue, external APIs). Mark each variable as required or
+   optional, and note the default if the code sets one. Never copy the values
+   of secrets.
+4. **Map the connections** - Show how the entrypoints relate: which one calls
+   or enqueues work for another, which share a database or queue, and which
+   must start first. A short list or a diagram is enough.
+5. **Flag what you could not confirm** - List entrypoints that appear in docs
+   or config but have no matching code, code that looks like an entrypoint but
+   is never referenced, and anything that needs a running system to confirm.
+6. **Write the summary** - Finish with a short, ordered &quot;how to run this&quot;
+   section: what to start, in which order, with which settings, and what a
+   healthy start looks like (a log line, a health endpoint, a port).
+
+## Verification
+
+- [ ] Every entrypoint has a `file:line` reference and the command that starts
+      it.
+- [ ] Every entrypoint lists its required and optional environment variables,
+      with no secret values copied.
+- [ ] Ports, protocols, and service dependencies are listed for each one.
+- [ ] Entrypoints named in docs or config were checked against the code, and
+      mismatches are listed.
+- [ ] The start order and a healthy-start signal are stated.
+- [ ] Nothing was started, installed, or modified.
+
+## Rules
+
+- Never start a server, run a job, or execute a migration to find out what it
+  does; read the code instead.
+- Never print or copy secret values from `.env` files or config.
+- Never list an entrypoint you only inferred; mark it unconfirmed.
+- Never rely on the README alone; confirm each entry in the code or manifests.
+- If the repository has several services, map each one separately instead of
+  merging them.</pre>
+</article>
+<section class="siblings">
+<h3>More system-and-exploration prompts</h3>
+<ul><li><a href="/prompt/system-and-exploration/dead-code-detection">Reusable prompt: dead code detection</a></li><li><a href="/prompt/system-and-exploration/drive-space-investigator">Drive space investigator (read-only)</a></li><li><a href="/prompt/system-and-exploration/impact-analysis">Reusable prompt: impact analysis</a></li></ul>
+</section>
+</main>
+<footer class="site">
+<p>Generated by scripts/build-all.py from the prompt files in this repo. Do not edit by hand. Regenerate with: python3 scripts/build-all.py</p>
+</footer>
+</div>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+document.querySelector('button.copy').addEventListener('click', function () { copyText(document.getElementById('prompt-body')); });
+function copyText(el) {
+  var text = el.textContent;
+  function done() { el.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+  function fallback() {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } finally { document.body.removeChild(ta); }
+    done();
+  }
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(done, fallback);
+  } else {
+    fallback();
+  }
+}
+if (window.lucide) { lucide.createIcons(); }
+</script>
+</body>
+</html>

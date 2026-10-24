@@ -18,6 +18,8 @@ Back to the [main index](../README.md#security--performance) or browse
 - [dependency-audit-prompt.md](dependency-audit-prompt.md) - audit dependencies for vulnerabilities, license issues, and staleness.
 - [threat-modeling-prompt.md](threat-modeling-prompt.md) - STRIDE-style threat model ranked by real risk, with verified mitigations.
 - [auth-implementation-prompt.md](auth-implementation-prompt.md) - implement sessions/OAuth/JWT safely with server-side authorization everywhere.
+- [dependency-vuln-triage-prompt.md](dependency-vuln-triage-prompt.md) - triage dependency vulnerability reports: reachability proof, exploitability rating, cheapest verified fix.
+- [secrets-scanning-response-prompt.md](secrets-scanning-response-prompt.md) - respond to a leaked secret: rotate first, find copies, assess misuse, plan cleanup, prevent recurrence.
 - [memory-leak-hunting-prompt.md](memory-leak-hunting-prompt.md) - find and remove a leak from measurements: baseline, reproduced growth, diffed snapshots, and a flat after-curve.
 
 - [prompt-injection-defense-prompt.md](prompt-injection-defense-prompt.md) <img src="../docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px"> - threat-model one attack class: where untrusted text reaches the context, out-of-band tool gating, a red-team suite, honest residual risk.

@@ -15,6 +15,7 @@ Back to the [main index](../README.md#career--learning) or browse
 - [conference-talk-proposal-prep-prompt.md](conference-talk-proposal-prep-prompt.md) - write a competitive CFP and rehearse the talk: hook, takeaway, timed outline, demo fallbacks.
 
 - [mentoring-feedback-prompt.md](mentoring-feedback-prompt.md) - give structured, verifiable feedback to a junior engineer with evidence.$
+- [interview-debugging-drill-prompt.md](interview-debugging-drill-prompt.md) - coaching a real debugging session: reproduce, form/test hypotheses, prove root cause, minimal fix, regression test, explain thinking.
 
 ## Adding a prompt here
 

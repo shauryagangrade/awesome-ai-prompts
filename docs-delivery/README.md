@@ -14,6 +14,7 @@ Back to the [main index](../README.md#docs--delivery) or browse
 - [inline-documentation-prompt.md](inline-documentation-prompt.md) - add JSDoc/docstrings to existing code: accurate, concise, non-redundant.
 
 - [architecture-documentation-prompt.md](architecture-documentation-prompt.md) - write architecture docs with evidence, tradeoffs, and verification.$
+- [migration-guide-prompt.md](migration-guide-prompt.md) - write a migration guide: preconditions, steps, rollback, verification, common failures.
 
 ## Adding a prompt here
 
