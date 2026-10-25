@@ -27,9 +27,6 @@ Thumbs.db
 instagram\ post\ pictures/
 .ruff_cache
 __pycache__/
-review/
 
 # Dependencies
 node_modules/
-
-# review outputs
