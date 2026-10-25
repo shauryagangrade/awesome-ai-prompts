@@ -93,6 +93,41 @@ def clip(text, limit=155):
     return text[:limit].rsplit(" ", 1)[0].rstrip(",.;:") + "..."
 
 
+def better_description(intro_or_text, fallback="", keywords=None):
+    """Craft an intentional meta description with keywords."""
+    text = " ".join((intro_or_text or fallback).split())
+    if not text:
+        return fallback
+    # Make it more descriptive and keyword-rich
+    if keywords:
+        # Ensure keywords are naturally included
+        base = text
+        if len(base) <= 155:
+            return base
+    # Truncate nicely
+    if len(text) <= 155:
+        return text
+    truncated = text[:155].rsplit(" ", 1)[0].rstrip(",.;:") + "..."
+    return truncated
+
+
+def breadcrumb_jsonld(items):
+    """Generate BreadcrumbList JSON-LD schema."""
+    elements = []
+    for position, (name, url) in enumerate(items, start=1):
+        elements.append({
+            "@type": "ListItem",
+            "position": position,
+            "name": name,
+            "item": url,
+        })
+    return {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": elements,
+    }
+
+
 def meta_block(title, description, canonical, og_type, jsonld):
     """SEO head tags shared by every generated page.
 
@@ -119,7 +154,7 @@ def meta_block(title, description, canonical, og_type, jsonld):
 
 
 def site_jsonld():
-    """JSON-LD for the home page: a WebSite holding a CollectionPage."""
+    """JSON-LD for the home page: a WebSite holding a CollectionPage with ItemList."""
     return {
         "@context": "https://schema.org",
         "@graph": [
@@ -128,12 +163,20 @@ def site_jsonld():
                 "name": "awesome-ai-prompts",
                 "url": f"{SITE_URL}/",
                 "license": "https://spdx.org/licenses/MIT.html",
+                "description": "144+ copy-paste AI coding-agent prompts across 14 categories for developers: debugging, code review, testing, security, DevOps, and more.",
             },
             {
                 "@type": "CollectionPage",
                 "name": "awesome-ai-prompts - all AI coding-agent prompts",
                 "url": f"{SITE_URL}/",
+                "description": "Copy-paste AI coding-agent prompts for debugging, code review, testing, security, DevOps, system design, and more. Verify, don't guess.",
                 "isPartOf": {"@type": "WebSite", "url": f"{SITE_URL}/"},
+            },
+            {
+                "@type": "Organization",
+                "name": "awesome-ai-prompts",
+                "url": f"{SITE_URL}/",
+                "sameAs": ["https://github.com/shauryagangrade/awesome-ai-prompts"],
             },
         ],
     }
@@ -415,11 +458,11 @@ def render_page(output_path):
     ])
     meta_description = (
         f"{total} copy-paste AI coding-agent prompts across {len(cats)} categories "
-        "for developers: debugging, code review, testing, security, DevOps, "
-        "system design, and more. Verify, don't guess."
+        "for developers. Debugging, code review, testing, security, DevOps, system design, "
+        "and more. Ready to paste into Claude, ChatGPT, Cursor, Copilot, and other AI coding agents."
     )
     meta = meta_block(
-        title="awesome-ai-prompts - all prompts on one page",
+        title=f"awesome-ai-prompts - {total} AI Coding Agent Prompts | Copy & Paste",
         description=meta_description,
         canonical=f"{SITE_URL}/",
         og_type="website",
@@ -552,40 +595,46 @@ def render_category_page(cat, entries):
     """
     specs = [meta_title(clean_title(title, spec)) for _, title, _, _, spec in entries]
     titles = ", ".join(specs[:4]) + ("..." if len(specs) > 4 else "")
-    description = clip(
-        f"{len(entries)} copy-paste AI coding-agent prompts in the {cat} "
-        f"category for developers: {titles}"
+    description = better_description(
+        f"{len(entries)} copy-paste AI coding-agent prompts for {cat.replace('-', ' ')}. Includes {titles}. Ready to paste into Claude, ChatGPT, Cursor, Copilot, and other AI coding agents."
     )
     url = f"{SITE_URL}/{CATEGORY_PAGES}/{cat}"
+    jsonld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "CollectionPage",
+                "name": f"{cat.replace('-', ' ').title()} AI Coding Agent Prompts",
+                "url": url,
+                "description": description,
+                "isPartOf": {"@type": "WebSite", "url": f"{SITE_URL}/"},
+                "mainEntity": {
+                    "@type": "ItemList",
+                    "name": f"{cat.replace('-', ' ').title()} Prompts",
+                    "numberOfItems": len(entries),
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": position,
+                            "url": f"{SITE_URL}/{PROMPT_PAGES}/{cat}/{slug_for(path)}",
+                            "name": clean_title(title, spec),
+                        }
+                        for position, (path, title, _, _, spec) in enumerate(entries, start=1)
+                    ],
+                },
+            },
+            breadcrumb_jsonld([
+                ("Home", f"{SITE_URL}/"),
+                (f"{cat.replace('-', ' ').title()}", url),
+            ]),
+        ],
+    }
     meta = meta_block(
-        title=f"{cat} - {len(entries)} AI coding-agent prompts | awesome-ai-prompts",
+        title=f"{cat.replace('-', ' ').title()} AI Prompts - {len(entries)} Copy & Paste Templates | awesome-ai-prompts",
         description=description,
         canonical=url,
         og_type="website",
-        jsonld={
-            "@context": "https://schema.org",
-            "@graph": [
-                {
-                    "@type": "CollectionPage",
-                    "name": f"{cat} - AI coding-agent prompts",
-                    "url": url,
-                    "description": description,
-                    "isPartOf": {"@type": "WebSite", "url": f"{SITE_URL}/"},
-                    "mainEntity": {
-                        "@type": "ItemList",
-                        "numberOfItems": len(entries),
-                        "itemListElement": [
-                            {
-                                "@type": "ListItem",
-                                "position": position,
-                                "url": f"{SITE_URL}/{PROMPT_PAGES}/{cat}/{slug_for(path)}",
-                            }
-                            for position, (path, _, _, _, _) in enumerate(entries, start=1)
-                        ],
-                    },
-                }
-            ],
-        },
+        jsonld=jsonld,
     )
     cards = "".join(
         f'<li><a href="/{PROMPT_PAGES}/{cat}/{slug_for(path)}">'
@@ -618,30 +667,38 @@ def render_prompt_page(cat, path, title, intro, body, is_spec, entries):
     title = clean_title(title, is_spec)
     search_title = meta_title(title)
     url = f"{SITE_URL}/{PROMPT_PAGES}/{cat}/{slug}"
-    description = clip(intro or search_title)
-    meta = meta_block(
-        title=f"{search_title} | awesome-ai-prompts",
-        description=description,
-        canonical=url,
-        og_type="article",
-        jsonld={
-            "@context": "https://schema.org",
-            "@graph": [
-                {
-                    "@type": "WebPage",
+    description = better_description(intro or search_title, f"Copy and paste this {search_title.lower()} prompt for AI coding agents.")
+    jsonld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "name": f"{search_title} - AI Prompt",
+                "url": url,
+                "description": description,
+                "isPartOf": {"@type": "WebSite", "url": f"{SITE_URL}/"},
+                "mainEntity": {
+                    "@type": "CreativeWork",
                     "name": search_title,
                     "url": url,
                     "description": description,
-                    "isPartOf": {"@type": "WebSite", "url": f"{SITE_URL}/"},
-                    "mainEntity": {
-                        "@type": "CreativeWork",
-                        "name": search_title,
-                        "url": url,
-                        "license": "https://spdx.org/licenses/MIT.html",
-                    },
-                }
-            ],
-        },
+                    "license": "https://spdx.org/licenses/MIT.html",
+                    "keywords": "AI prompt, coding agent prompt, " + cat.replace('-', ' '),
+                },
+            },
+            breadcrumb_jsonld([
+                ("Home", f"{SITE_URL}/"),
+                (f"{cat.replace('-', ' ').title()}", f"{SITE_URL}/{CATEGORY_PAGES}/{cat}"),
+                (search_title, url),
+            ]),
+        ],
+    }
+    meta = meta_block(
+        title=f"{search_title} AI Prompt - Copy & Paste for Coding Agents | awesome-ai-prompts",
+        description=description,
+        canonical=url,
+        og_type="article",
+        jsonld=jsonld,
     )
     spec_html = '<span class="spec">spec</span>' if is_spec else ""
     intro_html = ""
@@ -693,12 +750,51 @@ def sitemap_urls():
     return urls
 
 
+def get_git_lastmod(filepath):
+    """Get last modified date from git."""
+    try:
+        import subprocess
+        result = subprocess.run(
+            ["git", "log", "-1", "--format=%cI", str(filepath)],
+            cwd=ROOT,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            timeout=5,
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            return result.stdout.strip()
+    except Exception:
+        pass
+    return None
+
+
 def render_sitemap(dest_root):
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     ]
-    lines.extend(f"<url><loc>{url}</loc></url>" for url in sitemap_urls())
+    # Add home
+    lastmod = get_git_lastmod(ROOT / "README.md")
+    if lastmod:
+        lines.append(f'<url><loc>{SITE_URL}/</loc><lastmod>{lastmod}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>')
+    else:
+        lines.append(f'<url><loc>{SITE_URL}/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>')
+    
+    for cat in [c for c in category_order() if prompt_files(c)]:
+        cat_lastmod = get_git_lastmod(ROOT / cat / "README.md")
+        cat_url = f"{SITE_URL}/{CATEGORY_PAGES}/{cat}"
+        if cat_lastmod:
+            lines.append(f'<url><loc>{cat_url}</loc><lastmod>{cat_lastmod}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>')
+        else:
+            lines.append(f'<url><loc>{cat_url}</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>')
+        for path in prompt_files(cat):
+            prompt_lastmod = get_git_lastmod(path)
+            prompt_url = f"{SITE_URL}/{PROMPT_PAGES}/{cat}/{slug_for(path)}"
+            if prompt_lastmod:
+                lines.append(f'<url><loc>{prompt_url}</loc><lastmod>{prompt_lastmod}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>')
+            else:
+                lines.append(f'<url><loc>{prompt_url}</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>')
+    
     lines.append("</urlset>")
     (dest_root / "sitemap.xml").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
