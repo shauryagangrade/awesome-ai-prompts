@@ -8,5 +8,4 @@
       "allowed_elements": ["img"],
     },
   },
-  "ignores": ["review/**"]
 }
