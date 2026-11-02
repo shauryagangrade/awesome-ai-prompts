@@ -29,6 +29,8 @@ above are the people who shaped this list.
 
 Want it in video form? [Download the MP4](docs/media/prompt-in-action.mp4).
 
+Listed in [Awesome Prompt Engineering](https://github.com/brandonhimpfen/awesome-prompt-engineering#prompt-libraries).
+
 ## Why these are different {#quality-standards}
 
 - **Tool-agnostic** - works with Claude, ChatGPT, Copilot, Cursor, opencode,
