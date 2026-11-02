@@ -1,5 +1,6 @@
 # awesome-ai-prompts
 
+[![Mentioned in Awesome Prompt Engineering](https://awesome.re/mentioned-badge.svg)](https://github.com/brandonhimpfen/awesome-prompt-engineering#prompt-libraries)
 ![Build](https://github.com/shauryagangrade/awesome-ai-prompts/actions/workflows/ci.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/shauryagangrade/awesome-ai-prompts?style=social)](https://github.com/shauryagangrade/awesome-ai-prompts)
@@ -28,8 +29,6 @@ auto-appends its author to [CONTRIBUTORS.md](CONTRIBUTORS.md) - the avatars
 above are the people who shaped this list.
 
 Want it in video form? [Download the MP4](docs/media/prompt-in-action.mp4).
-
-Listed in [Awesome Prompt Engineering](https://github.com/brandonhimpfen/awesome-prompt-engineering#prompt-libraries).
 
 ## Why these are different {#quality-standards}
 
