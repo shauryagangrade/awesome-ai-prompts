@@ -11,7 +11,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-- (none; v0.7.0 released)
+- Add `docs/opencode.md` - run a prompt as an opencode slash command with `opencode run`, and keep the catalog's verification rules in `AGENTS.md`.
 
 ## [0.7.0] - 2026-10-24
 
