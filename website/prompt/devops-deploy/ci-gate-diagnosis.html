@@ -81,7 +81,10 @@ footer.site{margin-top:3rem;padding-top:1rem;border-top:1px solid #ddd;color:#88
 <div class="intro"><p>Copy-paste the block below into any AI coding agent when a CI check fails and
 you need to know why. It reads the logs, separates a flaky failure from a real
 bug, decides whether your change caused it, and tells you whether to retry,
-fix the code, or fix the pipeline.</p><p>Keywords: ci failing, flaky test, github actions, build failed, red pipeline, pre-existing failure, rerun checks</p></div>
+fix the code, or fix the pipeline.</p><p>Also packaged as the
+[`diagnose-ci-gate`](https://github.com/github/awesome-copilot/blob/main/skills/diagnose-ci-gate/SKILL.md)
+skill for GitHub Copilot, which adds a fixed report format and the commands for
+the base-branch comparison.</p><p>Keywords: ci failing, flaky test, github actions, build failed, red pipeline, pre-existing failure, rerun checks</p></div>
 <pre class="prompt" id="prompt-body">A CI check failed. Diagnose it from the evidence. The goal: find the root
 cause, decide whether this change caused it, and recommend the right action,
 with the log lines that prove it.

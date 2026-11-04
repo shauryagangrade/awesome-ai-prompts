@@ -5,6 +5,11 @@ you need to know why. It reads the logs, separates a flaky failure from a real
 bug, decides whether your change caused it, and tells you whether to retry,
 fix the code, or fix the pipeline.
 
+Also packaged as the
+[`diagnose-ci-gate`](https://github.com/github/awesome-copilot/blob/main/skills/diagnose-ci-gate/SKILL.md)
+skill for GitHub Copilot, which adds a fixed report format and the commands for
+the base-branch comparison.
+
 Keywords: ci failing, flaky test, github actions, build failed, red pipeline, pre-existing failure, rerun checks
 
 ---
