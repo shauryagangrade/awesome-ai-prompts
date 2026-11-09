@@ -5,6 +5,8 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/shauryagangrade/awesome-ai-prompts?style=social)](https://github.com/shauryagangrade/awesome-ai-prompts)
 
+Also listed in [Awesome Vibe Coding](https://github.com/taskade/awesome-vibe-coding#prompt-templates).
+
 A curated list of copy-paste AI prompts for **any developer who uses AI coding
 agents**. Unlike most prompt lists, these aren't one-off hacks - they're
 disciplined, **senior-engineer workflows that verify, don't guess**: read the
