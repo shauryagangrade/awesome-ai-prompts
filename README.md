@@ -1,11 +1,15 @@
 # awesome-ai-prompts
 
-[![Mentioned in Awesome Prompt Engineering](https://awesome.re/mentioned-badge.svg)](https://github.com/brandonhimpfen/awesome-prompt-engineering#prompt-libraries)
+[![diagnose-ci-gate skill in Awesome GitHub Copilot](https://awesome.re/mentioned-badge.svg)](https://github.com/github/awesome-copilot)
 ![Build](https://github.com/shauryagangrade/awesome-ai-prompts/actions/workflows/ci.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/shauryagangrade/awesome-ai-prompts?style=social)](https://github.com/shauryagangrade/awesome-ai-prompts)
 
-Also listed in [Awesome Vibe Coding](https://github.com/taskade/awesome-vibe-coding#prompt-templates).
+Also listed in [Awesome Vibe Coding](https://github.com/taskade/awesome-vibe-coding#prompt-templates)
+and [Awesome Prompt Engineering](https://github.com/brandonhimpfen/awesome-prompt-engineering#prompt-libraries).
+The CI gate triage workflow here is packaged as the
+[`diagnose-ci-gate`](https://github.com/github/awesome-copilot/blob/main/skills/diagnose-ci-gate/SKILL.md)
+skill in Awesome GitHub Copilot ([PR #6168](https://github.com/github/awesome-copilot/pull/6168), merged).
 
 A curated list of copy-paste AI prompts for **any developer who uses AI coding
 agents**. Unlike most prompt lists, these aren't one-off hacks - they're
