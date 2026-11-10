@@ -5,6 +5,8 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/shauryagangrade/awesome-ai-prompts?style=social)](https://github.com/shauryagangrade/awesome-ai-prompts)
 
+[![shauryagangrade/awesome-ai-prompts | Trendshift](https://trendshift.io/api/badge/trendshift/repositories/201232/daily?language=Shell)](https://trendshift.io/repositories/201232?utm_source=trendshift-badge&utm_medium=badge&utm_campaign=badge-trendshift-201232)
+
 Also listed in [Awesome Vibe Coding](https://github.com/taskade/awesome-vibe-coding#prompt-templates)
 and [Awesome Prompt Engineering](https://github.com/brandonhimpfen/awesome-prompt-engineering#prompt-libraries).
 The CI gate triage workflow here is packaged as the
