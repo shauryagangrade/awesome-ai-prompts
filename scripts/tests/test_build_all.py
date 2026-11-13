@@ -1,11 +1,12 @@
-"""Structural tests for scripts/build-all.py's generated page.
+"""Structural tests for scripts/build-all.py's generated pages.
 
 CI's `build-all.py --check` only guarantees the committed site under website/ is
 deterministic and in sync with the builder; it cannot see a template change
 that produces valid-looking but broken HTML. These tests run the real builder
-and assert the structural invariants the page relies on: one collapsed
-<details> per prompt, working copy-button ids, lucide icons on every category,
-and header links that resolve to the repo.
+and assert the structural invariants the pages rely on: the catalog links to
+every prompt page instead of inlining the bodies, every prompt page carries its
+own prompt as the h1, lucide icons on every category, and header links that
+resolve to the repo.
 """
 
 import re
@@ -37,16 +38,23 @@ class PageStructureTest(unittest.TestCase):
         articles = re.findall(r'<article class="prompt">', self.html)
         self.assertGreater(len(articles), 0)
 
-    def test_every_prompt_body_collapsed_by_default(self):
-        bodies = re.findall(r'<details class="body">', self.html)
-        self.assertEqual(len(bodies), len(re.findall(r'<article class="prompt">', self.html)))
-        self.assertNotIn('<details class="body" open>', self.html)
+    def test_prompt_bodies_are_not_inlined(self):
+        # The catalog carries titles, intros and links. Inlining every body
+        # made index.html a 642 KB duplicate of all 144 prompt pages, which
+        # left search engines choosing between the catalog and the page it
+        # duplicated. The full block belongs on the prompt page only.
+        self.assertEqual(re.findall(r'<pre class="prompt"', self.html), [])
+        self.assertEqual(re.findall(r'<details', self.html), [])
 
-    def test_copy_buttons_target_existing_body_ids(self):
-        anchors = re.findall(r'<button class="copy" data-copy="([^"]+)">', self.html)
-        self.assertGreater(len(anchors), 0)
-        missing = [a for a in anchors if f'id="body-{a}"' not in self.html]
-        self.assertEqual(missing, [])
+    def test_every_prompt_links_to_its_own_page(self):
+        linked = re.findall(r'href="(/prompt/[a-z0-9-]+/[a-z0-9-]+)"', self.html)
+        expected = {
+            f"/prompt/{cat}/{BUILD_ALL.slug_for(path)}"
+            for cat in BUILD_ALL.category_order()
+            for path in BUILD_ALL.prompt_files(cat)
+        }
+        self.assertEqual(set(linked), expected)
+        self.assertGreater(len(linked), 0)
 
     def test_toc_anchors_resolve(self):
         hrefs = URL_RE.findall(self.html)
@@ -68,9 +76,12 @@ class PageStructureTest(unittest.TestCase):
         self.assertIn("Star on GitHub", self.html)
         self.assertNotIn('data-lucide="git-fork"', self.html)
 
-    def test_expand_collapse_controls_present(self):
-        self.assertIn('id="expandAll"', self.html)
-        self.assertIn('id="collapseAll"', self.html)
+    def test_catalog_has_no_copy_or_expand_controls(self):
+        # The bodies live on their own pages now, so the copy buttons and the
+        # expand/collapse controls went with them.
+        self.assertNotIn('id="expandAll"', self.html)
+        self.assertNotIn('id="collapseAll"', self.html)
+        self.assertNotIn('class="copy"', self.html)
 
     def test_every_category_has_a_known_lucide_icon(self):
         for cat in BUILD_ALL.category_order():
@@ -104,10 +115,34 @@ class InternalLinkTest(unittest.TestCase):
             spec = f"{cls.cat}/{path.name}" in cls.spec_rels
             cls.entries.append((path, title, intro, body, spec))
         cls.category_html = BUILD_ALL.render_category_page(cls.cat, cls.entries)
-        path, title, intro, body, spec = cls.entries[0]
+        cls.first = cls.entries[0]
+        path, title, intro, body, spec = cls.first
         cls.prompt_html = BUILD_ALL.render_prompt_page(
             cls.cat, path, title, intro, body, spec, cls.entries
         )
+
+    @staticmethod
+    def _h1(page_html):
+        match = re.search(r"<h1>(.*?)</h1>", page_html, re.DOTALL)
+        assert match, "page has no h1"
+        return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", match.group(1))).strip()
+
+    def test_prompt_page_h1_is_the_prompt_not_the_site_name(self):
+        # Every subpage used to open with <h1>awesome-ai-prompts</h1>, which
+        # told a search engine nothing about the page. The h1 is the topic.
+        _, title, _, _, spec = self.first
+        expected = BUILD_ALL.meta_title(BUILD_ALL.clean_title(title, spec))
+        self.assertEqual(self._h1(self.prompt_html), expected)
+        self.assertNotEqual(self._h1(self.prompt_html), "awesome-ai-prompts")
+        self.assertFalse(self._h1(self.prompt_html).startswith("Reusable prompt:"))
+
+    def test_category_page_h1_names_the_category(self):
+        self.assertIn(self.cat, self._h1(self.category_html))
+        self.assertNotEqual(self._h1(self.category_html), "awesome-ai-prompts")
+
+    def test_subpages_link_back_to_the_catalog(self):
+        for page_html in (self.category_html, self.prompt_html):
+            self.assertIn('<a class="brand" href="/">awesome-ai-prompts</a>', page_html)
 
     def _internal_hrefs(self, page_html):
         # Root-relative ("/...") only; drop in-page anchors and absolute URLs

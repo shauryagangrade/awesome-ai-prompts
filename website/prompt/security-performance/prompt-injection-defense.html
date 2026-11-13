@@ -20,7 +20,10 @@
 <style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#1a1a1a;margin:0;background:#f7f7f5}
 .wrap{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
 header.site{border-bottom:2px solid #1a1a1a;padding-bottom:1rem;margin-bottom:1.5rem}
-header.site h1{margin:0 0 .25rem;font-size:1.6rem}
+header.site .brand{display:inline-block;margin:0 0 .4rem;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#777;text-decoration:none;border-bottom:1px dotted #bbb}
+header.site .brand:hover{color:#2f4f7f;border-bottom-style:solid}
+header.site h1{margin:0 0 .25rem;font-size:1.45rem;line-height:1.3;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+header.site h1 svg{width:1.2rem;height:1.2rem;flex:none;color:#2f4f7f}
 header.site p.sub{margin:.25rem 0;color:#555;font-size:.95rem}
 header.site nav.links{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;margin-top:.9rem;font-size:.9rem}
 header.site nav.links a{color:#1a1a1a;text-decoration:none;border-bottom:1px dotted #999}
@@ -28,8 +31,6 @@ header.site nav.links a:hover{border-bottom-style:solid;color:#2f4f7f}
 nav.crumb{font-size:.85rem;color:#777;margin-bottom:1.25rem}
 nav.crumb a{color:#777;text-decoration:none;border-bottom:1px dotted #bbb}
 nav.crumb a:hover{color:#2f4f7f;border-bottom-style:solid}
-h2.page{border-bottom:2px solid #333;padding-bottom:.35rem;font-size:1.35rem;display:flex;align-items:center;gap:.5rem;margin:0 0 1rem}
-h2.page svg{width:1.2rem;height:1.2rem;flex:none;color:#2f4f7f}
 span.spec{display:inline-block;font-size:.7rem;vertical-align:middle;background:#7fb3df;color:#fff;border-radius:4px;padding:.05rem .45rem;margin-left:.15rem}
 article.prompt{background:#fff;border:1px solid #ddd;border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1.75rem}
 article.prompt .head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
@@ -63,16 +64,16 @@ footer.site{margin-top:3rem;padding-top:1rem;border-top:1px solid #ddd;color:#88
 <body>
 <div class="wrap">
 <header class="site">
-<h1>awesome-ai-prompts</h1>
+<a class="brand" href="/">awesome-ai-prompts</a>
+<h1><i data-lucide="shield" aria-hidden="true"></i><span>prompt injection defense</span><span class="spec">spec</span></h1>
 <p class="sub">One prompt from the awesome-ai-prompts catalog, ready to paste into your AI coding agent.</p>
 <nav class="links">
 <a href="https://github.com/shauryagangrade/awesome-ai-prompts/blob/main/README.md">README &amp; docs</a>
 <a href="https://github.com/shauryagangrade/awesome-ai-prompts">Star on GitHub</a>
 </nav>
 </header>
-<nav class="crumb"><a href="/">All prompts</a> &rsaquo; <a href="/category/security-performance">security-performance</a> &rsaquo; Reusable prompt: prompt injection defense</nav>
+<nav class="crumb"><a href="/">All prompts</a> &rsaquo; <a href="/category/security-performance">security-performance</a> &rsaquo; prompt injection defense</nav>
 <main>
-<h2 class="page"><i data-lucide="shield" aria-hidden="true"></i><span>Reusable prompt: prompt injection defense</span><span class="spec">spec</span></h2>
 <article class="prompt">
 <div class="head">
 <p class="meta"><a href="https://github.com/shauryagangrade/awesome-ai-prompts/blob/main/security-performance/prompt-injection-defense-prompt.md">security-performance/prompt-injection-defense-prompt.md</a></p>
@@ -195,7 +196,7 @@ Before declaring the hardening complete, confirm each of these:
 </article>
 <section class="siblings">
 <h3>More security-performance prompts</h3>
-<ul><li><a href="/prompt/security-performance/auth-implementation">Reusable prompt: authentication &amp; authorization implementation</a></li><li><a href="/prompt/security-performance/dependency-audit">Reusable prompt: dependency audit</a></li><li><a href="/prompt/security-performance/dependency-vuln-triage">Reusable prompt: dependency vulnerability triage</a></li><li><a href="/prompt/security-performance/load-testing">Reusable prompt: load testing</a></li><li><a href="/prompt/security-performance/memory-leak-hunting">Reusable prompt: memory leak hunting</a></li><li><a href="/prompt/security-performance/performance-optimization">Reusable prompt: performance optimization</a></li><li><a href="/prompt/security-performance/privacy-gdpr-compliance-review">Reusable prompt: privacy and GDPR compliance review</a></li><li><a href="/prompt/security-performance/rate-limiting-abuse-prevention">Reusable prompt: rate limiting and abuse prevention</a></li><li><a href="/prompt/security-performance/secrets-management">Reusable prompt: secrets management</a></li><li><a href="/prompt/security-performance/secrets-scanning-response">Reusable prompt: secrets scanning response</a></li><li><a href="/prompt/security-performance/security-audit">Reusable prompt: security audit</a></li><li><a href="/prompt/security-performance/threat-modeling">Reusable prompt: threat modeling</a></li></ul>
+<ul><li><a href="/prompt/security-performance/auth-implementation">authentication &amp; authorization implementation</a></li><li><a href="/prompt/security-performance/dependency-audit">dependency audit</a></li><li><a href="/prompt/security-performance/dependency-vuln-triage">dependency vulnerability triage</a></li><li><a href="/prompt/security-performance/load-testing">load testing</a></li><li><a href="/prompt/security-performance/memory-leak-hunting">memory leak hunting</a></li><li><a href="/prompt/security-performance/performance-optimization">performance optimization</a></li><li><a href="/prompt/security-performance/privacy-gdpr-compliance-review">privacy and GDPR compliance review</a></li><li><a href="/prompt/security-performance/rate-limiting-abuse-prevention">rate limiting and abuse prevention</a></li><li><a href="/prompt/security-performance/secrets-management">secrets management</a></li><li><a href="/prompt/security-performance/secrets-scanning-response">secrets scanning response</a></li><li><a href="/prompt/security-performance/security-audit">security audit</a></li><li><a href="/prompt/security-performance/threat-modeling">threat modeling</a></li></ul>
 </section>
 </main>
 <footer class="site">

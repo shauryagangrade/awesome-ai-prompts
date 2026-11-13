@@ -20,7 +20,10 @@
 <style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#1a1a1a;margin:0;background:#f7f7f5}
 .wrap{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
 header.site{border-bottom:2px solid #1a1a1a;padding-bottom:1rem;margin-bottom:1.5rem}
-header.site h1{margin:0 0 .25rem;font-size:1.6rem}
+header.site .brand{display:inline-block;margin:0 0 .4rem;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#777;text-decoration:none;border-bottom:1px dotted #bbb}
+header.site .brand:hover{color:#2f4f7f;border-bottom-style:solid}
+header.site h1{margin:0 0 .25rem;font-size:1.45rem;line-height:1.3;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+header.site h1 svg{width:1.2rem;height:1.2rem;flex:none;color:#2f4f7f}
 header.site p.sub{margin:.25rem 0;color:#555;font-size:.95rem}
 header.site nav.links{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;margin-top:.9rem;font-size:.9rem}
 header.site nav.links a{color:#1a1a1a;text-decoration:none;border-bottom:1px dotted #999}
@@ -28,8 +31,6 @@ header.site nav.links a:hover{border-bottom-style:solid;color:#2f4f7f}
 nav.crumb{font-size:.85rem;color:#777;margin-bottom:1.25rem}
 nav.crumb a{color:#777;text-decoration:none;border-bottom:1px dotted #bbb}
 nav.crumb a:hover{color:#2f4f7f;border-bottom-style:solid}
-h2.page{border-bottom:2px solid #333;padding-bottom:.35rem;font-size:1.35rem;display:flex;align-items:center;gap:.5rem;margin:0 0 1rem}
-h2.page svg{width:1.2rem;height:1.2rem;flex:none;color:#2f4f7f}
 span.spec{display:inline-block;font-size:.7rem;vertical-align:middle;background:#7fb3df;color:#fff;border-radius:4px;padding:.05rem .45rem;margin-left:.15rem}
 article.prompt{background:#fff;border:1px solid #ddd;border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1.75rem}
 article.prompt .head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
@@ -63,16 +64,16 @@ footer.site{margin-top:3rem;padding-top:1rem;border-top:1px solid #ddd;color:#88
 <body>
 <div class="wrap">
 <header class="site">
-<h1>awesome-ai-prompts</h1>
+<a class="brand" href="/">awesome-ai-prompts</a>
+<h1><i data-lucide="code-2" aria-hidden="true"></i><span>environment setup</span></h1>
 <p class="sub">One prompt from the awesome-ai-prompts catalog, ready to paste into your AI coding agent.</p>
 <nav class="links">
 <a href="https://github.com/shauryagangrade/awesome-ai-prompts/blob/main/README.md">README &amp; docs</a>
 <a href="https://github.com/shauryagangrade/awesome-ai-prompts">Star on GitHub</a>
 </nav>
 </header>
-<nav class="crumb"><a href="/">All prompts</a> &rsaquo; <a href="/category/core-coding">core-coding</a> &rsaquo; Reusable prompt: environment setup</nav>
+<nav class="crumb"><a href="/">All prompts</a> &rsaquo; <a href="/category/core-coding">core-coding</a> &rsaquo; environment setup</nav>
 <main>
-<h2 class="page"><i data-lucide="code-2" aria-hidden="true"></i><span>Reusable prompt: environment setup</span></h2>
 <article class="prompt">
 <div class="head">
 <p class="meta"><a href="https://github.com/shauryagangrade/awesome-ai-prompts/blob/main/core-coding/environment-setup-prompt.md">core-coding/environment-setup-prompt.md</a></p>
@@ -130,7 +131,7 @@ not hours.
 </article>
 <section class="siblings">
 <h3>More core-coding prompts</h3>
-<ul><li><a href="/prompt/core-coding/agent-codebase-onboarding">Reusable prompt: agent codebase onboarding</a></li><li><a href="/prompt/core-coding/api-design">Reusable prompt: API design</a></li><li><a href="/prompt/core-coding/api-integration">Reusable prompt: REST API integration</a></li><li><a href="/prompt/core-coding/cli-tool-build">Reusable prompt: CLI tool build</a></li><li><a href="/prompt/core-coding/code-migration">Reusable prompt: code migration</a></li><li><a href="/prompt/core-coding/database-design">Reusable prompt: database design</a></li><li><a href="/prompt/core-coding/datetime-timezone-correctness">Reusable prompt: datetime &amp; timezone correctness</a></li><li><a href="/prompt/core-coding/debugging">Reusable prompt: systematic debugging</a></li><li><a href="/prompt/core-coding/email-delivery">Reusable prompt: email delivery</a></li><li><a href="/prompt/core-coding/error-handling-strategy">Reusable prompt: error handling strategy</a></li><li><a href="/prompt/core-coding/feature-implementation">Reusable prompt: end-to-end feature implementation</a></li><li><a href="/prompt/core-coding/file-uploads-media-handling">Reusable prompt: file uploads and media handling</a></li><li><a href="/prompt/core-coding/graphql-api-design">Reusable prompt: GraphQL API design</a></li><li><a href="/prompt/core-coding/human-codebase-onboarding">Reusable prompt: codebase understanding</a></li><li><a href="/prompt/core-coding/pair-programming-session">Reusable prompt: pair-programming session</a></li><li><a href="/prompt/core-coding/payment-integration">Reusable prompt: payment integration</a></li><li><a href="/prompt/core-coding/refactoring">Reusable prompt: safe refactoring</a></li><li><a href="/prompt/core-coding/regular-expressions">Reusable prompt: regular expressions that don&#x27;t bite</a></li><li><a href="/prompt/core-coding/websockets-realtime-features">Reusable prompt: WebSockets and realtime features</a></li></ul>
+<ul><li><a href="/prompt/core-coding/agent-codebase-onboarding">agent codebase onboarding</a></li><li><a href="/prompt/core-coding/api-design">API design</a></li><li><a href="/prompt/core-coding/api-integration">REST API integration</a></li><li><a href="/prompt/core-coding/cli-tool-build">CLI tool build</a></li><li><a href="/prompt/core-coding/code-migration">code migration</a></li><li><a href="/prompt/core-coding/database-design">database design</a></li><li><a href="/prompt/core-coding/datetime-timezone-correctness">datetime &amp; timezone correctness</a></li><li><a href="/prompt/core-coding/debugging">systematic debugging</a></li><li><a href="/prompt/core-coding/email-delivery">email delivery</a></li><li><a href="/prompt/core-coding/error-handling-strategy">error handling strategy</a></li><li><a href="/prompt/core-coding/feature-implementation">end-to-end feature implementation</a></li><li><a href="/prompt/core-coding/file-uploads-media-handling">file uploads and media handling</a></li><li><a href="/prompt/core-coding/graphql-api-design">GraphQL API design</a></li><li><a href="/prompt/core-coding/human-codebase-onboarding">codebase understanding</a></li><li><a href="/prompt/core-coding/pair-programming-session">pair-programming session</a></li><li><a href="/prompt/core-coding/payment-integration">payment integration</a></li><li><a href="/prompt/core-coding/refactoring">safe refactoring</a></li><li><a href="/prompt/core-coding/regular-expressions">regular expressions that don&#x27;t bite</a></li><li><a href="/prompt/core-coding/websockets-realtime-features">WebSockets and realtime features</a></li></ul>
 </section>
 </main>
 <footer class="site">

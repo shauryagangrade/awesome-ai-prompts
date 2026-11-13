@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
-"""Build the static catalog site: every prompt on one printable page, plus
-per-category and per-prompt pages for search engines.
+"""Build the static catalog site: an index of every prompt, plus per-category
+and per-prompt pages that carry the prompt text.
 
 Category folders come from the tracked `*-prompt.md` files; each file is split
 at its `---` divider (the copy-paste prompt block) and rendered as a
 self-contained HTML page with a linked mini-TOC, lucide category/prompt icons,
-per-prompt copy buttons, prompt bodies collapsed in <details> by default
-(expand/collapse all controls included), header links to the repo README,
-quick-start, examples and best practices, and print styles.
+header links to the repo README, quick-start, examples and best practices, and
+print styles. The catalog links to every prompt page instead of inlining the
+prompt bodies: a page that repeats the full text of 144 other pages competes
+with all of them in search, so each prompt block lives on exactly one page and
+the catalog carries the intro plus a link.
 
 Every page (main, per-category, per-prompt) additionally carries SEO metadata:
 a unique title and meta description, a canonical URL, Open Graph and Twitter
@@ -164,7 +166,10 @@ PAGE_CSS = """\
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#1a1a1a;margin:0;background:#f7f7f5}
 .wrap{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
 header.site{border-bottom:2px solid #1a1a1a;padding-bottom:1rem;margin-bottom:1.5rem}
-header.site h1{margin:0 0 .25rem;font-size:1.6rem}
+header.site .brand{display:inline-block;margin:0 0 .4rem;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#777;text-decoration:none;border-bottom:1px dotted #bbb}
+header.site .brand:hover{color:#2f4f7f;border-bottom-style:solid}
+header.site h1{margin:0 0 .25rem;font-size:1.45rem;line-height:1.3;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+header.site h1 svg{width:1.2rem;height:1.2rem;flex:none;color:#2f4f7f}
 header.site p.sub{margin:.25rem 0;color:#555;font-size:.95rem}
 header.site nav.links{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;margin-top:.9rem;font-size:.9rem}
 header.site nav.links a{color:#1a1a1a;text-decoration:none;border-bottom:1px dotted #999}
@@ -172,8 +177,6 @@ header.site nav.links a:hover{border-bottom-style:solid;color:#2f4f7f}
 nav.crumb{font-size:.85rem;color:#777;margin-bottom:1.25rem}
 nav.crumb a{color:#777;text-decoration:none;border-bottom:1px dotted #bbb}
 nav.crumb a:hover{color:#2f4f7f;border-bottom-style:solid}
-h2.page{border-bottom:2px solid #333;padding-bottom:.35rem;font-size:1.35rem;display:flex;align-items:center;gap:.5rem;margin:0 0 1rem}
-h2.page svg{width:1.2rem;height:1.2rem;flex:none;color:#2f4f7f}
 span.spec{display:inline-block;font-size:.7rem;vertical-align:middle;background:#7fb3df;color:#fff;border-radius:4px;padding:.05rem .45rem;margin-left:.15rem}
 article.prompt{background:#fff;border:1px solid #ddd;border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1.75rem}
 article.prompt .head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
@@ -213,9 +216,6 @@ header.site .links a:hover{border-bottom-style:solid;color:#2f4f7f}
 header.site .links svg{width:1.05em;height:1.05em;flex:none}
 nav.toc{background:#fff;border:1px solid #ddd;border-radius:8px;padding:1rem 1.5rem;margin-bottom:2.5rem}
 nav.toc h2{margin:0 0 .5rem;font-size:1.05rem;text-transform:uppercase;letter-spacing:.04em;color:#555}
-nav.toc .controls{display:flex;gap:.5rem;margin:0 0 .9rem}
-nav.toc .controls button{border:1px solid #ddd;background:#fff;border-radius:6px;padding:.3rem .65rem;font-size:.8rem;color:#555;cursor:pointer}
-nav.toc .controls button:hover{background:rgba(0,0,0,.05);color:#111}
 nav.toc ol,.toc ul{margin:.25rem 0}.toc ul{margin-left:1.25rem}
 nav.toc li{margin:.15rem 0}
 nav.toc a{color:#1a1a1a;text-decoration:none;border-bottom:1px dotted #999}
@@ -230,25 +230,15 @@ section.cat h2 .count{font-size:.8rem;color:#888;font-weight:400;margin-left:.15
 article.prompt{background:#fff;border:1px solid #ddd;border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1.75rem}
 article.prompt h3{margin:0 0 .5rem;font-size:1.15rem;display:flex;align-items:center;gap:.45rem}
 article.prompt h3 svg{width:1.05em;height:1.05em;flex:none;color:#4a6fa5}
-article.prompt .head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
-button.copy{border:1px solid #ddd;background:#fff;padding:.25rem .6rem;border-radius:6px;color:#666;cursor:pointer;font-size:.78rem;flex:none}
-button.copy:hover{background:rgba(0,0,0,.05);color:#111}
 article.prompt .meta{font-size:.82rem;color:#777;margin-bottom:.75rem}
 article.prompt .meta a{color:#777}
 a.pagenav{color:#777;text-decoration:none;border-bottom:1px dotted #bbb;font-weight:400}
 a.pagenav:hover{color:#2f4f7f;border-bottom-style:solid}
 h2 a.pagenav{margin-left:auto;font-size:.75rem}
 article.prompt .intro p{margin:.4rem 0 .9rem;color:#333}
-details.body{margin-top:.25rem}
-details.body summary{cursor:pointer;user-select:none;color:#666;font-size:.82rem;margin:.1rem 0}
-details.body summary:hover{color:#111}
-details.body[open] summary{margin-bottom:.6rem}
-details.body summary::after{content:"▸";color:#999;margin-left:.4rem}
-details.body[open] summary::after{content:"▾"}
-pre.prompt{white-space:pre-wrap;background:#1e1e1e;color:#e6e6e6;border-radius:6px;padding:1rem;margin:0;overflow-x:auto}
 span.spec{display:inline-block;font-size:.7rem;vertical-align:middle;background:#7fb3df;color:#fff;border-radius:4px;padding:.05rem .45rem;margin-left:.15rem}
 footer.site{margin-top:3rem;padding-top:1rem;border-top:1px solid #ddd;color:#888;font-size:.85rem}
-@media print{button.copy,.controls,nav.toc,header.site p.sub,header.site .links{display:none}.wrap{max-width:none;padding:0}article.prompt{border:none;padding:.5rem 0}section.cat{page-break-before:always}pre.prompt{color:#000;background:#fff;border:1px solid #ccc}}
+@media print{nav.toc,header.site p.sub,header.site .links{display:none}.wrap{max-width:none;padding:0}article.prompt{border:none;padding:.5rem 0}section.cat{page-break-before:always}}
 """
 
 PROMPT_SUFFIX = "-prompt.md"
@@ -342,12 +332,12 @@ def meta_title(title):
     return re.sub(r"^Reusable prompt: ", "", title)
 
 
-def render_prompt(path, title, intro, body, spec_rels, icon):
+def render_prompt(path, title, intro, spec_rels, icon):
     cat = path.parent.name
     rel = f"{cat}/{path.name}"
     anchor = f"{cat}-{slug_for(path)}"
     is_spec = rel in spec_rels
-    title = clean_title(title, is_spec)
+    title = meta_title(clean_title(title, is_spec))
     src_link = f'{GITHUB_BLOB}{cat}/{path.name}'
     intro_html = ""
     if intro:
@@ -355,16 +345,11 @@ def render_prompt(path, title, intro, body, spec_rels, icon):
         intro_html = f'<div class="intro">{"".join(f"<p>{p}</p>" for p in paras)}</div>'
     spec_html = '<span class="spec">spec</span>' if is_spec else ""
     icon_html = f'<i data-lucide="{icon}" aria-hidden="true"></i>'
+    page_href = f"/{PROMPT_PAGES}/{cat}/{slug_for(path)}"
     return f"""<article class="prompt">
-<div class="head">
 <h3 id="{anchor}">{icon_html}<span>{html.escape(title)}</span>{spec_html}</h3>
-<button class="copy" data-copy="{anchor}">Copy prompt</button>
-</div>
-<p class="meta"><a href="{src_link}">{html.escape(cat + '/' + path.name)}</a> &middot; <a class="pagenav" href="/{PROMPT_PAGES}/{cat}/{slug_for(path)}">view page</a></p>
+<p class="meta"><a href="{src_link}">{html.escape(cat + '/' + path.name)}</a> &middot; <a class="pagenav" href="{page_href}">open full prompt</a></p>
 {intro_html}
-<details class="body"><summary>Show prompt</summary>
-<pre class="prompt" id="body-{anchor}">{html.escape(body)}</pre>
-</details>
 </article>"""
 
 
@@ -382,7 +367,7 @@ def render_page(output_path):
             spec = f"{cat}/{path.name}" in spec_rels
             loaded.append((path, title, intro, body, spec))
         toc_inner = "".join(
-            f'<li><a href="#{cat}-{slug_for(path)}">{html.escape(clean_title(title, spec))}</a></li>'
+            f'<li><a href="#{cat}-{slug_for(path)}">{html.escape(meta_title(clean_title(title, spec)))}</a></li>'
             for path, title, _, _, spec in loaded
         )
         toc_lists.append(
@@ -391,8 +376,8 @@ def render_page(output_path):
             f"<ul>{toc_inner}</ul></li>"
         )
         cat_html = [
-            render_prompt(path, title, intro, body, spec_rels, category_icon(cat))
-            for path, title, intro, body, _ in loaded
+            render_prompt(path, title, intro, spec_rels, category_icon(cat))
+            for path, title, intro, _, _ in loaded
         ]
         sections.append(
             f'<section class="cat">\n<h2 id="{cat}"><i data-lucide="{category_icon(cat)}" '
@@ -419,7 +404,7 @@ def render_page(output_path):
         "system design, and more. Verify, don't guess."
     )
     meta = meta_block(
-        title="awesome-ai-prompts - all prompts on one page",
+        title=f"awesome-ai-prompts - {total} AI coding-agent prompts",
         description=meta_description,
         canonical=f"{SITE_URL}/",
         og_type="website",
@@ -442,17 +427,13 @@ def render_page(output_path):
 <div class="wrap">
 <header class="site">
 <h1>awesome-ai-prompts</h1>
-<p class="sub">{category_note}. Prompt bodies are collapsed by default: expand a card to read it, or Copy to grab the whole block.</p>
+<p class="sub">{category_note}. Every prompt has its own page with the full block ready to paste; open one from a card below.</p>
 <nav class="links">
 {header_links}
 </nav>
 </header>
 <nav class="toc">
 <h2>Jump to</h2>
-<div class="controls">
-<button id="expandAll" type="button">Expand all</button>
-<button id="collapseAll" type="button">Collapse all</button>
-</div>
 {toc_html}
 </nav>
 {sections_html}
@@ -462,33 +443,6 @@ def render_page(output_path):
 </div>
 <script src="{LUCIDE_SRC}"></script>
 <script>
-function copyPrompt(id) {{
-  var el = document.getElementById('body-' + id);
-  var text = el.textContent;
-  function done() {{ el.scrollIntoView({{ behavior: 'smooth', block: 'nearest' }}); }}
-  function fallback() {{
-    var ta = document.createElement('textarea');
-    ta.value = text;
-    document.body.appendChild(ta);
-    ta.select();
-    try {{ document.execCommand('copy'); }} finally {{ document.body.removeChild(ta); }}
-    done();
-  }}
-  if (navigator.clipboard && window.isSecureContext) {{
-    navigator.clipboard.writeText(text).then(done, fallback);
-  }} else {{
-    fallback();
-  }}
-}}
-function toggleAll(open) {{
-  document.querySelectorAll('details.body').forEach(function (d) {{ d.open = open; }});
-}}
-document.querySelectorAll('button.copy').forEach(function (b) {{
-  b.addEventListener('click', function () {{ copyPrompt(b.getAttribute('data-copy')); }});
-}});
-document.getElementById('expandAll').addEventListener('click', function () {{ toggleAll(true); }});
-document.getElementById('collapseAll').addEventListener('click', function () {{ toggleAll(false); }});
-window.addEventListener('beforeprint', function () {{ toggleAll(true); }});
 if (window.lucide) {{ lucide.createIcons(); }}
 </script>
 </body>
@@ -498,11 +452,14 @@ if (window.lucide) {{ lucide.createIcons(); }}
     return total
 
 
-def page_shell(meta, sub, breadcrumb, content, extra_js=""):
+def page_shell(meta, h1, sub, breadcrumb, content, extra_js=""):
     """Common HTML shell for the per-category and per-prompt pages.
 
     Same visual language as the main catalog but scoped to one page: a
-    breadcrumb instead of the mini-TOC, and no expand/collapse controls.
+    breadcrumb instead of the mini-TOC, and no card list. `h1` is the page's
+    own topic and is passed in already escaped (icon, title and any spec
+    badge), because a site-name h1 on all 159 pages says nothing about what
+    any single page covers; the site name becomes a link home instead.
     """
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -519,7 +476,8 @@ def page_shell(meta, sub, breadcrumb, content, extra_js=""):
 <body>
 <div class="wrap">
 <header class="site">
-<h1>awesome-ai-prompts</h1>
+<a class="brand" href="/">awesome-ai-prompts</a>
+<h1>{h1}</h1>
 <p class="sub">{sub}</p>
 <nav class="links">
 <a href="{GITHUB_BLOB}README.md">README &amp; docs</a>
@@ -590,17 +548,17 @@ def render_category_page(cat, entries):
     cards = "".join(
         f'<li><a href="/{PROMPT_PAGES}/{cat}/{slug_for(path)}">'
         f'<strong><i data-lucide="{category_icon(cat)}" aria-hidden="true"></i> '
-        f"{html.escape(clean_title(title, spec))}</strong>"
+        f"{html.escape(meta_title(clean_title(title, spec)))}</strong>"
         f"<span>{html.escape(clip(intro, 90))}</span></a></li>"
         for path, title, intro, _, spec in entries
     )
-    content = f"""<h2 class="page"><i data-lucide="{category_icon(cat)}" aria-hidden="true"></i><span>{html.escape(cat)}</span></h2>
-<ul class="cards">
+    content = f"""<ul class="cards">
 {cards}
 </ul>
 <a class="cta" href="{GITHUB_BLOB}{cat}/">View {html.escape(cat)} on GitHub</a>"""
     return page_shell(
         meta=meta,
+        h1=f'<i data-lucide="{category_icon(cat)}" aria-hidden="true"></i><span>{html.escape(cat)} prompts</span>',
         sub=f"{len(entries)} prompts in {cat}. Each page has the full prompt block ready to paste.",
         breadcrumb=f'<a href="/">All prompts</a> &rsaquo; {html.escape(cat)}',
         content=content,
@@ -649,12 +607,11 @@ def render_prompt_page(cat, path, title, intro, body, is_spec, entries):
         paras = [html.escape(p.strip()) for p in intro.split("\n\n") if p.strip()]
         intro_html = f'<div class="intro">{"".join(f"<p>{p}</p>" for p in paras)}</div>'
     siblings = "".join(
-        f'<li><a href="/{PROMPT_PAGES}/{cat}/{slug_for(sibling)}">{html.escape(clean_title(sib_title, spec))}</a></li>'
+        f'<li><a href="/{PROMPT_PAGES}/{cat}/{slug_for(sibling)}">{html.escape(meta_title(clean_title(sib_title, spec)))}</a></li>'
         for sibling, sib_title, _, _, spec in entries
         if sibling != path
     )
-    content = f"""<h2 class="page"><i data-lucide="{category_icon(cat)}" aria-hidden="true"></i><span>{html.escape(title)}</span>{spec_html}</h2>
-<article class="prompt">
+    content = f"""<article class="prompt">
 <div class="head">
 <p class="meta"><a href="{GITHUB_BLOB}{rel}">{html.escape(rel)}</a></p>
 <button class="copy" type="button">Copy prompt</button>
@@ -668,10 +625,14 @@ def render_prompt_page(cat, path, title, intro, body, is_spec, entries):
 </section>"""
     return page_shell(
         meta=meta,
+        h1=(
+            f'<i data-lucide="{category_icon(cat)}" aria-hidden="true"></i>'
+            f"<span>{html.escape(search_title)}</span>{spec_html}"
+        ),
         sub="One prompt from the awesome-ai-prompts catalog, ready to paste into your AI coding agent.",
         breadcrumb=(
             f'<a href="/">All prompts</a> &rsaquo; '
-            f'<a href="/{CATEGORY_PAGES}/{cat}">{html.escape(cat)}</a> &rsaquo; {html.escape(title)}'
+            f'<a href="/{CATEGORY_PAGES}/{cat}">{html.escape(cat)}</a> &rsaquo; {html.escape(search_title)}'
         ),
         content=content,
         extra_js=(
@@ -738,8 +699,8 @@ def render_llms_txt(dest_root, spec_rels):
         "## Site",
         "",
         (
-            f"- [All prompts on one page]({SITE_URL}/): the full catalog with a mini-TOC "
-            "and one-click copy buttons"
+            f"- [Prompt catalog]({SITE_URL}/): every prompt by category, each one "
+            "linking to its own page with the full block"
         ),
         (
             f"- [GitHub repository](https://{SELF_REPO}): source of truth for every prompt, "

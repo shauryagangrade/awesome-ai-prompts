@@ -6,7 +6,7 @@
 
 ## Site
 
-- [All prompts on one page](https://awesome-ai-prompts.vercel.app/): the full catalog with a mini-TOC and one-click copy buttons
+- [Prompt catalog](https://awesome-ai-prompts.vercel.app/): every prompt by category, each one linking to its own page with the full block
 - [GitHub repository](https://github.com/shauryagangrade/awesome-ai-prompts): source of truth for every prompt, contributions welcome
 
 ## Categories

@@ -13,6 +13,10 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - Add `docs/opencode.md` - run a prompt as an opencode slash command with `opencode run`, and keep the catalog's verification rules in `AGENTS.md`.
 
+### Changed
+
+- Generated site: the catalog links to each prompt page instead of inlining all 144 prompt blocks, so `website/index.html` drops from 642 KB to 144 KB and every prompt has one canonical page rather than a duplicate of it. Subpages now use the page topic as the `h1`; previously all 159 pages opened with `<h1>awesome-ai-prompts</h1>`.
+
 ## [0.7.0] - 2026-10-24
 
 ### Added

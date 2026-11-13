@@ -20,7 +20,10 @@
 <style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#1a1a1a;margin:0;background:#f7f7f5}
 .wrap{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
 header.site{border-bottom:2px solid #1a1a1a;padding-bottom:1rem;margin-bottom:1.5rem}
-header.site h1{margin:0 0 .25rem;font-size:1.6rem}
+header.site .brand{display:inline-block;margin:0 0 .4rem;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#777;text-decoration:none;border-bottom:1px dotted #bbb}
+header.site .brand:hover{color:#2f4f7f;border-bottom-style:solid}
+header.site h1{margin:0 0 .25rem;font-size:1.45rem;line-height:1.3;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+header.site h1 svg{width:1.2rem;height:1.2rem;flex:none;color:#2f4f7f}
 header.site p.sub{margin:.25rem 0;color:#555;font-size:.95rem}
 header.site nav.links{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;margin-top:.9rem;font-size:.9rem}
 header.site nav.links a{color:#1a1a1a;text-decoration:none;border-bottom:1px dotted #999}
@@ -28,8 +31,6 @@ header.site nav.links a:hover{border-bottom-style:solid;color:#2f4f7f}
 nav.crumb{font-size:.85rem;color:#777;margin-bottom:1.25rem}
 nav.crumb a{color:#777;text-decoration:none;border-bottom:1px dotted #bbb}
 nav.crumb a:hover{color:#2f4f7f;border-bottom-style:solid}
-h2.page{border-bottom:2px solid #333;padding-bottom:.35rem;font-size:1.35rem;display:flex;align-items:center;gap:.5rem;margin:0 0 1rem}
-h2.page svg{width:1.2rem;height:1.2rem;flex:none;color:#2f4f7f}
 span.spec{display:inline-block;font-size:.7rem;vertical-align:middle;background:#7fb3df;color:#fff;border-radius:4px;padding:.05rem .45rem;margin-left:.15rem}
 article.prompt{background:#fff;border:1px solid #ddd;border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1.75rem}
 article.prompt .head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
@@ -63,16 +64,16 @@ footer.site{margin-top:3rem;padding-top:1rem;border-top:1px solid #ddd;color:#88
 <body>
 <div class="wrap">
 <header class="site">
-<h1>awesome-ai-prompts</h1>
+<a class="brand" href="/">awesome-ai-prompts</a>
+<h1><i data-lucide="palette" aria-hidden="true"></i><span>offline-first that survives a new deploy</span></h1>
 <p class="sub">One prompt from the awesome-ai-prompts catalog, ready to paste into your AI coding agent.</p>
 <nav class="links">
 <a href="https://github.com/shauryagangrade/awesome-ai-prompts/blob/main/README.md">README &amp; docs</a>
 <a href="https://github.com/shauryagangrade/awesome-ai-prompts">Star on GitHub</a>
 </nav>
 </header>
-<nav class="crumb"><a href="/">All prompts</a> &rsaquo; <a href="/category/frontend-ui">frontend-ui</a> &rsaquo; Reusable prompt: offline-first that survives a new deploy</nav>
+<nav class="crumb"><a href="/">All prompts</a> &rsaquo; <a href="/category/frontend-ui">frontend-ui</a> &rsaquo; offline-first that survives a new deploy</nav>
 <main>
-<h2 class="page"><i data-lucide="palette" aria-hidden="true"></i><span>Reusable prompt: offline-first that survives a new deploy</span></h2>
 <article class="prompt">
 <div class="head">
 <p class="meta"><a href="https://github.com/shauryagangrade/awesome-ai-prompts/blob/main/frontend-ui/pwa-offline-support-prompt.md">frontend-ui/pwa-offline-support-prompt.md</a></p>
@@ -132,7 +133,7 @@ table, the queued mutation path with its conflict rule, and the offline test.
 </article>
 <section class="siblings">
 <h3>More frontend-ui prompts</h3>
-<ul><li><a href="/prompt/frontend-ui/animation-performance">Reusable prompt: animation that stays smooth on a mid-range phone</a></li><li><a href="/prompt/frontend-ui/browser-extension-development">Reusable prompt: browser extension development</a></li><li><a href="/prompt/frontend-ui/component-build">Reusable prompt: component build</a></li><li><a href="/prompt/frontend-ui/design-handoff">Reusable prompt: design handoff to code</a></li><li><a href="/prompt/frontend-ui/design-tokens-theming">Reusable prompt: design tokens that survive dark mode and a rebrand</a></li><li><a href="/prompt/frontend-ui/i18n-localization">Reusable prompt: internationalization (i18n)</a></li><li><a href="/prompt/frontend-ui/instagram-carousel">Reusable prompt: Instagram carousel from a repo</a></li><li><a href="/prompt/frontend-ui/responsive-design">Reusable prompt: responsive design</a></li><li><a href="/prompt/frontend-ui/state-management">Reusable prompt: frontend state management</a></li><li><a href="/prompt/frontend-ui/ui-audit">Reusable prompt: UI audit</a></li><li><a href="/prompt/frontend-ui/web-performance-vitals">Reusable prompt: Core Web Vitals optimization</a></li><li><a href="/prompt/frontend-ui/website-seo">Reusable prompt: Website SEO audit and optimization</a></li></ul>
+<ul><li><a href="/prompt/frontend-ui/animation-performance">animation that stays smooth on a mid-range phone</a></li><li><a href="/prompt/frontend-ui/browser-extension-development">browser extension development</a></li><li><a href="/prompt/frontend-ui/component-build">component build</a></li><li><a href="/prompt/frontend-ui/design-handoff">design handoff to code</a></li><li><a href="/prompt/frontend-ui/design-tokens-theming">design tokens that survive dark mode and a rebrand</a></li><li><a href="/prompt/frontend-ui/i18n-localization">internationalization (i18n)</a></li><li><a href="/prompt/frontend-ui/instagram-carousel">Instagram carousel from a repo</a></li><li><a href="/prompt/frontend-ui/responsive-design">responsive design</a></li><li><a href="/prompt/frontend-ui/state-management">frontend state management</a></li><li><a href="/prompt/frontend-ui/ui-audit">UI audit</a></li><li><a href="/prompt/frontend-ui/web-performance-vitals">Core Web Vitals optimization</a></li><li><a href="/prompt/frontend-ui/website-seo">Website SEO audit and optimization</a></li></ul>
 </section>
 </main>
 <footer class="site">

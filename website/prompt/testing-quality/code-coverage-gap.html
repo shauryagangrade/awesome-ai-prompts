@@ -20,7 +20,10 @@
 <style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#1a1a1a;margin:0;background:#f7f7f5}
 .wrap{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
 header.site{border-bottom:2px solid #1a1a1a;padding-bottom:1rem;margin-bottom:1.5rem}
-header.site h1{margin:0 0 .25rem;font-size:1.6rem}
+header.site .brand{display:inline-block;margin:0 0 .4rem;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#777;text-decoration:none;border-bottom:1px dotted #bbb}
+header.site .brand:hover{color:#2f4f7f;border-bottom-style:solid}
+header.site h1{margin:0 0 .25rem;font-size:1.45rem;line-height:1.3;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+header.site h1 svg{width:1.2rem;height:1.2rem;flex:none;color:#2f4f7f}
 header.site p.sub{margin:.25rem 0;color:#555;font-size:.95rem}
 header.site nav.links{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;margin-top:.9rem;font-size:.9rem}
 header.site nav.links a{color:#1a1a1a;text-decoration:none;border-bottom:1px dotted #999}
@@ -28,8 +31,6 @@ header.site nav.links a:hover{border-bottom-style:solid;color:#2f4f7f}
 nav.crumb{font-size:.85rem;color:#777;margin-bottom:1.25rem}
 nav.crumb a{color:#777;text-decoration:none;border-bottom:1px dotted #bbb}
 nav.crumb a:hover{color:#2f4f7f;border-bottom-style:solid}
-h2.page{border-bottom:2px solid #333;padding-bottom:.35rem;font-size:1.35rem;display:flex;align-items:center;gap:.5rem;margin:0 0 1rem}
-h2.page svg{width:1.2rem;height:1.2rem;flex:none;color:#2f4f7f}
 span.spec{display:inline-block;font-size:.7rem;vertical-align:middle;background:#7fb3df;color:#fff;border-radius:4px;padding:.05rem .45rem;margin-left:.15rem}
 article.prompt{background:#fff;border:1px solid #ddd;border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1.75rem}
 article.prompt .head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
@@ -63,16 +64,16 @@ footer.site{margin-top:3rem;padding-top:1rem;border-top:1px solid #ddd;color:#88
 <body>
 <div class="wrap">
 <header class="site">
-<h1>awesome-ai-prompts</h1>
+<a class="brand" href="/">awesome-ai-prompts</a>
+<h1><i data-lucide="flask-conical" aria-hidden="true"></i><span>coverage gap analysis</span></h1>
 <p class="sub">One prompt from the awesome-ai-prompts catalog, ready to paste into your AI coding agent.</p>
 <nav class="links">
 <a href="https://github.com/shauryagangrade/awesome-ai-prompts/blob/main/README.md">README &amp; docs</a>
 <a href="https://github.com/shauryagangrade/awesome-ai-prompts">Star on GitHub</a>
 </nav>
 </header>
-<nav class="crumb"><a href="/">All prompts</a> &rsaquo; <a href="/category/testing-quality">testing-quality</a> &rsaquo; Reusable prompt: coverage gap analysis</nav>
+<nav class="crumb"><a href="/">All prompts</a> &rsaquo; <a href="/category/testing-quality">testing-quality</a> &rsaquo; coverage gap analysis</nav>
 <main>
-<h2 class="page"><i data-lucide="flask-conical" aria-hidden="true"></i><span>Reusable prompt: coverage gap analysis</span></h2>
 <article class="prompt">
 <div class="head">
 <p class="meta"><a href="https://github.com/shauryagangrade/awesome-ai-prompts/blob/main/testing-quality/code-coverage-gap-prompt.md">testing-quality/code-coverage-gap-prompt.md</a></p>
@@ -126,7 +127,7 @@ number.
 </article>
 <section class="siblings">
 <h3>More testing-quality prompts</h3>
-<ul><li><a href="/prompt/testing-quality/bug-finder">Reusable prompt: bug finder</a></li><li><a href="/prompt/testing-quality/bug-finder-with-docs">Reusable prompt: bug finder with docs</a></li><li><a href="/prompt/testing-quality/chaos-resilience">Reusable prompt: chaos &amp; resilience testing</a></li><li><a href="/prompt/testing-quality/contract-testing">Reusable prompt: contract testing</a></li><li><a href="/prompt/testing-quality/e2e-test-scaffold">Reusable prompt: end-to-end test scaffold</a></li><li><a href="/prompt/testing-quality/mutation-testing">Reusable prompt: mutation testing</a></li><li><a href="/prompt/testing-quality/property-based-testing">Reusable prompt: property-based testing</a></li><li><a href="/prompt/testing-quality/test-driven-development">Reusable prompt: strict TDD</a></li><li><a href="/prompt/testing-quality/test-writing">Reusable prompt: comprehensive test writing</a></li></ul>
+<ul><li><a href="/prompt/testing-quality/bug-finder">bug finder</a></li><li><a href="/prompt/testing-quality/bug-finder-with-docs">bug finder with docs</a></li><li><a href="/prompt/testing-quality/chaos-resilience">chaos &amp; resilience testing</a></li><li><a href="/prompt/testing-quality/contract-testing">contract testing</a></li><li><a href="/prompt/testing-quality/e2e-test-scaffold">end-to-end test scaffold</a></li><li><a href="/prompt/testing-quality/mutation-testing">mutation testing</a></li><li><a href="/prompt/testing-quality/property-based-testing">property-based testing</a></li><li><a href="/prompt/testing-quality/test-driven-development">strict TDD</a></li><li><a href="/prompt/testing-quality/test-writing">comprehensive test writing</a></li></ul>
 </section>
 </main>
 <footer class="site">

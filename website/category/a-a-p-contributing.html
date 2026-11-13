@@ -20,7 +20,10 @@
 <style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#1a1a1a;margin:0;background:#f7f7f5}
 .wrap{max-width:760px;margin:0 auto;padding:2rem 1.5rem 4rem}
 header.site{border-bottom:2px solid #1a1a1a;padding-bottom:1rem;margin-bottom:1.5rem}
-header.site h1{margin:0 0 .25rem;font-size:1.6rem}
+header.site .brand{display:inline-block;margin:0 0 .4rem;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#777;text-decoration:none;border-bottom:1px dotted #bbb}
+header.site .brand:hover{color:#2f4f7f;border-bottom-style:solid}
+header.site h1{margin:0 0 .25rem;font-size:1.45rem;line-height:1.3;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+header.site h1 svg{width:1.2rem;height:1.2rem;flex:none;color:#2f4f7f}
 header.site p.sub{margin:.25rem 0;color:#555;font-size:.95rem}
 header.site nav.links{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;margin-top:.9rem;font-size:.9rem}
 header.site nav.links a{color:#1a1a1a;text-decoration:none;border-bottom:1px dotted #999}
@@ -28,8 +31,6 @@ header.site nav.links a:hover{border-bottom-style:solid;color:#2f4f7f}
 nav.crumb{font-size:.85rem;color:#777;margin-bottom:1.25rem}
 nav.crumb a{color:#777;text-decoration:none;border-bottom:1px dotted #bbb}
 nav.crumb a:hover{color:#2f4f7f;border-bottom-style:solid}
-h2.page{border-bottom:2px solid #333;padding-bottom:.35rem;font-size:1.35rem;display:flex;align-items:center;gap:.5rem;margin:0 0 1rem}
-h2.page svg{width:1.2rem;height:1.2rem;flex:none;color:#2f4f7f}
 span.spec{display:inline-block;font-size:.7rem;vertical-align:middle;background:#7fb3df;color:#fff;border-radius:4px;padding:.05rem .45rem;margin-left:.15rem}
 article.prompt{background:#fff;border:1px solid #ddd;border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:1.75rem}
 article.prompt .head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
@@ -63,7 +64,8 @@ footer.site{margin-top:3rem;padding-top:1rem;border-top:1px solid #ddd;color:#88
 <body>
 <div class="wrap">
 <header class="site">
-<h1>awesome-ai-prompts</h1>
+<a class="brand" href="/">awesome-ai-prompts</a>
+<h1><i data-lucide="users" aria-hidden="true"></i><span>a-a-p-contributing prompts</span></h1>
 <p class="sub">6 prompts in a-a-p-contributing. Each page has the full prompt block ready to paste.</p>
 <nav class="links">
 <a href="https://github.com/shauryagangrade/awesome-ai-prompts/blob/main/README.md">README &amp; docs</a>
@@ -72,9 +74,8 @@ footer.site{margin-top:3rem;padding-top:1rem;border-top:1px solid #ddd;color:#88
 </header>
 <nav class="crumb"><a href="/">All prompts</a> &rsaquo; a-a-p-contributing</nav>
 <main>
-<h2 class="page"><i data-lucide="users" aria-hidden="true"></i><span>a-a-p-contributing</span></h2>
 <ul class="cards">
-<li><a href="/prompt/a-a-p-contributing/fix-reported-bug"><strong><i data-lucide="users" aria-hidden="true"></i> Reusable prompt: fix a reported bug</strong><span>Copy-paste the block below into any AI coding agent to fix a bug reported in an issue in...</span></a></li><li><a href="/prompt/a-a-p-contributing/new-prompt-contribution"><strong><i data-lucide="users" aria-hidden="true"></i> Reusable prompt: new prompt contribution</strong><span>Copy-paste the block below into any AI coding agent to add a new prompt to this...</span></a></li><li><a href="/prompt/a-a-p-contributing/one-pager-schema"><strong><i data-lucide="users" aria-hidden="true"></i> Reusable prompt: one-pager prompt schema</strong><span>Copy-paste the block below into any AI coding agent to author a one-pager prompt for this...</span></a></li><li><a href="/prompt/a-a-p-contributing/prompt-pr-review"><strong><i data-lucide="users" aria-hidden="true"></i> Reusable prompt: prompt PR review</strong><span>Copy-paste the block below into any AI coding agent to review a pull request that adds or...</span></a></li><li><a href="/prompt/a-a-p-contributing/resolve-open-issue"><strong><i data-lucide="users" aria-hidden="true"></i> Reusable prompt: resolve an open issue</strong><span>Copy-paste the block below into any AI coding agent to take an open issue in this...</span></a></li><li><a href="/prompt/a-a-p-contributing/spec-prompt-schema"><strong><i data-lucide="users" aria-hidden="true"></i> Reusable prompt: spec prompt schema</strong><span>Copy-paste the block below into any AI coding agent to author a spec prompt for this...</span></a></li>
+<li><a href="/prompt/a-a-p-contributing/fix-reported-bug"><strong><i data-lucide="users" aria-hidden="true"></i> fix a reported bug</strong><span>Copy-paste the block below into any AI coding agent to fix a bug reported in an issue in...</span></a></li><li><a href="/prompt/a-a-p-contributing/new-prompt-contribution"><strong><i data-lucide="users" aria-hidden="true"></i> new prompt contribution</strong><span>Copy-paste the block below into any AI coding agent to add a new prompt to this...</span></a></li><li><a href="/prompt/a-a-p-contributing/one-pager-schema"><strong><i data-lucide="users" aria-hidden="true"></i> one-pager prompt schema</strong><span>Copy-paste the block below into any AI coding agent to author a one-pager prompt for this...</span></a></li><li><a href="/prompt/a-a-p-contributing/prompt-pr-review"><strong><i data-lucide="users" aria-hidden="true"></i> prompt PR review</strong><span>Copy-paste the block below into any AI coding agent to review a pull request that adds or...</span></a></li><li><a href="/prompt/a-a-p-contributing/resolve-open-issue"><strong><i data-lucide="users" aria-hidden="true"></i> resolve an open issue</strong><span>Copy-paste the block below into any AI coding agent to take an open issue in this...</span></a></li><li><a href="/prompt/a-a-p-contributing/spec-prompt-schema"><strong><i data-lucide="users" aria-hidden="true"></i> spec prompt schema</strong><span>Copy-paste the block below into any AI coding agent to author a spec prompt for this...</span></a></li>
 </ul>
 <a class="cta" href="https://github.com/shauryagangrade/awesome-ai-prompts/blob/main/a-a-p-contributing/">View a-a-p-contributing on GitHub</a>
 </main>

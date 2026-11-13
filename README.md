@@ -137,7 +137,7 @@ with your story.
 ## Translations
 
 English is the source of truth and stays the only version that appears in the
-[one-page catalog](#printable-one-page-catalog). Translated prompts live under
+[browsable catalog](#browsable-catalog-and-prompt-pages). Translated prompts live under
 `i18n/<lang>/`, mirroring the category folders, and each language keeps a
 README with its own status table.
 
@@ -261,15 +261,17 @@ The `Commit checklist` workflow separately enforces that the PR title follows
 CI runs the same scripts you run locally, so a green local pass means a green
 CI pass.
 
-### Printable one-page catalog
+### Browsable catalog and prompt pages
 
-For workshops, printing, or browsing the whole corpus on one page, open
-[website/index.html](website/index.html) - every prompt, a linked mini-TOC,
-and a one-click copy button on each card. The same build generates the whole
+[website/index.html](website/index.html) is the catalog: every prompt grouped
+by category, with its intro, its source file, and a link to its own page. The
+full copy-paste block lives on the prompt page, so each prompt has one
+canonical URL instead of being duplicated on the index. The same build
+generates the whole
 [awesome-ai-prompts.vercel.app](https://awesome-ai-prompts.vercel.app) site in
 [website/](website/), one folder holding everything that gets deployed:
 
-- `website/index.html` - the full catalog, served at the site root.
+- `website/index.html` - the catalog, served at the site root.
 - `website/category/<cat>.html` - one index page per category, at
   `/category/<cat>`.
 - `website/prompt/<cat>/<slug>.html` - one page per prompt, at
