@@ -11,6 +11,12 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- (none; v0.8.0 released)
+
+## [0.8.0] - 2026-11-15
+
+### Added
+
 - Add `docs/opencode.md` - run a prompt as an opencode slash command with `opencode run`, and keep the catalog's verification rules in `AGENTS.md`.
 - Add `security-performance/perf-regression-diagnosis-prompt.md` - spec prompt for performance regression diagnosis with reproducible baselines, profiling evidence, a bisected root cause, and a proven fix.
 - Add `devops-deploy/deployment-readiness-prompt.md` - spec prompt gating a deploy with evidence: migrations, rollback, smoke tests, flags, observability; explicit go/no-go.
@@ -25,6 +31,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Changed
 
 - Generated site: the catalog links to each prompt page instead of inlining all 144 prompt blocks, so `website/index.html` drops from 642 KB to 144 KB and every prompt has one canonical page rather than a duplicate of it. Subpages now use the page topic as the `h1`; previously all 159 pages opened with `<h1>awesome-ai-prompts</h1>`.
+- The PR-only external-link check now skips the project's own site (`awesome-ai-prompts.vercel.app`): it is deployed from main, so a PR's new pages return 404 until merge and the gate failed on every prompt-adding PR. The self GitHub repo URL was already skipped for the same reason.
 
 ## [0.7.0] - 2026-10-24
 
@@ -290,7 +297,8 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
-[Unreleased]: https://github.com/shauryagangrade/awesome-ai-prompts/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/shauryagangrade/awesome-ai-prompts/compare/v0.8.0...HEAD
+[0.8.0]: https://github.com/shauryagangrade/awesome-ai-prompts/releases/tag/v0.8.0
 [0.7.0]: https://github.com/shauryagangrade/awesome-ai-prompts/releases/tag/v0.7.0
 [0.6.0]: https://github.com/shauryagangrade/awesome-ai-prompts/releases/tag/v0.6.0
 [0.5.0]: https://github.com/shauryagangrade/awesome-ai-prompts/releases/tag/v0.5.0
