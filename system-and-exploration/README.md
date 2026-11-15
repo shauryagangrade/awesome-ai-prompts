@@ -6,5 +6,6 @@ Prompts that turn an agent into a safe, strictly read-only investigator to analy
 - [dead-code-detection-prompt.md](dead-code-detection-prompt.md) - find dead code with proof: tool output as candidates only, reference search recorded, dynamic use ruled out before deletion.
 - [entrypoints-discovery-prompt.md](entrypoints-discovery-prompt.md) - discover runtime entrypoints: servers, CLIs, workers, scheduled jobs, environment/config requirements, connection mapping.
 - [impact-analysis-prompt.md](impact-analysis-prompt.md) - evaluate change impact before applying: scope, affected paths, risk, verification plan, rollback criteria.
+- [dependency-graph-prompt.md](dependency-graph-prompt.md) - build the internal dependency graph: Mermaid output, edges with file:line, cycle detection, layer violations, minimal decoupling fixes.
 
 [← Back to README](../README.md#system--exploration)

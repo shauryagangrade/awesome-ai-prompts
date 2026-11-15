@@ -13,8 +13,11 @@ Back to the [main index](../README.md#docs--delivery) or browse
 - [readme-builder-prompt.md](readme-builder-prompt.md) - build a comprehensive README from scratch: purpose, quickstart, examples.
 - [inline-documentation-prompt.md](inline-documentation-prompt.md) - add JSDoc/docstrings to existing code: accurate, concise, non-redundant.
 
-- [architecture-documentation-prompt.md](architecture-documentation-prompt.md) - write architecture docs with evidence, tradeoffs, and verification.$
+- [architecture-documentation-prompt.md](architecture-documentation-prompt.md) - write architecture docs with evidence, tradeoffs, and verification.
 - [migration-guide-prompt.md](migration-guide-prompt.md) - write a migration guide: preconditions, steps, rollback, verification, common failures.
+- [adr-writing-review-prompt.md](adr-writing-review-prompt.md) - draft or review an ADR against a complete checklist: problem statement, alternatives, trade-offs, consequences, actionability.
+- [runbook-writing-prompt.md](runbook-writing-prompt.md) - write verifiable incident runbooks: symptoms, diagnosis commands with expected output, mitigation, rollback, escalation.
+- [documentation-audit-prompt.md](documentation-audit-prompt.md) - audit docs into a prioritized, actionable fix list: exact locations, concrete edits, verifiable acceptance checks, grouped by type.
 
 ## Adding a prompt here
 

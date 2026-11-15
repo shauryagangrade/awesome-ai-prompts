@@ -12,6 +12,15 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Added
 
 - Add `docs/opencode.md` - run a prompt as an opencode slash command with `opencode run`, and keep the catalog's verification rules in `AGENTS.md`.
+- Add `security-performance/perf-regression-diagnosis-prompt.md` - spec prompt for performance regression diagnosis with reproducible baselines, profiling evidence, a bisected root cause, and a proven fix.
+- Add `devops-deploy/deployment-readiness-prompt.md` - spec prompt gating a deploy with evidence: migrations, rollback, smoke tests, flags, observability; explicit go/no-go.
+- Add `career-learning/technical-writing-feedback-prompt.md` - actionable critique of technical docs: clarity, verifiability, completeness, links, structure, accuracy, examples.
+- Add `career-learning/learning-plan-from-repo-prompt.md` - time-boxed learning plan from a repository with verification checkpoints per phase.
+- Add `career-learning/code-review-skills-builder-prompt.md` - code review skills builder: file:line evidence, explicit rationale, severity classification, progress tracking.
+- Add `docs-delivery/adr-writing-review-prompt.md` - draft or review an ADR against a complete checklist: alternatives, trade-offs, consequences, actionability.
+- Add `docs-delivery/runbook-writing-prompt.md` - verifiable incident runbooks: symptoms, diagnosis commands with expected output, mitigation, rollback, escalation.
+- Add `docs-delivery/documentation-audit-prompt.md` - audit docs into a prioritized, actionable fix list with exact locations and verifiable acceptance checks.
+- Add `system-and-exploration/dependency-graph-prompt.md` - build the internal dependency graph with a Mermaid diagram, file:line edge list, cycle detection, and minimal decoupling fixes.
 
 ### Changed
 

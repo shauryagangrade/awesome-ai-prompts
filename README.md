@@ -317,14 +317,14 @@ described above.
 - [Git & GitHub](#git--github) (14) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 - [Code review & quality](#code-review--quality) (6) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 - [Testing & quality](#testing--quality) (10) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
-- [Docs & delivery](#docs--delivery) (7)
-- [Security & performance](#security--performance) (13) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
-- [DevOps & deploy](#devops--deploy) (15)
-- [Career & learning](#career--learning) (8)
+- [Docs & delivery](#docs--delivery) (10)
+- [Security & performance](#security--performance) (14) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
+- [DevOps & deploy](#devops--deploy) (16) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
+- [Career & learning](#career--learning) (11)
 - [Frontend & UI](#frontend--ui) (13) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 - [Data & AI](#data--ai) (13) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 - [Mobile development](#mobile-development) (8) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
-- [System & Exploration](#system--exploration) (4) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
+- [System & Exploration](#system--exploration) (5) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 
 ## Contributing to this repo
 
@@ -416,6 +416,9 @@ described above.
 - [readme-builder-prompt.md](docs-delivery/readme-builder-prompt.md) - build a comprehensive README from scratch: purpose, quickstart, examples.
 - [inline-documentation-prompt.md](docs-delivery/inline-documentation-prompt.md) - add JSDoc/docstrings to existing code: accurate, concise, non-redundant.
 - [migration-guide-prompt.md](docs-delivery/migration-guide-prompt.md) - write a migration guide: preconditions, steps, rollback, verification, common failures.
+- [adr-writing-review-prompt.md](docs-delivery/adr-writing-review-prompt.md) - draft or review an ADR against a complete checklist: problem statement, alternatives, trade-offs, consequences, actionability.
+- [runbook-writing-prompt.md](docs-delivery/runbook-writing-prompt.md) - write verifiable incident runbooks: symptoms, diagnosis commands with expected output, mitigation, rollback, escalation.
+- [documentation-audit-prompt.md](docs-delivery/documentation-audit-prompt.md) - audit docs into a prioritized, actionable fix list: exact locations, concrete edits, verifiable acceptance checks, grouped by type.
 
 ## Security & performance
 
@@ -432,6 +435,7 @@ described above.
 - [prompt-injection-defense-prompt.md](security-performance/prompt-injection-defense-prompt.md) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px"> - threat-model one attack class: where untrusted text reaches the context, out-of-band tool gating, a red-team suite, honest residual risk.
 - [privacy-gdpr-compliance-review-prompt.md](security-performance/privacy-gdpr-compliance-review-prompt.md) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px"> - systematic privacy pass: data inventory with retention, lawful basis, consent withdrawal, user rights flows, processors, ranked minimization.
 - [rate-limiting-abuse-prevention-prompt.md](security-performance/rate-limiting-abuse-prevention-prompt.md) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px"> - protect public endpoints: limits tiered by cost, algorithm chosen for the traffic shape, shared counters, load-test proof.
+- [perf-regression-diagnosis-prompt.md](security-performance/perf-regression-diagnosis-prompt.md) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px"> - hunt a performance regression with numbers: reproducible baseline, profiled hot path, root cause, proven fix, prevention guard.
 
 ## DevOps & deploy
 
@@ -450,6 +454,7 @@ described above.
 - [ci-gate-diagnosis-prompt.md](devops-deploy/ci-gate-diagnosis-prompt.md) - diagnose a failing CI gate: read the real log, compare with base branch, recommend one action with evidence.
 - [incident-postmortem-prompt.md](devops-deploy/incident-postmortem-prompt.md) - evidence-based postmortem: timeline, contributing factors, action items with owners, lessons.
 - [infra-drift-detection-prompt.md](devops-deploy/infra-drift-detection-prompt.md) - find live infrastructure drift vs IaC: refresh-only, classify differences, approve before any apply.
+- [deployment-readiness-prompt.md](devops-deploy/deployment-readiness-prompt.md) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px"> - gate a deploy with evidence: migrations, rollback, smoke tests, flags, observability, dependencies, security; explicit go/no-go.
 
 ## Career & learning
 
@@ -461,6 +466,9 @@ described above.
 - [conference-talk-proposal-prep-prompt.md](career-learning/conference-talk-proposal-prep-prompt.md) - write a competitive CFP and rehearse the talk: hook, takeaway, timed outline, demo fallbacks.
 - [mentoring-feedback-prompt.md](career-learning/mentoring-feedback-prompt.md) - give structured, verifiable feedback to a junior engineer with evidence.
 - [interview-debugging-drill-prompt.md](career-learning/interview-debugging-drill-prompt.md) - coaching a real debugging session: reproduce, form/test hypotheses, prove root cause, minimal fix, regression test, explain thinking.
+- [technical-writing-feedback-prompt.md](career-learning/technical-writing-feedback-prompt.md) - critique technical docs for clarity, verifiability, completeness, links, structure, accuracy, examples, with actionable before/after suggestions.
+- [learning-plan-from-repo-prompt.md](career-learning/learning-plan-from-repo-prompt.md) - time-boxed learning plan from a repository with verification checkpoints per phase, key files, and exercises.
+- [code-review-skills-builder-prompt.md](career-learning/code-review-skills-builder-prompt.md) - build code review skills: file:line evidence, explicit rationale, severity classification, constructive feedback, progress tracking.
 
 ## Frontend & UI
 
@@ -511,3 +519,4 @@ described above.
 - [dead-code-detection-prompt.md](system-and-exploration/dead-code-detection-prompt.md) - find dead code with proof: tool output as candidates only, reference search recorded, dynamic use ruled out before deletion.
 - [entrypoints-discovery-prompt.md](system-and-exploration/entrypoints-discovery-prompt.md) - discover runtime entrypoints: servers, CLIs, workers, scheduled jobs, environment/config requirements, connection mapping.
 - [impact-analysis-prompt.md](system-and-exploration/impact-analysis-prompt.md) - evaluate change impact before applying: scope, affected paths, risk, verification plan, rollback criteria.
+- [dependency-graph-prompt.md](system-and-exploration/dependency-graph-prompt.md) - build the internal dependency graph: Mermaid output, edges with file:line, cycle detection, layer violations, minimal decoupling fixes.
