@@ -14,8 +14,11 @@ Back to the [main index](../README.md#career--learning) or browse
 - [learning-roadmap-prompt.md](learning-roadmap-prompt.md) - turn a skill gap into a project-based roadmap with verifiable checkpoints.
 - [conference-talk-proposal-prep-prompt.md](conference-talk-proposal-prep-prompt.md) - write a competitive CFP and rehearse the talk: hook, takeaway, timed outline, demo fallbacks.
 
-- [mentoring-feedback-prompt.md](mentoring-feedback-prompt.md) - give structured, verifiable feedback to a junior engineer with evidence.$
+- [mentoring-feedback-prompt.md](mentoring-feedback-prompt.md) - give structured, verifiable feedback to a junior engineer with evidence.
 - [interview-debugging-drill-prompt.md](interview-debugging-drill-prompt.md) - coaching a real debugging session: reproduce, form/test hypotheses, prove root cause, minimal fix, regression test, explain thinking.
+- [technical-writing-feedback-prompt.md](technical-writing-feedback-prompt.md) - critique technical docs for clarity, verifiability, completeness, links, structure, accuracy, examples, with actionable before/after suggestions.
+- [learning-plan-from-repo-prompt.md](learning-plan-from-repo-prompt.md) - time-boxed learning plan from a repository with verification checkpoints per phase, key files, and exercises.
+- [code-review-skills-builder-prompt.md](code-review-skills-builder-prompt.md) - build code review skills: file:line evidence, explicit rationale, severity classification, constructive feedback, progress tracking.
 
 ## Adding a prompt here
 

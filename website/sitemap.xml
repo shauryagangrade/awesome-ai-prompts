@@ -10,13 +10,16 @@
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/a-a-p-contributing/spec-prompt-schema</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/category/career-learning</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/career-learning/code-interview-practice</loc></url>
+<url><loc>https://awesome-ai-prompts.vercel.app/prompt/career-learning/code-review-skills-builder</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/career-learning/conference-talk-proposal-prep</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/career-learning/interview-debugging-drill</loc></url>
+<url><loc>https://awesome-ai-prompts.vercel.app/prompt/career-learning/learning-plan-from-repo</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/career-learning/learning-roadmap</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/career-learning/mentoring-feedback</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/career-learning/portfolio-project</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/career-learning/resume-review</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/career-learning/tech-blog-writer</loc></url>
+<url><loc>https://awesome-ai-prompts.vercel.app/prompt/career-learning/technical-writing-feedback</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/category/code-review</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/code-review/accessibility-review</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/code-review/architecture-review</loc></url>
@@ -66,6 +69,7 @@
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/devops-deploy/ci-gate-diagnosis</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/devops-deploy/cloud-cost-optimization</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/devops-deploy/database-schema-migrations</loc></url>
+<url><loc>https://awesome-ai-prompts.vercel.app/prompt/devops-deploy/deployment-readiness</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/devops-deploy/deployment-runbook</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/devops-deploy/docker-containerization</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/devops-deploy/feature-flag-rollout</loc></url>
@@ -76,13 +80,16 @@
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/devops-deploy/kubernetes-deployment</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/devops-deploy/monitoring-observability</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/category/docs-delivery</loc></url>
+<url><loc>https://awesome-ai-prompts.vercel.app/prompt/docs-delivery/adr-writing-review</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/docs-delivery/api-documentation</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/docs-delivery/architecture-documentation</loc></url>
+<url><loc>https://awesome-ai-prompts.vercel.app/prompt/docs-delivery/documentation-audit</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/docs-delivery/documentation-writer</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/docs-delivery/inline-documentation</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/docs-delivery/migration-guide</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/docs-delivery/readme-builder</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/docs-delivery/release-notes-changelog</loc></url>
+<url><loc>https://awesome-ai-prompts.vercel.app/prompt/docs-delivery/runbook-writing</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/category/frontend-ui</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/frontend-ui/animation-performance</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/frontend-ui/browser-extension-development</loc></url>
@@ -127,6 +134,7 @@
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/security-performance/dependency-vuln-triage</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/security-performance/load-testing</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/security-performance/memory-leak-hunting</loc></url>
+<url><loc>https://awesome-ai-prompts.vercel.app/prompt/security-performance/perf-regression-diagnosis</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/security-performance/performance-optimization</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/security-performance/privacy-gdpr-compliance-review</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/security-performance/prompt-injection-defense</loc></url>
@@ -137,6 +145,7 @@
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/security-performance/threat-modeling</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/category/system-and-exploration</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/system-and-exploration/dead-code-detection</loc></url>
+<url><loc>https://awesome-ai-prompts.vercel.app/prompt/system-and-exploration/dependency-graph</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/system-and-exploration/drive-space-investigator</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/system-and-exploration/entrypoints-discovery</loc></url>
 <url><loc>https://awesome-ai-prompts.vercel.app/prompt/system-and-exploration/impact-analysis</loc></url>
