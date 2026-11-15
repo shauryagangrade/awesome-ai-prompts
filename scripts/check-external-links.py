@@ -5,8 +5,11 @@ Reads README.md and every *-prompt.md, extracts http(s) URLs, and reports any
 that no longer resolve or return an error status. Runs on a weekly schedule
 (see .github/workflows/url-rot-check.yml) so a dead badge or a referenced tool
 surfaces without slowing every PR. Internal relative links are out of scope
-(check-links.sh owns those) and self-repo URLs are skipped so unauthenticated
-GitHub requests can not flake the job.
+(check-links.sh owns those), self-repo GitHub URLs are skipped so
+unauthenticated GitHub requests can not flake the job, and the project's own
+site is skipped: the production deployment is built from main, so a PR's new
+pages return 404 until the merge and checking them is a guaranteed false
+failure.
 
 Exit code is 1 if any URL is broken, so the scheduled workflow fails loudly.
 
@@ -29,6 +32,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SELF_REPO = "github.com/shauryagangrade/awesome-ai-prompts"
+# The production site is deployed from main, so any page a PR adds returns 404
+# until that PR merges. Checking those URLs is a guaranteed false failure, so
+# the project's own domain is skipped the same way the self GitHub repo is.
+SELF_SITE = "awesome-ai-prompts.vercel.app"
 URL_RE = re.compile(r"https?://[^\s)<>'\"]+")
 USER_AGENT = "Mozilla/5.0 (compatible; awesome-ai-prompts-url-rot/1.0)"
 TIMEOUT = 15
@@ -122,6 +129,8 @@ def should_check(url):
     if not match:
         return False
     host = match.group(1)
+    if host == SELF_SITE:
+        return False
     has_domain = "." in host
     return has_domain and host != "localhost" and host not in PLACEHOLDER_HOSTS
 

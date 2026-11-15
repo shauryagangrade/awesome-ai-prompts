@@ -78,6 +78,11 @@ class ShouldCheckTest(unittest.TestCase):
     def test_self_repo_skipped(self):
         self.assertFalse(LINK_CHECKER.should_check("https://github.com/shauryagangrade/awesome-ai-prompts"))
 
+    def test_self_site_skipped(self):
+        # The production deployment serves main, not this PR, so a page this
+        # PR adds is 404 until merge; reaching out to it is noise.
+        self.assertFalse(LINK_CHECKER.should_check("https://awesome-ai-prompts.vercel.app/prompt/x/y"))
+
     def test_placeholder_hosts_skipped(self):
         for url in ("https://example.com/a", "https://example.org/b", "https://intranet/tool"):
             self.assertFalse(LINK_CHECKER.should_check(url), url)
