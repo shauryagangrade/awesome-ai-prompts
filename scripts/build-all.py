@@ -75,6 +75,7 @@ CATEGORY_ICONS = {
     "frontend-ui": "palette",
     "git-github": "git-branch",
     "mobile-dev": "smartphone",
+    "research": "search",
     "security-performance": "shield",
     "system-and-exploration": "laptop",
     "system-design": "layers",

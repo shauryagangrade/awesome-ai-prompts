@@ -325,6 +325,7 @@ described above.
 - [Data & AI](#data--ai) (13) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 - [Mobile development](#mobile-development) (8) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 - [System & Exploration](#system--exploration) (5) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
+- [Research](#research) (6) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px">
 
 ## Contributing to this repo
 
@@ -520,3 +521,12 @@ described above.
 - [entrypoints-discovery-prompt.md](system-and-exploration/entrypoints-discovery-prompt.md) - discover runtime entrypoints: servers, CLIs, workers, scheduled jobs, environment/config requirements, connection mapping.
 - [impact-analysis-prompt.md](system-and-exploration/impact-analysis-prompt.md) - evaluate change impact before applying: scope, affected paths, risk, verification plan, rollback criteria.
 - [dependency-graph-prompt.md](system-and-exploration/dependency-graph-prompt.md) - build the internal dependency graph: Mermaid output, edges with file:line, cycle detection, layer violations, minimal decoupling fixes.
+
+## Research
+
+- [literature-review-prompt.md](research/literature-review-prompt.md) - survey a topic through primary sources: scope, find, verify, synthesize, and report gaps.
+- [source-verification-prompt.md](research/source-verification-prompt.md) - verify a claim end-to-end: split it, trace primaries, rate each part, and state confidence.
+- [technical-research-prompt.md](research/technical-research-prompt.md) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px"> - deep technical investigation: fixed criteria, reproduced evidence, and a cited recommendation.
+- [competitive-analysis-prompt.md](research/competitive-analysis-prompt.md) - compare competing tools with version-pinned primary evidence and a decision matrix.
+- [experiment-design-prompt.md](research/experiment-design-prompt.md) - turn a question into a reproducible experiment with a falsifiable hypothesis and honest reporting.
+- [dataset-discovery-prompt.md](research/dataset-discovery-prompt.md) <img src="docs/media/spec-badge.svg" alt="spec" style="vertical-align:-3px"> - mine research papers for fitting datasets, download the actual files, and write a no-fluff `.md` analysis of each.

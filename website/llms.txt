@@ -2,7 +2,7 @@
 
 > A curated list of copy-paste AI coding-agent prompts for developers: disciplined workflows that verify, don't guess.
 
-153 prompts across 14 categories, generated from the prompt files in github.com/shauryagangrade/awesome-ai-prompts (MIT licensed). Each prompt page carries the full prompt block ready to paste into an AI coding agent.
+159 prompts across 15 categories, generated from the prompt files in github.com/shauryagangrade/awesome-ai-prompts (MIT licensed). Each prompt page carries the full prompt block ready to paste into an AI coding agent.
 
 ## Site
 
@@ -21,6 +21,7 @@
 - [frontend-ui](https://awesome-ai-prompts.vercel.app/category/frontend-ui): 13 prompts
 - [git-github](https://awesome-ai-prompts.vercel.app/category/git-github): 14 prompts
 - [mobile-dev](https://awesome-ai-prompts.vercel.app/category/mobile-dev): 8 prompts
+- [research](https://awesome-ai-prompts.vercel.app/category/research): 6 prompts
 - [security-performance](https://awesome-ai-prompts.vercel.app/category/security-performance): 14 prompts
 - [system-and-exploration](https://awesome-ai-prompts.vercel.app/category/system-and-exploration): 5 prompts
 - [system-design](https://awesome-ai-prompts.vercel.app/category/system-design): 7 prompts
@@ -174,6 +175,15 @@
 - [mobile UI overhaul](https://awesome-ai-prompts.vercel.app/prompt/mobile-dev/mobile-ui-overhaul): Copy-paste the block below into any AI coding agent to overhaul a mobile UI end-to-end: define a target design, reimplement the screens against the...
 - [mobile notifications and deep links](https://awesome-ai-prompts.vercel.app/prompt/mobile-dev/push-notifications-deep-links): Copy-paste the block below into any AI coding agent to add push notifications or deep-link handling to a mobile app: permissions, a single routing layer...
 - [website to mobile app](https://awesome-ai-prompts.vercel.app/prompt/mobile-dev/website-to-mobile-app): Copy-paste the block below into any AI coding agent to turn an existing website into a mobile app, picking the adaptation strategy from the website's...
+
+### research
+
+- [competitive analysis](https://awesome-ai-prompts.vercel.app/prompt/research/competitive-analysis): Copy-paste the block below into any AI coding agent to research competing tools or libraries and produce an evidence-backed comparison you can decide...
+- [dataset discovery and analysis](https://awesome-ai-prompts.vercel.app/prompt/research/dataset-discovery): Paste this entire prompt into your agent when you need real datasets, not a list of suggestions: it searches the literature, downloads the files, and...
+- [experiment design](https://awesome-ai-prompts.vercel.app/prompt/research/experiment-design): Copy-paste the block below into any AI coding agent to turn a question into a reproducible experiment with an honest measurement and reporting plan...
+- [literature review](https://awesome-ai-prompts.vercel.app/prompt/research/literature-review): Copy-paste the block below into any AI coding agent to survey the research on a topic using primary sources, then synthesize what is actually known...
+- [source verification](https://awesome-ai-prompts.vercel.app/prompt/research/source-verification): Copy-paste the block below into any AI coding agent to check a claim against primary sources and report how much of it actually holds up. Keywords: fact...
+- [technical research](https://awesome-ai-prompts.vercel.app/prompt/research/technical-research): Paste this entire prompt into your agent when a decision needs deep technical research: it forces scope, reproducible checks, and a cited recommendation...
 
 ### security-performance
 

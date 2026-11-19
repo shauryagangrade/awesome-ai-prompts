@@ -11,7 +11,13 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-- (none; v0.8.0 released)
+- Add `research/` category with six prompts for verification-first research: literature review, source verification, technical research, competitive analysis, experiment design, and dataset discovery.
+- Add `research/literature-review-prompt.md` - survey a topic through primary sources: scope, find, verify, synthesize, and report gaps.
+- Add `research/source-verification-prompt.md` - verify a claim end-to-end: split it, trace primaries, rate each part, and state confidence.
+- Add `research/technical-research-prompt.md` - spec prompt for deep technical investigation: fixed criteria, reproduced evidence, and a cited recommendation.
+- Add `research/competitive-analysis-prompt.md` - compare competing tools with version-pinned primary evidence and a decision matrix.
+- Add `research/experiment-design-prompt.md` - turn a question into a reproducible experiment with a falsifiable hypothesis and honest reporting.
+- Add `research/dataset-discovery-prompt.md` - spec prompt to mine research papers for fitting datasets, download the actual files, and write a no-fluff `.md` analysis of each.
 
 ## [0.8.0] - 2026-11-15
 
